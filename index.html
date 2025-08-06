@@ -2254,6 +2254,24 @@
         
         // Initialize the page
         function init() {
+            // Event Listeners for mobile menu
+hamburger.addEventListener('click', () => {
+    mobileMenu.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+closeMenu.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+overlay.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+});
             generateProductCards();
             updateCartCount();
             updateWishlistCount();
