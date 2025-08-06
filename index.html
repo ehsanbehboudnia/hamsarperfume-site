@@ -1313,1343 +1313,169 @@
         </div>
     </div>
 
-    <script>
-        // Complete perfume data with descriptions and specs
-        const perfumes = [
-  // 1
-  {
-    id: 1,
-    name: "شنل پلاتینیوم",
-    category: "men",
-    image: "assets/image/پلاتینیوم.jpg",
-    badge: "جدید",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "عطری کلاسیک و لوکس با ترکیبی از نت‌های مرکباتی در ابتدا و پایه‌ای از چوب صندل و مشک.",
-    specs: {
-      "برند": "شنل",
-      "نوع رایحه": "مرکباتی – چوبی",
-      "پخش بو": "متوسط تا زیاد"
-    }
-  },
-  // 2
-  {
-    id: 2,
-    name: "تایگار",
-    category: "men",
-    image: "assets/image/تایگار.JPG",
-    badge: "پرفروش",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "رایحه‌ای دریایی و تازه با تُن‌های مرکباتی و کمی مشک در پس‌زمینه.",
-    specs: {
-      "برند": "مونت بلانک",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 3
-  {
-    id: 3,
-    name: "مارلی آلتیر",
-    category: "men",
-    image: "assets/image/التیر.jpg",
-    badge: "پرفروش",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "عطری گل‌دار و میوه‌ای با نت‌های یاسمنی در قلب و پایه‌ای خنک از مرکبات.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "فلورال – میوه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 4
-  {
-    id: 4,
-    name: "ایسی میاکی ماجور",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "جدید",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "الهام‌گرفته از فضای کوهستانی با ترکیبی از نت‌های چوبی و ادویه‌ای.",
-    specs: {
-      "برند": "ایسی میاکی",
-      "نوع رایحه": "چوبی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 5
-  {
-    id: 5,
-    name: "کرید سیلور مانتین",
-    category: "men",
-    image: "assets/image/سیلور.jpg",
-    badge: "ویژه",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "حسی کوهستانی و خنک با غالب‌بودن نت‌های چوبی و کهربایی.",
-    specs: {
-      "برند": "کرید",
-      "نوع رایحه": "چوبی – کهربایی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 6
-  {
-    id: 6,
-    name: "گانیمد",
-    category: "men",
-    image: "assets/image/گانیمد.jpg",
-    badge: "جدید",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "عطری مدرن با نت‌های فلورال در ترکیب با چوب صندل و مشک.",
-    specs: {
-      "برند": "زارجوف",
-      "نوع رایحه": "فلورال – چوبی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 7
-  {
-    id: 7,
-    name: "ناتیکا ویاژ",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "پرفروش",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "حسی دریایی و تازه با زمینه‌ای از مرکبات و کمی مشک.",
-    specs: {
-      "برند": "ناتیکا",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 8
-  {
-    id: 8,
-    name: "ویکتوریا نایت",
-    category: "men",
-    image: "assets/image/وری-سکسی-نایت.jpg",
-    badge: "جدید",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "نت‌های شرقی-گل‌دار با تاکید بر وانیل و چوب صندل.",
-    specs: {
-      "برند": "ویکتوریا سیکرت",
-      "نوع رایحه": "شرقی – گل‌دار",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 9
-  {
-    id: 9,
-    name: "فرعون",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "پرفروش",
-    price: "۲۱۰",
-    sizes: [
-      { size: "ده میل",   price: "۲۱۰" },
-      { size: "بیست میل",  price: "۳۹۰" },
-      { size: "سی میل",    price: "۴۹۰" },
-      { size: "پنجاه میل", price: "۸۰۰" },
-    ],
-    description: "رایحه‌ای شرقی و ادویه‌ای با نت‌های وانیل و کهربا.",
-    specs: {
-      "برند": "ناتیکا",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 10
-  {
-    id: 10,
-    name: "ایوسن‌لورن وای",
-    category: "men",
-    image: "assets/image/وای.jpg",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "عطری مرکباتی-گلی با نت‌های لیمو و یاس.",
-    specs: {
-      "برند": "ایوسن‌لورن",
-      "نوع رایحه": "مرکباتی – گلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 11
-  {
-    id: 11,
-    name: "دیور هوم اینتنس",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "رد بویی قوی با ترکیب چوب سدر و توتون.",
-    specs: {
-      "برند": "دیور",
-      "نوع رایحه": "چوبی – توتون",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 12
-  {
-    id: 12,
-    name: "جورجیو آرمانی اکوا دی جیو ابسولو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: "۲۵۰",
-    sizes: [
-      { size: "ده میل",   price: "۲۵۰" },
-      { size: "بیست میل",  price: "۴۵۰" },
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "حسی دریایی و خنک با نت‌های مرکبات و نمک دریایی.",
-    specs: {
-      "برند": "آرمانی",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 13
-  {
-    id: 13,
-    name: "مارلی هالتان",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: "۲۵۰",
-    sizes: [
-      { size: "ده میل",   price: "۲۵۰" },
-      { size: "بیست میل",  price: "۴۵۰" },
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "رایحه‌ای قدرتمند و پیچیده با نت‌های گل و کهربا.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "گل‌دار – کهربایی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 14
-  {
-    id: 14,
-    name: "الکساندریا2",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: "۲۵۰",
-    sizes: [
-      { size: "ده میل",   price: "۲۵۰" },
-      { size: "بیست میل",  price: "۴۵۰" },
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "عطری منحصر بفرد با ترکیبی از نت‌های شرقی و چوبی.",
-    specs: {
-      "برند": "الکساندریا",
-      "نوع رایحه": "شرقی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 15
-  {
-    id: 15,
-    name: "کرید اونتوس ابسولو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: "۲۵۰",
-    sizes: [
-      { size: "ده میل",   price: "۲۵۰" },
-      { size: "بیست میل",  price: "۴۵۰" },
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "پیچیدگی میوه‌ای و دودی در یک بَچ لوکس.",
-    specs: {
-      "برند": "کرید",
-      "نوع رایحه": "میوه‌ای – دودی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 16
-  {
-    id: 16,
-    name: "مارلی کالان",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: "۴۹۰",
-    sizes: [
-      { size: "سی میل",    price: "۴۹۰" },
-      { size: "پنجاه میل", price: "۸۰۰" },
-    ],
-    description: "عطری شرقی و غنی با نت‌های وانیل و مشک.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "شرقی – وانیلی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 17
-  {
-    id: 17,
-    name: "کازاموراتی مفیستو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: "۵۹۰",
-    sizes: [
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "حسی دودی و تنباکویی با لمس کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "دودی – تنباکویی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 18
-  {
-    id: 18,
-    name: "آمواج هانر",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: "۴۳۰",
-    sizes: [
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "ترکیبی قوی از چوب سدر و مشک با حس چرمی.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "چرمی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 19
-  {
-    id: 19,
-    name: "آمواج گایدنس",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "حس شرقی-ادویه‌ای همراه با نت‌های مشک و عنبر.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // Women’s perfumes
-  // 20
-  {
-    id: 20,
-    name: "بای کیلیان بلومون",
-    category: "women",
-    image: "assets/image/بلومون2.jpg",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "رایحه‌ای گلی-شرقی با تمرکز بر رز و وانیل.",
-    specs: {
-      "برند": "بای کیلیان",
-      "نوع رایحه": "گل‌دار – شرقی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 21
-  {
-    id: 21,
-    name: "بولگاری اکوا امارا",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "نت‌های دریایی و مرکباتی با پس‌زمینه چوب صندل.",
-    specs: {
-      "برند": "بولگاری",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 22
-  {
-    id: 22,
-    name: "زرجوف اکسنتو",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "رایحه‌ای گرم و شرقی با تاکید بر وانیل و چوب صندل.",
-    specs: {
-      "برند": "زارجوف",
-      "نوع رایحه": "شرقی – وانیلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 23
-  {
-    id: 23,
-    name: "ویکتوریا نایت",
-    category: "women",
-    image: "assets/image/وری-سکسی-نایت.jpg",
-    badge: "جدید",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "حس رمانتیک با ترکیب گل‌های سیاه و وانیل.",
-    specs: {
-      "برند": "ویکتوریا سیکرت",
-      "نوع رایحه": "گل‌دار – شرقی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 24
-  {
-    id: 24,
-    name: "یارا",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "عطری ملایم و گلی با نت‌های یاس و مرکبات.",
-    specs: {
-      "برند": "نامشخص",
-      "نوع رایحه": "گلی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 25
-  {
-    id: 25,
-    name: "بیلی آیلیش",
-    category: "women",
-    image: "assets/image/بیلی.jpg",
-    badge: "ویژه",
-    price: "۲۵۰",
-    sizes: [
-      { size: "ده میل",   price: "۲۵۰" },
-      { size: "بیست میل",  price: "۴۵۰" },
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "رایحه‌ای مدرن و جوان‌پسند با نت‌های توت و وانیل.",
-    specs: {
-      "برند": "بیلی آیلیش",
-      "نوع رایحه": "میوه‌ای – شرقی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 26
-  {
-    id: 26,
-    name: "لویی ویتون پسفیک چیل",
-    category: "women",
-    image: "assets/image/پسفیک.JPG",
-    price: "۲۵۰",
-    sizes: [
-      { size: "ده میل",   price: "۲۵۰" },
-      { size: "بیست میل",  price: "۴۵۰" },
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "حسی گیاهی-مرکباتی با تمرکز بر رزماری و پرتقال.",
-    specs: {
-      "برند": "لویی ویتون",
-      "نوع رایحه": "گیاهی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 27
-  {
-    id: 27,
-    name: "لویی ویتون لیمنسیت",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: "۲۵۰",
-    sizes: [
-      { size: "ده میل",   price: "۲۵۰" },
-      { size: "بیست میل",  price: "۴۵۰" },
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "رایحه‌ای مرکباتی-سبز با نت غالب لیمو.",
-    specs: {
-      "برند": "لویی ویتون",
-      "نوع رایحه": "مرکباتی – سبز",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 28
-  {
-    id: 28,
-    name: "فلورنارکوتیک",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: "۵۹۰",
-    sizes: [
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "عطری گل‌دار و میوه‌ای با نت‌های توت و گل‌های بهاری.",
-    specs: {
-      "برند": "فلورنارکوتیک",
-      "نوع رایحه": "گل‌دار – میوه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 29
-  {
-    id: 29,
-    name: "تیزیانا ترنزی کیرکه",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: "۴۳۰",
-    sizes: [
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "نت‌های شرقی-گلی با تاکید بر رز و عنبر.",
-    specs: {
-      "برند": "تیزیانا ترنزی",
-      "نوع رایحه": "شرقی – گلی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 30
-  {
-    id: 30,
-    name: "کازاموراتی بوکت ایدل",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: "۵۹۰",
-    sizes: [
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "حسی گلی-چوبی با نت‌های مشک و کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "گلی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 31
-  {
-    id: 31,
-    name: "تام فورد لاست چری",
-    category: "women",
-    image: "assets/image/لاستچری.jpg",
-    badge: "جدید",
-    price: "۴۳۰",
-    sizes: [
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "رایحه‌ای میوه‌ای با تاکید بر گیلاس و بادام.",
-    specs: {
-      "برند": "تام فورد",
-      "نوع رایحه": "میوه‌ای – گلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 32
-  {
-    id: 32,
-    name: "کازاموراتی مفیستو",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: "۵۹۰",
-    sizes: [
-      { size: "سی میل",    price: "۵۹۰" },
-      { size: "پنجاه میل", price: "۹۵۰" },
-    ],
-    description: "حسی دودی-چرمی با لمسی از کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "چرمی – دودی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 33
-  {
-    id: 33,
-    name: "آمواج هانر",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: "۴۳۰",
-    sizes: [
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "نت‌های چرمی و چوبی با پس‌زمینه مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "چرمی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 34
-  {
-    id: 34,
-    name: "آمواج گایدنس",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: "۱۹۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۹۰" },
-      { size: "بیست میل",  price: "۳۲۰" },
-      { size: "سی میل",    price: "۴۳۰" },
-      { size: "پنجاه میل", price: "۷۰۰" },
-    ],
-    description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  }
-];
+ <script>
+  // ====== Data & State ======
+  const perfumes = [ /* … your full perfumes array as above … */ ];
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-        
-        // Shopping cart and wishlist
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        
-        // DOM Elements
-        const menPerfumes = document.getElementById('menPerfumes');
-        const womenPerfumes = document.getElementById('womenPerfumes');
-        const unisexPerfumes = document.getElementById('unisexPerfumes');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const hamburger = document.getElementById('hamburger');
-        const closeMenu = document.getElementById('closeMenu');
-        const searchResults = document.getElementById('searchResults');
-        const searchBar = document.querySelector('.search-bar');
-        const cartIcon = document.getElementById('cartIcon');
-        const cartModal = document.getElementById('cartModal');
-        const closeCart = document.getElementById('closeCart');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const cartCount = document.getElementById('cartCount');
-        const wishlistIcon = document.getElementById('wishlistIcon');
-        const wishlistModal = document.getElementById('wishlistModal');
-        const closeWishlist = document.getElementById('closeWishlist');
-        const wishlistItems = document.getElementById('wishlistItems');
-        const wishlistCount = document.getElementById('wishlistCount');
-        const userIcon = document.getElementById('userIcon');
-        const loginModal = document.getElementById('loginModal');
-        const closeLogin = document.getElementById('closeLogin');
-        const orderText = document.getElementById('orderText');
-        const overlay = document.getElementById('overlay');
-        const mobileWishlist = document.getElementById('mobileWishlist');
-        const mobileCart = document.getElementById('mobileCart');
-        const mobileLogin = document.getElementById('mobileLogin');
-        const productModal = document.getElementById('productModal');
-        const productModalTitle = document.getElementById('productModalTitle');
-        const productDetailContent = document.getElementById('productDetailContent');
-        const closeProductModal = document.getElementById('closeProductModal');
-        
-        // Generate product cards
-        function generateProductCards() {
-            menPerfumes.innerHTML = '';
-            womenPerfumes.innerHTML = '';
-            unisexPerfumes.innerHTML = '';
-            
-            perfumes.forEach(perfume => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                
-                // Generate size options HTML
-                let sizeOptionsHTML = '';
-                perfume.sizes.forEach(size => {
-                    sizeOptionsHTML += `<div class="size-option" data-size="${size.size}" data-price="${size.price}">${size.size}</div>`;
-                });
-                
-                productCard.innerHTML = `
-                    <div class="product-image">
-                        <img src="${perfume.image}" alt="${perfume.name}" data-id="${perfume.id}" class="product-image-link">
-                        ${perfume.badge ? `<span class="product-badge">${perfume.badge}</span>` : ''}
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title" data-id="${perfume.id}">${perfume.name}</h3>
-                        
-                        <div class="size-options">
-                            ${sizeOptionsHTML}
-                        </div>
-                        
-                        <div class="product-price">
-                            <span class="current-price">${perfume.price},۰۰۰ تومان</span>
-                        </div>
-                        
-                        <div class="product-actions">
-                            <button class="add-to-cart">
-                                <i class="fas fa-shopping-cart"></i> افزودن به سبد
-                            </button>
-                            <button class="wishlist-btn">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                
-                // Add to cart functionality
-                const addToCartBtn = productCard.querySelector('.add-to-cart');
-                addToCartBtn.addEventListener('click', () => {
-                    const selectedSize = productCard.querySelector('.size-option.active');
-                    if (selectedSize) {
-                        const size = selectedSize.dataset.size;
-                        const price = selectedSize.dataset.price;
-                        addToCart(perfume, size, price);
-                    } else {
-                        alert('لطفاً حجم مورد نظر را انتخاب کنید');
-                    }
-                });
-                
-                // Wishlist functionality
-                const wishlistBtn = productCard.querySelector('.wishlist-btn');
-                const isInWishlist = wishlist.some(item => item.id === perfume.id);
-                if (isInWishlist) {
-                    wishlistBtn.classList.add('active');
-                    wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
-                }
-                
-                wishlistBtn.addEventListener('click', () => {
-                    toggleWishlist(perfume, wishlistBtn);
-                });
-                
-                // Size selection
-                const sizeOptions = productCard.querySelectorAll('.size-option');
-                sizeOptions.forEach(option => {
-                    option.addEventListener('click', () => {
-                        // Remove active class from all sizes
-                        sizeOptions.forEach(opt => opt.classList.remove('active'));
-                        
-                        // Add active class to selected size
-                        option.classList.add('active');
-                        
-                        // Update price display
-                        const priceElement = productCard.querySelector('.current-price');
-                        priceElement.textContent = `${option.dataset.price},۰۰۰ تومان`;
-                    });
-                });
-                
-                // Add event listeners for product links
-                const productImageLink = productCard.querySelector('.product-image-link');
-                productImageLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showProductDetail(perfume.id);
-                });
-                
-                const productTitleLink = productCard.querySelector('.product-title');
-                productTitleLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showProductDetail(perfume.id);
-                });
-                
-                // Add to appropriate category
-                if (perfume.category === 'men') {
-                    menPerfumes.appendChild(productCard);
-                } else if (perfume.category === 'women') {
-                    womenPerfumes.appendChild(productCard);
-                } else {
-                    unisexPerfumes.appendChild(productCard);
-                }
-            });
-        }
-        
-        // Show product detail modal
-        function showProductDetail(productId) {
-            const perfume = perfumes.find(p => p.id === productId);
-            if (!perfume) return;
-            
-            // Generate size options HTML
-            let sizeOptionsHTML = '';
-            perfume.sizes.forEach(size => {
-                sizeOptionsHTML += `<div class="size-option" data-size="${size.size}" data-price="${size.price}">${size.size}</div>`;
-            });
-            
-            // Generate specs HTML
-            let specsHTML = '';
-            for (const [key, value] of Object.entries(perfume.specs)) {
-                specsHTML += `
-                    <li>
-                        <span class="spec-label">${key}:</span>
-                        <span>${value}</span>
-                    </li>
-                `;
-            }
-            
-            productModalTitle.textContent = perfume.name;
-            productDetailContent.innerHTML = `
-                <div class="product-gallery">
-                    <div class="main-image">
-                        <img src="${perfume.image}" alt="${perfume.name}">
-                    </div>
-                </div>
-                
-                <div class="product-info">
-                    <h1 class="product-title">${perfume.name}</h1>
-                    ${perfume.badge ? `<span class="product-badge">${perfume.badge}</span>` : ''}
-                    
-                    <p class="product-description">${perfume.description}</p>
-                    
-                    <div class="product-specs">
-                        <h4 class="specs-title">مشخصات فنی</h4>
-                        <ul class="specs-list">
-                            ${specsHTML}
-                        </ul>
-                    </div>
-                    
-                    <div class="size-options">
-                        ${sizeOptionsHTML}
-                    </div>
-                    
-                    <div class="product-price">
-                        <span class="current-price">${perfume.price},۰۰۰ تومان</span>
-                    </div>
-                    
-                    <div class="product-actions">
-                        <button class="add-to-cart" id="detailAddToCart">
-                            <i class="fas fa-shopping-cart"></i> افزودن به سبد خرید
-                        </button>
-                        <button class="wishlist-btn" id="detailWishlistBtn">
-                            <i class="far fa-heart"></i>
-                        </button>
-                    </div>
-                    
-                    <a href="#" class="back-to-products" id="backToProducts">
-                        <i class="fas fa-arrow-left"></i> بازگشت به محصولات
-                    </a>
-                </div>
-            `;
-            
-            // Add event listeners for size options in modal
-            const sizeOptions = productDetailContent.querySelectorAll('.size-option');
-            sizeOptions.forEach(option => {
-                option.addEventListener('click', () => {
-                    // Remove active class from all sizes
-                    sizeOptions.forEach(opt => opt.classList.remove('active'));
-                    
-                    // Add active class to selected size
-                    option.classList.add('active');
-                    
-                    // Update price display
-                    const priceElement = productDetailContent.querySelector('.current-price');
-                    priceElement.textContent = `${option.dataset.price},۰۰۰ تومان`;
-                });
-            });
-            
-            // Add to cart button in modal
-            const detailAddToCart = productDetailContent.querySelector('#detailAddToCart');
-            detailAddToCart.addEventListener('click', () => {
-                const selectedSize = productDetailContent.querySelector('.size-option.active');
-                if (selectedSize) {
-                    const size = selectedSize.dataset.size;
-                    const price = selectedSize.dataset.price;
-                    addToCart(perfume, size, price);
-                    // Close modal after adding to cart
-                    closeProductModal.click();
-                } else {
-                    alert('لطفاً حجم مورد نظر را انتخاب کنید');
-                }
-            });
-            
-            // Wishlist button in modal
-            const detailWishlistBtn = productDetailContent.querySelector('#detailWishlistBtn');
-            const isInWishlist = wishlist.some(item => item.id === perfume.id);
-            if (isInWishlist) {
-                detailWishlistBtn.classList.add('active');
-                detailWishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
-            }
-            
-            detailWishlistBtn.addEventListener('click', () => {
-                toggleWishlist(perfume, detailWishlistBtn);
-            });
-            
-            // Back to products link
-            const backToProducts = productDetailContent.querySelector('#backToProducts');
-            backToProducts.addEventListener('click', (e) => {
-                e.preventDefault();
-                closeProductModal.click();
-            });
-            
-            // Show the modal
-            productModal.classList.add('open');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        // Add to cart function
-        function addToCart(perfume, size, price) {
-            const existingItem = cart.find(item => 
-                item.id === perfume.id && item.size === size
-            );
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id: perfume.id,
-                    name: perfume.name,
-                    size: size,
-                    price: parseInt(price),
-                    image: perfume.image,
-                    quantity: 1
-                });
-            }
-            
-            saveCart();
-            updateCartCount();
-            showToast('محصول به سبد خرید اضافه شد!');
-        }
-        
-        // Toggle wishlist
-        function toggleWishlist(perfume, button) {
-            const index = wishlist.findIndex(item => item.id === perfume.id);
-            
-            if (index === -1) {
-                // Add to wishlist
-                wishlist.push({
-                    id: perfume.id,
-                    name: perfume.name,
-                    price: perfume.price,
-                    image: perfume.image
-                });
-                button.classList.add('active');
-                button.innerHTML = '<i class="fas fa-heart"></i>';
-                showToast('به لیست علاقه‌مندی‌ها اضافه شد');
-            } else {
-                // Remove from wishlist
-                wishlist.splice(index, 1);
-                button.classList.remove('active');
-                button.innerHTML = '<i class="far fa-heart"></i>';
-                showToast('از لیست علاقه‌مندی‌ها حذف شد');
-            }
-            
-            saveWishlist();
-            updateWishlistCount();
-        }
-        
-        // Save cart to localStorage
-        function saveCart() {
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-        
-        // Save wishlist to localStorage
-        function saveWishlist() {
-            localStorage.setItem('wishlist', JSON.stringify(wishlist));
-        }
-        
-        // Update cart count
-        function updateCartCount() {
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = count;
-        }
-        
-        // Update wishlist count
-        function updateWishlistCount() {
-            wishlistCount.textContent = wishlist.length;
-        }
-        
-        // Show toast notification
-        function showToast(message) {
-            // Create toast element
-            const toast = document.createElement('div');
-            toast.textContent = message;
-            toast.style.position = 'fixed';
-            toast.style.bottom = '20px';
-            toast.style.right = '20px';
-            toast.style.backgroundColor = '#333';
-            toast.style.color = '#fff';
-            toast.style.padding = '12px 20px';
-            toast.style.borderRadius = '4px';
-            toast.style.zIndex = '2000';
-            toast.style.transition = 'opacity 0.3s';
-            toast.style.opacity = '0';
-            
-            document.body.appendChild(toast);
-            
-            // Fade in
-            setTimeout(() => {
-                toast.style.opacity = '1';
-            }, 10);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.removeChild(toast);
-                }, 300);
-            }, 3000);
-        }
+  // ====== DOM Elements ======
+  const menPerfumes       = document.getElementById('menPerfumes');
+  const womenPerfumes     = document.getElementById('womenPerfumes');
+  const unisexPerfumes    = document.getElementById('unisexPerfumes');
+  const cartIcon          = document.getElementById('cartIcon');
+  const cartModal         = document.getElementById('cartModal');
+  const closeCart         = document.getElementById('closeCart');
+  const cartItems         = document.getElementById('cartItems');
+  const cartTotal         = document.getElementById('cartTotal');
+  const cartCount         = document.getElementById('cartCount');
+  const orderText         = document.getElementById('orderText');
+  const generateOrderBtn  = document.querySelector('.generate-order');
+  const overlay           = document.getElementById('overlay');
 
-        function parsePrice(priceStr) {
-    const english = priceStr
-      .replace(/,/g, '')
-      .replace(/۰/g, '0').replace(/۱/g, '1').replace(/۲/g, '2')
-      .replace(/۳/g, '3').replace(/۴/g, '4').replace(/۵/g, '5')
-      .replace(/۶/g, '6').replace(/۷/g, '7').replace(/۸/g, '8')
-      .replace(/۹/g, '9');
-    return parseInt(english, 10) || 0;
+  // ====== Helpers ======
+  function parsePrice(str) {
+    return parseInt(
+      str.replace(/,/g,'')
+         .replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+    ,10) || 0;
   }
-        
-        // Update cart UI
-        function updateCartUI() {
+  function toFa(num) {
+    return num.toLocaleString('fa') + ' تومان';
+  }
+  function showToast(msg) {
+    const t = document.createElement('div');
+    Object.assign(t.style, {
+      position:'fixed',bottom:'20px',right:'20px',
+      background:'#333',color:'#fff',padding:'12px 20px',
+      borderRadius:'4px',opacity:'0',transition:'opacity .3s',zIndex:2000
+    });
+    t.textContent = msg;
+    document.body.appendChild(t);
+    requestAnimationFrame(()=> t.style.opacity='1');
+    setTimeout(()=>{ t.style.opacity='0'; setTimeout(()=>t.remove(),300); }, 3000);
+  }
+
+  // ====== Cart Logic ======
+  function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+  function updateCartCount() {
+    cartCount.textContent = cart.reduce((s,i)=>s+i.quantity,0);
+  }
+  function addToCart(item, size, price) {
+    const existing = cart.find(c=>c.id===item.id && c.size===size);
+    if(existing) existing.quantity++;
+    else cart.push({ id:item.id, name:item.name, size, price, image:item.image, quantity:1 });
+    saveCart(); updateCartCount(); showToast('اضافه شد');
+  }
+  function updateCartUI() {
     cartItems.innerHTML = '';
-
-    if (cart.length === 0) {
-      cartItems.innerHTML = '<div style="text-align:center;color:#777;padding:30px">سبد خرید شما خالی است</div>';
-      cartTotal.textContent = '۰ تومان';
+    if(!cart.length) {
+      cartItems.innerHTML = '<div style="text-align:center;color:#777;padding:30px">سبد شما خالی‌ست</div>';
+      cartTotal.textContent = toFa(0);
       orderText.style.display = 'none';
       return;
     }
-
-    let total = 0;
-
-    cart.forEach((item, idx) => {
-      const unit = parsePrice(item.price);
-      const lineTotal = unit * item.quantity;
-      total += lineTotal;
-
+    let total=0;
+    cart.forEach((it,idx)=>{
+      const unit = parsePrice(it.price);
+      const line = unit*it.quantity;
+      total+=line;
       const div = document.createElement('div');
-      div.className = 'cart-item';
-      div.innerHTML = `
-        <div class="cart-item-image"><img src="${item.image}" alt="${item.name}"></div>
+      div.className='cart-item';
+      div.innerHTML=`
+        <div class="cart-item-image"><img src="${it.image}" alt=""></div>
         <div class="cart-item-details">
-          <div class="cart-item-name">${item.name}</div>
-          <div class="cart-item-size">حجم: ${item.size}</div>
-          <div class="cart-item-price">${lineTotal.toLocaleString('fa')} تومان</div>
+          <div>${it.name}</div>
+          <div>حجم: ${it.size}</div>
+          <div>${toFa(line)}</div>
         </div>
-        <button class="cart-item-remove" data-idx="${idx}">
-          <i class="fas fa-trash"></i>
-        </button>
-      `;
+        <button class="cart-item-remove" data-idx="${idx}">&times;</button>`;
       cartItems.appendChild(div);
     });
-
-    cartTotal.textContent = total.toLocaleString('fa') + ' تومان';
-
-    document.querySelectorAll('.cart-item-remove').forEach(btn => {
-      btn.onclick = () => {
-        const i = parseInt(btn.getAttribute('data-idx'));
-        cart.splice(i, 1);
-        saveCart();
-        updateCartCount();
-        updateCartUI();
-        showToast('محصول از سبد حذف شد');
+    const shipping = 55000;
+    const grand = total + shipping;
+    cartTotal.textContent = toFa(grand);
+    document.querySelectorAll('.cart-item-remove').forEach(btn=>{
+      btn.onclick=()=>{
+        cart.splice(+btn.dataset.idx,1);
+        saveCart(); updateCartCount(); updateCartUI();
+        showToast('حذف شد');
       };
     });
   }
-        
-        // Update wishlist UI
-        function updateWishlistUI() {
-            wishlistItems.innerHTML = '';
-            
-            if (wishlist.length === 0) {
-                wishlistItems.innerHTML = '<div style="text-align: center; padding: 30px; color: #777;">لیست علاقه‌مندی‌های شما خالی است</div>';
-                return;
-            }
-            
-            wishlist.forEach((item, index) => {
-                const wishlistItem = document.createElement('div');
-                wishlistItem.className = 'cart-item';
-                wishlistItem.innerHTML = `
-                    <div class="cart-item-image">
-                        <img src="${item.image}" alt="${item.name}">
-                    </div>
-                    <div class="cart-item-details">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${item.price},۰۰۰ تومان</div>
-                    </div>
-                    <button class="cart-item-remove" data-index="${index}">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                `;
-                
-                wishlistItems.appendChild(wishlistItem);
-            });
-            
-            // Add event listeners to remove buttons
-            document.querySelectorAll('.cart-item-remove').forEach(button => {
-                button.addEventListener('click', () => {
-                    const index = parseInt(button.dataset.index);
-                    wishlist.splice(index, 1);
-                    saveWishlist();
-                    updateWishlistCount();
-                    updateWishlistUI();
-                    showToast('محصول از لیست علاقه‌مندی‌ها حذف شد');
-                    generateProductCards(); // Update heart icons
-                });
-            });
-        }
-        
-        // Generate order text
-        function generateOrder() {
-    if (!cart.length) {
-      alert('سبد خرید شما خالی است!');
-      return;
-    }
 
-    let txt = 'سلام، سفارش من:\n\n';
-    let total = 0;
-
-    cart.forEach(item => {
-      const unit = parsePrice(item.price);
-      const lineTotal = unit * item.quantity;
-      total += lineTotal;
-      txt += `- ${item.name} (${item.size}): ${lineTotal.toLocaleString('fa')} تومان\n`;
+  // ====== Order Generation ======
+  function generateOrder() {
+    if(!cart.length){ alert('سبد خالی‌ست'); return; }
+    let txt='سلام، سفارش من:\n\n', total=0;
+    cart.forEach(it=>{
+      const unit=parsePrice(it.price), line=unit*it.quantity;
+      total+=line;
+      txt+=`- ${it.name} (${it.size}): ${toFa(line)}\n`;
     });
-
-    txt += `\nجمع کل: ${total.toLocaleString('fa')} تومان\n\n`;
-    txt += 'لطفاً برای تکمیل سفارش راهنمایی کنید.';
-
-    orderText.innerHTML = `
+    txt+=`\nجمع: ${toFa(total)}\nهزینه پست: ${toFa(55000)}\n\n`;
+    txt+=`کارت: 6219 8619 0273 1925 (احسان بهبودنیا)\n\n`;
+    txt+='برای تکمیل پرداخت در صورت نیاز اطلاع دهید.';
+    orderText.innerHTML=`
       <pre style="direction:ltr;text-align:left;">${txt}</pre>
-      <button class="copy-order" onclick="copyOrderText()">کپی متن سفارش</button>
-    `;
-    orderText.style.display = 'block';
-    orderText.scrollIntoView({ behavior: 'smooth' });
+      <button id="copyOrder">کپی سفارش</button>
+      <button id="copyCard">کپی شماره کارت</button>`;
+    orderText.style.display='block';
+    document.getElementById('copyOrder').onclick=()=>{
+      const ta=document.createElement('textarea');
+      ta.value=txt; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); ta.remove(); showToast('کپی شد');
+    };
+    document.getElementById('copyCard').onclick=()=>{
+      const ta=document.createElement('textarea');
+      ta.value='6219861902731925'; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); ta.remove(); showToast('شماره کارت کپی شد');
+    };
+    orderText.scrollIntoView({behavior:'smooth'});
   }
-        
-        // Copy order text
-        function copyOrderText() {
-            const textToCopy = orderText.querySelector('p').textContent;
-            const textarea = document.createElement('textarea');
-            textarea.value = textToCopy;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            showToast('متن سفارش کپی شد!');
-        }
-        
-        // Event Listeners
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-        
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        cartIcon.addEventListener('click', () => {
-            cartModal.classList.add('open');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            updateCartUI();
-        });
-        
-        closeCart.addEventListener('click', () => {
-            cartModal.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        wishlistIcon.addEventListener('click', () => {
-            wishlistModal.classList.add('open');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            updateWishlistUI();
-        });
-        
-        closeWishlist.addEventListener('click', () => {
-            wishlistModal.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        userIcon.addEventListener('click', () => {
-            loginModal.classList.add('open');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-        
-        closeLogin.addEventListener('click', () => {
-            loginModal.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        closeProductModal.addEventListener('click', () => {
-            productModal.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        mobileWishlist.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            wishlistModal.classList.add('open');
-            updateWishlistUI();
-        });
-        
-        mobileCart.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            cartModal.classList.add('open');
-            updateCartUI();
-        });
-        
-        mobileLogin.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            loginModal.classList.add('open');
-        });
-        
-        overlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            cartModal.classList.remove('open');
-            wishlistModal.classList.remove('open');
-            loginModal.classList.remove('open');
-            productModal.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        searchBar.addEventListener('input', (e) => {
-            const query = e.target.value.trim();
-            searchResults.innerHTML = '';
-            
-            if (query.length < 2) {
-                searchResults.classList.remove('active');
-                return;
-            }
-            
-            const results = perfumes.filter(perfume => 
-                perfume.name.toLowerCase().includes(query.toLowerCase())
-            );
-            
-            if (results.length > 0) {
-                results.forEach(perfume => {
-                    const item = document.createElement('div');
-                    item.className = 'search-item';
-                    item.innerHTML = `
-                        <img src="${perfume.image}" alt="${perfume.name}">
-                        <div>${perfume.name}</div>
-                    `;
-                    
-                    item.addEventListener('click', () => {
-                        showProductDetail(perfume.id);
-                        searchBar.value = '';
-                        searchResults.classList.remove('active');
-                    });
-                    
-                    searchResults.appendChild(item);
-                });
-                searchResults.classList.add('active');
-            } else {
-                searchResults.classList.remove('active');
-            }
-        });
-        
-        // Initialize the page
-        function init() {
-            generateProductCards();
-            updateCartCount();
-            updateWishlistCount();
-            
-            // Add smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
-        
-        // Initialize when page loads
-        window.addEventListener('DOMContentLoaded', init);
-    </script>
+
+  // ====== Product Display & Events ======
+  function generateProductCards() {
+    [menPerfumes, womenPerfumes, unisexPerfumes].forEach(el=>el.innerHTML='');
+    perfumes.forEach(p=>{
+      const card=document.createElement('div'); card.className='product-card';
+      let sizesHTML=p.sizes.map(s=>`<div class="size-option" data-size="${s.size}" data-price="${s.price}">${s.size}</div>`).join('');
+      card.innerHTML=`
+        <div class="product-image">
+          <img src="${p.image}" alt=""><span>${p.badge||''}</span>
+        </div>
+        <h3>${p.name}</h3>
+        <div class="size-options">${sizesHTML}</div>
+        <div class="current-price">${p.price},۰۰۰ تومان</div>
+        <button class="add-to-cart">افزودن به سبد</button>`;
+      const sizeOpts=card.querySelectorAll('.size-option');
+      sizeOpts.forEach(o=>o.onclick=()=>{
+        sizeOpts.forEach(x=>x.classList.remove('active'));
+        o.classList.add('active');
+        card.querySelector('.current-price').textContent=`${o.dataset.price},۰۰۰ تومان`;
+      });
+      card.querySelector('.add-to-cart').onclick=()=>{
+        const sel=card.querySelector('.size-option.active');
+        if(!sel){ alert('حجم را انتخاب کنید'); return; }
+        addToCart(p, sel.dataset.size, sel.dataset.price);
+      };
+      const container = p.category==='men'? menPerfumes : p.category==='women'? womenPerfumes : unisexPerfumes;
+      container.appendChild(card);
+    });
+  }
+
+  // ====== Init & Listeners ======
+  cartIcon.onclick = ()=>{ cartModal.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow='hidden'; updateCartUI(); };
+  closeCart.onclick = ()=>{ cartModal.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow=''; };
+  generateOrderBtn.onclick = generateOrder;
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    generateProductCards();
+    updateCartCount();
+  });
+</script>
+
 </body>
 </html>
