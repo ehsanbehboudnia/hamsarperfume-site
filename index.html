@@ -846,6 +846,64 @@
     </style>
 </head>
 <body>
+    <!-- Product Page Template -->
+<template id="product-template">
+    <div class="product-page">
+        <a href="#" class="back-to-products">
+            <i class="fas fa-arrow-right"></i> بازگشت به محصولات
+        </a>
+        
+        <div class="product-page-container">
+            <div class="product-page-image">
+                <img id="product-image" src="" alt="">
+            </div>
+            
+            <div class="product-page-details">
+                <h1 class="product-page-title" id="product-title"></h1>
+                <span class="product-page-category" id="product-category"></span>
+                <p class="product-page-description" id="product-description"></p>
+                
+                <div class="product-page-price">
+                    <span id="product-price"></span>,۰۰۰ تومان
+                </div>
+                
+                <div class="product-page-sizes">
+                    <h3 class="product-page-size-title">حجم مورد نظر را انتخاب کنید:</h3>
+                    <div class="size-options" id="product-size-options"></div>
+                </div>
+                
+                <div class="product-page-actions">
+                    <button class="add-to-cart product-page-add-to-cart" id="product-add-to-cart">
+                        <i class="fas fa-shopping-cart"></i> افزودن به سبد خرید
+                    </button>
+                    <button class="wishlist-btn product-page-wishlist" id="product-wishlist-btn">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+                
+                <div class="product-page-tabs">
+                    <div class="product-page-tabs-header">
+                        <div class="product-page-tab active" data-tab="description">توضیحات محصول</div>
+                        <div class="product-page-tab" data-tab="details">مشخصات فنی</div>
+                        <div class="product-page-tab" data-tab="reviews">نظرات کاربران</div>
+                    </div>
+                    
+                    <div class="product-page-tab-content active" id="description-content">
+                        <p id="product-full-description"></p>
+                    </div>
+                    
+                    <div class="product-page-tab-content" id="details-content">
+                        <ul id="product-specs"></ul>
+                    </div>
+                    
+                    <div class="product-page-tab-content" id="reviews-content">
+                        <p id="product-reviews"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
     <!-- Header -->
     <header class="header">
         <div class="header-container">
