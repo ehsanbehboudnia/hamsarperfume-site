@@ -2366,55 +2366,54 @@
         }
         
         // Update cart UI
-        function updateCartUI() {
-            cartItems.innerHTML = '';
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div style="text-align: center; padding: 30px; color: #777;">سبد خرید شما خالی است</div>';
-                cartTotal.textContent = '۰ تومان';
-                orderText.style.display = 'none';
-                return;
-            }
-            
-            let total = 0;
-            
-            cart.forEach((item, index) => {
-                total += item.price * item.quantity;
-                
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <div class="cart-item-image">
-                        <img src="${item.image}" alt="${item.name}">
-                    </div>
-                    <div class="cart-item-details">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-size">حجم: ${item.size}</div>
-                        <div class="cart-item-price">${(item.price * item.quantity).toLocaleString()},۰۰۰ تومان</div>
-                    </div>
-                    <button class="cart-item-remove" data-index="${index}">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                `;
-                
-                cartItems.appendChild(cartItem);
-            });
-            
-            // Update total
-            cartTotal.textContent = total.toLocaleString() + ',۰۰۰ تومان';
-            
-            // Add event listeners to remove buttons
-            document.querySelectorAll('.cart-item-remove').forEach(button => {
-                button.addEventListener('click', () => {
-                    const index = parseInt(button.dataset.index);
-                    cart.splice(index, 1);
-                    saveCart();
-                    updateCartCount();
-                    updateCartUI();
-                    showToast('محصول از سبد خرید حذف شد');
-                });
-            });
-        }
+        cartItems.innerHTML = '';
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<div style="text-align: center; padding: 30px; color: #777;">سبد خرید شما خالی است</div>';
+    cartTotal.textContent = '۰ تومان';
+    orderText.style.display = 'none';
+    return;
+  }
+
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    // تبدیل قیمت از رشتهٔ فارسی به عدد
+    const unitPrice = parsePrice(item.price);
+    const itemTotal = unitPrice * item.quantity;
+    total += itemTotal;
+
+    const cartItem = document.createElement('div');
+    cartItem.className = 'cart-item';
+    cartItem.innerHTML = `
+      <div class="cart-item-image">
+        <img src="${item.image}" alt="${item.name}">
+      </div>
+      <div class="cart-item-details">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-size">حجم: ${item.size}</div>
+        <div class="cart-item-price">${itemTotal.toLocaleString('fa')} تومان</div>
+      </div>
+      <button class="cart-item-remove" data-index="${index}">
+        <i class="fas fa-trash"></i>
+      </button>
+    `;
+    cartItems.appendChild(cartItem);
+  });
+
+  cartTotal.textContent = total.toLocaleString('fa') + ' تومان';
+
+  document.querySelectorAll('.cart-item-remove').forEach(button => {
+    button.addEventListener('click', () => {
+      const idx = parseInt(button.dataset.index, 10);
+      cart.splice(idx, 1);
+      saveCart();
+      updateCartCount();
+      updateCartUI();
+      showToast('محصول از سبد خرید حذف شد');
+    });
+  });
+}
         
         // Update wishlist UI
         function updateWishlistUI() {
