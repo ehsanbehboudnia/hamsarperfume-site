@@ -1,209 +1,332 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
 <head>
-    <!-- محتوای هد بدون تغییر -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>همسر پرفیوم - فروشگاه تخصصی عطرهای لاکچری</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* تغییرات جدید در CSS */
+        /* Add Peima Font Family */
+        @font-face {
+            font-family: 'Peima';
+            font-weight: 100;
+            src: url('https://drive.google.com/uc?export=download&id=1dn55CYeLvmEFkkzoobXAYsWoW7_r08Ir') format('woff2');
+        }
+        /* سایر فونت‌ها... */
         
-        /* 1. رفع مشکل منوی همبرگر */
-        .hamburger {
-            position: relative;
-            z-index: 1001;
+        /* CSS changes for header layout */
+        @media (max-width: 992px) {
+            .header-container {
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                align-items: center;
+            }
+            
+            /* تغییرات جدید برای منوی همبرگر */
+            .hamburger {
+                grid-column: 1;
+                justify-self: start;
+                z-index: 1002;
+                position: relative;
+            }
+            
+            .mobile-menu.active ~ .header-container .hamburger {
+                display: none;
+            }
+            
+            /* سایر استایل‌ها... */
         }
         
-        .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1002; /* بالاتر از همبرگر */
+        /* تغییرات جدید برای طراحی مدرن */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #0f3460;
+            --accent: #e94560;
+            --accent-light: #ff7b93;
+            --light: #f0f5f9;
+            --dark: #16213e;
+            --text: #333;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
-
-        /* 2. حذف آیکون‌های شبکه‌های اجتماعی از بخش "درباره ما" */
-        .footer-section.about-us .social-links {
-            display: none;
+        
+        /* تغییرات مدرن برای طراحی */
+        body {
+            font-family: 'Peima', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
         }
-
-        /* 3. بهبود نمایش لینک‌های تماس */
-        .contact-link {
-            color: var(--white) !important;
+        
+        /* تغییرات هدر */
+        .header {
+            background: var(--gradient);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        /* تغییرات جدید برای طراحی مدرن */
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--white);
             text-decoration: none;
-            transition: var(--transition);
-            display: block;
-            font-size: 16px;
-            opacity: 1 !important; /* همیشه قابل مشاهده */
+            font-size: 24px;
+            font-weight: 700;
+            gap: 10px;
+            transition: transform 0.3s ease;
         }
         
-        .contact-link:hover {
-            color: var(--accent-light) !important;
-            text-decoration: underline;
+        .logo:hover {
+            transform: translateY(-3px);
         }
-
-        /* 4. حفظ نسبت تصویر محصولات در موبایل */
-        .product-image {
+        
+        /* تغییرات محصولات */
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
             position: relative;
+            transform: translateY(0);
+            border: none;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* تغییرات مهم: تصویر محصول مربعی در موبایل */
+        .product-image {
             height: 0;
-            padding-top: 100%; /* نسبت مربع 1:1 */
+            padding-bottom: 100%; /* نسبت 1:1 برای مربع */
+            position: relative;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
             overflow: hidden;
         }
         
         .product-image img {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             width: 80%;
-            height: auto;
-            max-height: 80%;
+            height: 80%;
             object-fit: contain;
+            transition: var(--transition);
         }
-
-        /* 5. ثابت نگه داشتن پس‌زمینه محصول */
+        
+        /* حذف تغییر رنگ پس‌زمینه هنگام هاور */
         .product-image::before {
-            display: none; /* حذف گرادیانت روی هاور */
+            display: none !important;
         }
         
-        .product-card:hover .product-image img {
-            transform: translate(-50%, -50%) scale(1.05); /* تطبیق با تغییرات جدید */
-        }
-
-        /* 6. طراحی مدرن‌تر و حرفه‌ای‌تر */
-        /* به‌روزرسانی پالت رنگی */
-        :root {
-            --primary: #0a192f; /* آبی تیره مدرن */
-            --secondary: #172a45; /* آبی متوسط */
-            --accent: #64ffda; /* فیروزه‌ای روشن */
-            --accent-light: #8892b0; /* آبی خاکستری */
-            --light: #f8f9fa; /* سفید بسیار روشن */
-            --dark: #020c1b; /* آبی بسیار تیره */
-            --text: #e6f1ff; /* سفید متمایل به آبی */
-            --gradient: linear-gradient(135deg, #0a192f 0%, #020c1b 100%);
-        }
-        
-        /* بهبود تایپوگرافی */
-        body {
-            font-family: 'Peima', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-        
-        /* طراحی کارت‌های محصول مدرن‌تر */
-        .product-card {
-            background: rgba(10, 25, 47, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(100, 255, 218, 0.2);
-            border-color: rgba(100, 255, 218, 0.3);
-        }
-        
-        /* بهبود هدر */
-        .header {
-            background: rgba(10, 25, 47, 0.8);
-            backdrop-filter: blur(10px);
-        }
-        
-        /* طراحی مدرن‌تر فوتر */
-        .footer {
-            background: rgba(10, 25, 47, 0.95);
-            border-top: 1px solid rgba(100, 255, 218, 0.1);
-        }
-        
-        /* بهبود بخش تماس با ما */
-        .contact-section {
-            background: rgba(10, 25, 47, 0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-        }
-        
-        /* 7. بهبودهای کلی و رفع مشکلات جزئی */
-        /* حاشیه‌های بهتر برای عناصر */
-        .section {
-            padding: 100px 40px;
-        }
-        
-        /* بهبود نمایش عنوان بخش‌ها */
-        .section-title h2 {
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        
-        /* بهبود نمایش قیمت‌ها */
-        .current-price {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-        
-        /* بهبود نمایش دکمه‌ها */
+        /* تغییرات جدید برای طراحی مدرن دکمه‌ها */
         .add-to-cart {
-            background: var(--accent);
-            color: var(--dark);
-            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--white);
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+            border: 2px solid transparent;
         }
+        
+        .add-to-cart:hover {
+            background: transparent;
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 7px 20px rgba(233, 69, 96, 0.2);
+        }
+        
+        .wishlist-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        /* تغییرات جدید برای فوتر */
+        .footer-section.about-us .social-links {
+            display: none !important;
+        }
+        
+        /* تغییرات برای بخش تماس */
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .contact-info-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-link {
+            color: var(--white);
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+        
+        .contact-link:hover {
+            color: var(--accent-light);
+            text-decoration: underline;
+        }
+        
+        /* سایر استایل‌ها... */
     </style>
 </head>
 <body>
-    <!-- تغییرات در HTML -->
-    
-    <!-- 2. حذف آیکون‌های شبکه‌های اجتماعی از بخش "درباره ما" -->
-    <div class="footer-section about-us">
-        <h3>درباره ما</h3>
-        <p>همسر پرفیوم با سالها تجربه در زمینه عرضه عطرهای اورجینال و باکیفیت، آماده خدمت‌رسانی به شما مشتریان گرامی می‌باشد. ما بهترین‌ها را برای شما انتخاب می‌کنیم.</p>
-        <!-- حذف آیکون‌های شبکه‌های اجتماعی -->
-    </div>
-    
-    <!-- 3. بهبود لینک‌های تماس -->
-    <div class="contact-section">
-        <div style="display: flex; align-items: center; margin-bottom: 20px;">
-            <i class="fas fa-phone-alt" style="font-size: 24px; color: var(--accent); margin-left: 15px;"></i>
-            <div>
-                <h4 style="font-size: 18px; margin-bottom: 5px; color: var(--accent);">تلفن تماس</h4>
-                <a href="tel:+989307780817" class="contact-link" style="font-size: 18px; color: var(--text);">۰۹۳۰۷۷۸۰۸۱۷</a>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </div>
-        
-        <div style="display: flex; align-items: center; margin-bottom: 20px;">
-            <i class="fab fa-instagram" style="font-size: 24px; color: var(--accent); margin-left: 15px;"></i>
-            <div>
-                <h4 style="font-size: 18px; margin-bottom: 5px; color: var(--accent);">اینستاگرام</h4>
-                <a href="https://instagram.com/hamsarperfume" target="_blank" class="contact-link" style="font-size: 18px; color: var(--text);">hamsarperfume@</a>
-            </div>
-        </div>
-    </div>
-    
-    <!-- محتوای باقی‌مانده بدون تغییر -->
-    
-    <script>
-        // تغییرات جزئی در JavaScript
-        
-        // 4. تطبیق کد JS با تغییرات CSS برای تصاویر محصولات
-        // (نیازی به تغییر خاصی نیست، کد موجود با تغییرات CSS کار می‌کند)
-        
-        // 6. بهبود تعاملات
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // افزودن انیمیشن اسکرول نرم
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // بهبود نمایش نوتیفیکیشن‌ها
-        function showToast(message) {
-            toast.textContent = message;
-            toast.style.backgroundColor = 'var(--accent)';
-            toast.style.color = 'var(--dark)';
-            toast.classList.add('show');
             
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
+            <a href="#" class="logo">
+                <div class="logo-text">همسر پرفیوم</div>
+                <img src="assets/image/پروفایل.jpg" alt="لوگو همسر پرفیوم" class="logo-image">
+            </a>
+            
+            <div class="header-icons">
+                <button class="icon-btn" id="searchIcon">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn" id="wishlistIcon">
+                    <i class="far fa-heart"></i>
+                    <span class="badge" id="wishlistCount">0</span>
+                </button>
+                <button class="icon-btn" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </button>
+            </div>
+            
+            <nav class="nav-desktop">
+                <a href="#" class="nav-link">خانه</a>
+                <a href="#men" class="nav-link">عطر مردانه</a>
+                <a href="#women" class="nav-link">عطر زنانه</a>
+                <a href="#unisex" class="nav-link">یونی‌سکس</a>
+                <a href="#contact" class="nav-link">تماس با ما</a>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </div>
+            <nav class="mobile-nav">
+                <a href="#" class="mobile-nav-link">
+                    <i class="fas fa-home"></i> خانه
+                </a>
+                <a href="#men" class="mobile-nav-link">
+                    <i class="fas fa-male"></i> عطر مردانه
+                </a>
+                <a href="#women" class="mobile-nav-link">
+                    <i class="fas fa-female"></i> عطر زنانه
+                </a>
+                <a href="#unisex" class="mobile-nav-link">
+                    <i class="fas fa-venus-mars"></i> یونی‌سکس
+                </a>
+                <a href="#contact" class="mobile-nav-link">
+                    <i class="fas fa-phone"></i> تماس با ما
+                </a>
+                <a href="#" class="mobile-nav-link" id="mobileWishlist">
+                    <i class="far fa-heart"></i> لیست علاقه‌مندی‌ها
+                    <span class="badge" id="mobileWishlistCount">0</span>
+                </a>
+                <a href="#" class="mobile-nav-link" id="mobileCart">
+                    <i class="fas fa-shopping-cart"></i> سبد خرید
+                    <span class="badge" id="mobileCartCount">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- بقیه کدها بدون تغییر... -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about-us">
+                <h3>درباره ما</h3>
+                <p>همسر پرفیوم با سالها تجربه در زمینه عرضه عطرهای اورجینال و باکیفیت، آماده خدمت‌رسانی به شما مشتریان گرامی می‌باشد. ما بهترین‌ها را برای شما انتخاب می‌کنیم.</p>
+                <!-- آیکون‌های شبکه‌های اجتماعی حذف شده -->
+            </div>
+            
+            <!-- سایر بخش‌های فوتر بدون تغییر... -->
+        </div>
+        
+        <div class="copyright">
+            <p>تمامی حقوق برای فروشگاه همسر پرفیوم محفوظ است © ۱۴۰۳</p>
+        </div>
+    </footer>
+
+    <script>
+        // تغییرات جاوااسکریپت برای منوی همبرگر
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            hamburger.style.display = 'none';
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            hamburger.style.display = 'flex';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            cartModal.classList.remove('open');
+            wishlistModal.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            hamburger.style.display = 'flex';
+        });
+
+        // بقیه کدهای جاوااسکریپت بدون تغییر...
     </script>
 </body>
 </html>
