@@ -2670,5 +2670,60 @@
     </script>
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+<script>
+  // ۱) پیکربندی Firebase که خودتان از کنسول کپی کردید
+  const firebaseConfig = {
+    apiKey: "AIzaSyB0flgrzEfEjVJscM758KW5ug9mfSiRMTY",
+    authDomain: "myperfumeauth.firebaseapp.com",
+    projectId: "myperfumeauth",
+    storageBucket: "myperfumeauth.firebasestorage.app",
+    messagingSenderId: "765472029101",
+    appId: "1:765472029101:web:b06c2fc89d1609f8854924",
+    measurementId: "G-5X35G5MDYQ"
+  };
+
+  // ۲) مقداردهی اولیه
+  firebase.initializeApp(firebaseConfig);
+  // اگر آنالیتیکس نیاز دارید:
+  firebase.analytics();
+
+  // ۳) آماده‌سازی Auth
+  const auth = firebase.auth();
+
+  // ۴) تنظیم Recaptcha (مثلاً invisible)
+  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+    'recaptcha-container',
+    { 'size': 'invisible' },
+    auth
+  );
+
+  // ۵) تابع ارسال کد SMS
+  document.getElementById('send-code').onclick = () => {
+    const phone = document.getElementById('phone').value;
+    auth.signInWithPhoneNumber(phone, window.recaptchaVerifier)
+      .then(confirmationResult => {
+        window.confirmationResult = confirmationResult;
+        alert('کد به گوشی شما ارسال شد.');
+      })
+      .catch(err => {
+        console.error(err);
+        alert('خطا در ارسال کد: ' + err.message);
+      });
+  };
+
+  // ۶) تابع تأیید کد
+  document.getElementById('verify-code').onclick = () => {
+    const code = document.getElementById('code').value;
+    window.confirmationResult.confirm(code)
+      .then(userCred => {
+        alert('ورود موفق! شماره شما: ' + userCred.user.phoneNumber);
+      })
+      .catch(err => {
+        console.error(err);
+        alert('کد اشتباه است.');
+      });
+  };
+</script>
+
 </body>
 </html>
