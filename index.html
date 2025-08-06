@@ -1404,7 +1404,145 @@
         const mobileWishlist = document.getElementById('mobileWishlist');
         const mobileCart = document.getElementById('mobileCart');
         const mobileLogin = document.getElementById('mobileLogin');
+
+        // Templates
+        const homeTemplate = document.getElementById('home-template');
+        const productTemplate = document.getElementById('product-template');
         
+        // Router function
+        function router() {
+            const path = window.location.hash.substring(1);
+            const parts = path.split('/');
+            
+            if (parts[0] === 'product' && parts[1]) {
+                const productId = parseInt(parts[1]);
+                showProductPage(productId);
+            } else {
+                showHomePage();
+            }
+        }
+        
+        // Show home page
+        function showHomePage() {
+            mainContent.innerHTML = '';
+            mainContent.appendChild(homeTemplate.content.cloneNode(true));
+            
+            // Initialize home page elements
+            const menPerfumes = document.getElementById('menPerfumes');
+            const womenPerfumes = document.getElementById('womenPerfumes');
+            const unisexPerfumes = document.getElementById('unisexPerfumes');
+            
+            generateProductCards(menPerfumes, womenPerfumes, unisexPerfumes);
+            setupSearch();
+        }
+        
+        // Show product page
+        function showProductPage(productId) {
+            const product = perfumes.find(p => p.id === productId);
+            if (!product) {
+                showHomePage();
+                return;
+            }
+            
+            mainContent.innerHTML = '';
+            mainContent.appendChild(productTemplate.content.cloneNode(true));
+            
+            // Fill product details
+            document.getElementById('product-title').textContent = product.name;
+            document.getElementById('product-image').src = product.image;
+            document.getElementById('product-image').alt = product.name;
+            
+            // Set category
+            const categoryElement = document.getElementById('product-category');
+            if (product.category === 'men') {
+                categoryElement.textContent = 'عطر مردانه';
+            } else if (product.category === 'women') {
+                categoryElement.textContent = 'عطر زنانه';
+            } else {
+                categoryElement.textContent = 'عطر یونی‌سکس';
+            }
+            
+            document.getElementById('product-description').textContent = product.description;
+            document.getElementById('product-full-description').textContent = product.fullDescription;
+            document.getElementById('product-price').textContent = product.price;
+            
+            // Generate size options
+            const sizeOptions = document.getElementById('product-size-options');
+            product.sizes.forEach(size => {
+                const option = document.createElement('div');
+                option.className = 'size-option';
+                option.dataset.size = size.size;
+                option.dataset.price = size.price;
+                option.textContent = size.size;
+                
+                if (size.size === product.size) {
+                    option.classList.add('active');
+                }
+                
+                option.addEventListener('click', () => {
+                    // Remove active class from all sizes
+                    document.querySelectorAll('#product-size-options .size-option').forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    
+                    // Add active class to selected size
+                    option.classList.add('active');
+                    
+                    // Update price
+                    document.getElementById('product-price').textContent = size.price;
+                });
+                
+                sizeOptions.appendChild(option);
+            });
+            
+            // Set up tabs
+            const tabs = document.querySelectorAll('.product-page-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Hide all content
+                    document.querySelectorAll('.product-page-tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show selected content
+                    const tabId = tab.dataset.tab;
+                    document.getElementById(`${tabId}-content`).classList.add('active');
+                });
+            });
+            
+            // Set up specs list
+            const specsList = document.getElementById('product-specs');
+            product.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.textContent = spec;
+                specsList.appendChild(li);
+            });
+            
+            // Set up reviews
+            document.getElementById('product-reviews').textContent = product.reviews;
+            
+            // Set up wishlist button
+            const wishlistBtn = document.getElementById('product-wishlist-btn');
+            const isInWishlist = wishlist.some(item => item.id === product.id);
+            if (isInWishlist) {
+                wishlistBtn.classList.add('active');
+                wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
+            }
+            
+            wishlistBtn.addEventListener('click', () => {
+                toggleWishlist(product, wishlistBtn);
+            });
+            
+            // Set up add to cart button
+            const addToCartBtn = document.getElementById('product-add-to-cart');
+            addToCartBtn.addEventListener('click', () => {
+                const selectedSize = document.querySelector('#product-size-options .size-optio
         // Generate product cards
         function generateProductCards() {
             menPerfumes.innerHTML = '';
