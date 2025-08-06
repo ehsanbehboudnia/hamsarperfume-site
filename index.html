@@ -2460,30 +2460,34 @@
         
         // Generate order text
         function generateOrder() {
-            if (cart.length === 0) {
-                alert('سبد خرید شما خالی است!');
-                return;
-            }
-            
-            let orderTextContent = 'سلام، سفارش من:\n\n';
-            
-            cart.forEach(item => {
-                orderTextContent += `- ${item.name} (${item.size}): ${(item.price * item.quantity).toLocaleString()},۰۰۰ تومان\n`;
-            });
-            
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            orderTextContent += `\nجمع کل: ${totalPrice.toLocaleString()},۰۰۰ تومان\n\n`;
-            orderTextContent += 'لطفاً برای تکمیل سفارش راهنمایی کنید.';
-            
-            orderText.innerHTML = `
-                <p>${orderTextContent}</p>
-                <button class="copy-order" onclick="copyOrderText()">کپی متن سفارش</button>
-                <p class="note" style="margin-top: 15px; color: #666; font-size: 14px;">
-                    لطفا متن بالا را کپی کرده و در پیج اینستاگرام ما ارسال کنید:
-                    <a href="https://instagram.com/hamsarperfume" target="_blank" style="color: var(--accent);">hamsarperfume@</a>
-                </p>
-            `;
-            orderText.style.display = 'block';
+    if (cart.length === 0) {
+        alert('سبد خرید شما خالی است!');
+        return;
+    }
+
+    let orderTextContent = 'سلام، سفارش من:\n\n';
+    let total = 0;
+
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        orderTextContent += `- ${item.name} (${item.size}): ${itemTotal.toLocaleString('fa')} تومان\n`;
+    });
+
+    orderTextContent += `\nجمع کل: ${total.toLocaleString('fa')} تومان\n\n`;
+    orderTextContent += 'لطفاً برای تکمیل سفارش راهنمایی کنید.';
+
+    orderText.innerHTML = `
+        <pre>${orderTextContent}</pre>
+        <button class="copy-order" onclick="copyOrderText()">کپی متن سفارش</button>
+        <p class="note" style="margin-top: 15px; color: #666; font-size: 14px;">
+            لطفا متن بالا را کپی کرده و در پیج ما ارسال کنید.
+        </p>
+    `;
+    orderText.style.display = 'block';
+    orderText.scrollIntoView({ behavior: 'smooth' });
+}
+
             
             // Scroll to order text
             orderText.scrollIntoView({behavior: 'smooth'});
