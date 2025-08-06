@@ -6,6 +6,47 @@
     <title>همسر پرفیوم - فروشگاه تخصصی عطرهای لاکچری</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* CSS changes for header layout */
+        @media (max-width: 992px) {
+            .header-container {
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                align-items: center;
+            }
+            
+            .hamburger {
+                grid-column: 1;
+                justify-self: start;
+            }
+            
+            .logo {
+                grid-column: 2;
+                justify-self: center;
+            }
+            
+            .header-icons {
+                grid-column: 3;
+                justify-self: end;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .nav-desktop {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+        }
+        
+        /* Rest of CSS remains the same */
         :root {
             --primary: #1a1a2e;
             --secondary: #0f3460;
@@ -341,6 +382,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            cursor: pointer;
         }
         
         .product-image img {
@@ -796,24 +838,6 @@
         }
         
         /* Responsive */
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.3rem;
-            }
-            
-            .nav-desktop {
-                display: none;
-            }
-            
-            .hamburger {
-                display: flex;
-            }
-        }
-        
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.2rem;
@@ -861,29 +885,279 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* New Search Overlay */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .search-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .search-overlay-content {
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .search-overlay input {
+            width: 100%;
+            padding: 20px 60px 20px 20px;
+            font-size: 24px;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .search-overlay input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .search-overlay input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .close-search {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        
+        .search-suggestions {
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            display: none;
+        }
+        
+        .search-suggestions.active {
+            display: block;
+        }
+        
+        .suggestion-item {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .suggestion-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .suggestion-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-left: 15px;
+            border-radius: 5px;
+        }
+        
+        .suggestion-item h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+        
+        .suggestion-item p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Product Detail Modal */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .product-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .product-modal-content {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 15px;
+            overflow: hidden;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-product-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .product-detail-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @media (min-width: 768px) {
+            .product-detail-container {
+                flex-direction: row;
+            }
+        }
+        
+        .product-detail-image {
+            flex: 1;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            padding: 30px;
+        }
+        
+        .product-detail-image img {
+            max-width: 80%;
+            max-height: 350px;
+            object-fit: contain;
+        }
+        
+        .product-detail-info {
+            flex: 1;
+            padding: 30px;
+        }
+        
+        .product-detail-title {
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .product-detail-price {
+            font-size: 24px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .product-detail-description {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .product-detail-specs {
+            margin-bottom: 25px;
+        }
+        
+        .spec-item {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .spec-title {
+            font-weight: 700;
+            min-width: 120px;
+            color: var(--dark);
+        }
+        
+        .spec-value {
+            flex: 1;
+        }
+        
+        .product-detail-sizes {
+            margin-bottom: 25px;
+        }
+        
+        .product-detail-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .size-option-detail {
+            padding: 12px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--white);
+        }
+        
+        .size-option-detail:hover, .size-option-detail.active {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: var(--white);
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-container">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
             <a href="#" class="logo">
                 <div class="logo-text">همسر پرفیوم</div>
-                <!-- Placeholder for your logo - replace with actual logo -->
                 <div class="logo-img">
-                    <img src="assets/image/پروفایل.2jpg.jpg" alt="Logo">
+                    <i class="fas fa-wind"></i>
                 </div>
             </a>
             
-            <nav class="nav-desktop">
-                <a href="#" class="nav-link">خانه</a>
-                <a href="#men" class="nav-link">عطر مردانه</a>
-                <a href="#women" class="nav-link">عطر زنانه</a>
-                <a href="#unisex" class="nav-link">یونی‌سکس</a>
-                <a href="#contact" class="nav-link">تماس با ما</a>
-            </nav>
-            
             <div class="header-icons">
+                <button class="icon-btn" id="searchIcon">
+                    <i class="fas fa-search"></i>
+                </button>
                 <button class="icon-btn" id="wishlistIcon">
                     <i class="far fa-heart"></i>
                     <span class="badge" id="wishlistCount">0</span>
@@ -894,11 +1168,13 @@
                 </button>
             </div>
             
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <nav class="nav-desktop">
+                <a href="#" class="nav-link">خانه</a>
+                <a href="#men" class="nav-link">عطر مردانه</a>
+                <a href="#women" class="nav-link">عطر زنانه</a>
+                <a href="#unisex" class="nav-link">یونی‌سکس</a>
+                <a href="#contact" class="nav-link">تماس با ما</a>
+            </nav>
         </div>
         
         <!-- Mobile Menu -->
@@ -917,6 +1193,17 @@
             </nav>
         </div>
     </header>
+    
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-content">
+            <button class="close-search" id="closeSearch">
+                <i class="fas fa-times"></i>
+            </button>
+            <input type="text" id="searchInput" placeholder="نام عطر را جستجو کنید...">
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+    </div>
     
     <!-- Hero Section -->
     <section class="hero">
@@ -1111,6 +1398,16 @@
         </div>
     </div>
     
+    <!-- Product Detail Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="product-modal-content">
+            <button class="close-product-modal" id="closeProductModal">&times;</button>
+            <div class="product-detail-container" id="productDetailContent">
+                <!-- Product detail will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
     <!-- Overlay for modals -->
     <div class="overlay" id="overlay"></div>
     
@@ -1120,704 +1417,124 @@
     <script>
         // Complete perfume data
         const perfumes = [
-  // 1
-  {
-    id: 1,
-    name: "شنل پلاتینیوم",
-    category: "men",
-    image: "assets/image/پلاتینیوم.jpg",
-    badge: "جدید",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "عطری کلاسیک و لوکس با ترکیبی از نت‌های مرکباتی در ابتدا و پایه‌ای از چوب صندل و مشک.",
-    specs: {
-      "برند": "شنل",
-      "نوع رایحه": "مرکباتی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 2
-  {
-    id: 2,
-    name: "تایگار",
-    category: "men",
-    image: "assets/image/تایگار.JPG",
-    badge: "پرفروش",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "رایحه‌ای دریایی و تازه با تُن‌های مرکباتی و کمی مشک در پس‌زمینه.",
-    specs: {
-      "برند": "بولگاری",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 3
-  {
-    id: 3,
-    name: "مارلی آلتیر",
-    category: "men",
-    image: "assets/image/التیر.jpg",
-    badge: "پرفروش",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری گل‌دار و میوه‌ای با نت‌های یاسمنی در قلب و پایه‌ای خنک از مرکبات.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "فلورال – میوه‌ای",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 4
-  {
-    id: 4,
-    name: "ایسی میاکی ماجور",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "جدید",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "الهام‌گرفته از فضای کوهستانی با ترکیبی از نت‌های چوبی و ادویه‌ای.",
-    specs: {
-      "برند": "ایسی میاکی",
-      "نوع رایحه": "چوبی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 5
-  {
-    id: 5,
-    name: "کرید سیلور مانتین",
-    category: "men",
-    image: "assets/image/سیلور.jpg",
-    badge: "ویژه",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حسی کوهستانی و خنک با غالب‌بودن نت‌های چوبی و کهربایی.",
-    specs: {
-      "برند": "کرید",
-      "نوع رایحه": "چوبی – کهربایی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 6
-  {
-    id: 6,
-    name: "گانیمد",
-    category: "men",
-    image: "assets/image/گانیمد.jpg",
-    badge: "جدید",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری مدرن با نت‌های فلورال در ترکیب با چوب صندل و مشک.",
-    specs: {
-      "برند": "زارجوف",
-      "نوع رایحه": "فلورال – چوبی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 7
-  {
-    id: 7,
-    name: "ناتیکا ویاژ",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "پرفروش",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "حسی دریایی و تازه با زمینه‌ای از مرکبات و کمی مشک.",
-    specs: {
-      "برند": "ناتیکا",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 8
-  {
-    id: 8,
-    name: "ویکتوریا نایت",
-    category: "men",
-    image: "assets/image/وری-سکسی-نایت.jpg",
-    badge: "جدید",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "نت‌های شرقی-گل‌دار با تاکید بر وانیل و چوب صندل.",
-    specs: {
-      "برند": "ویکتوریا سیکرت",
-      "نوع رایحه": "شرقی – گل‌دار",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 9
-  {
-    id: 9,
-    name: "فرعون",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "پرفروش",
-    price: 210,
-    sizes: [
-      { size: "ده میل",   price: 210 },
-      { size: "بیست میل",  price: 390 },
-      { size: "سی میل",    price: 490 },
-      { size: "پنجاه میل", price: 800 },
-    ],
-    description: "رایحه‌ای شرقی و ادویه‌ای با نت‌های وانیل و کهربا.",
-    specs: {
-      "برند": "ناتیکا",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 10
-  {
-    id: 10,
-    name: "ایوسن‌لورن وای",
-    category: "men",
-    image: "assets/image/وای.jpg",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری مرکباتی-گلی با نت‌های لیمو و یاس.",
-    specs: {
-      "برند": "ایوسن‌لورن",
-      "نوع رایحه": "مرکباتی – گلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 11
-  {
-    id: 11,
-    name: "دیور هوم اینتنس",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "رد بویی قوی با ترکیب چوب سدر و توتون.",
-    specs: {
-      "برند": "دیور",
-      "نوع رایحه": "چوبی – توتون",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 12
-  {
-    id: 12,
-    name: "جورجیو آرمانی اکوا دی جیو ابسولو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی دریایی و خنک با نت‌های مرکبات و نمک دریایی.",
-    specs: {
-      "برند": "آرمانی",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 13
-  {
-    id: 13,
-    name: "مارلی هالتان",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "رایحه‌ای قدرتمند و پیچیده با نت‌های گل و کهربا.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "گل‌دار – کهربایی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 14
-  {
-    id: 14,
-    name: "الکساندریا2",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "عطری منحصر بفرد با ترکیبی از نت‌های شرقی و چوبی.",
-    specs: {
-      "برند": "الکساندریا",
-      "نوع رایحه": "شرقی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 15
-  {
-    id: 15,
-    name: "کرید اونتوس ابسولو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "پیچیدگی میوه‌ای و دودی در یک بَچ لوکس.",
-    specs: {
-      "برند": "کرید",
-      "نوع رایحه": "میوه‌ای – دودی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 16
-  {
-    id: 16,
-    name: "مارلی کالان",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 490,
-    sizes: [
-      { size: "سی میل",    price: 490 },
-      { size: "پنجاه میل", price: 800 },
-    ],
-    description: "عطری شرقی و غنی با نت‌های وانیل و مشک.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "شرقی – وانیلی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 17
-  {
-    id: 17,
-    name: "کازاموراتی مفیستو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی دودی و تنباکویی با لمس کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "دودی – تنباکویی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 18
-  {
-    id: 18,
-    name: "آمواج هانر",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "ترکیبی قوی از چوب سدر و مشک با حس چرمی.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "چرمی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 19
-  {
-    id: 19,
-    name: "آمواج گایدنس",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس شرقی-ادویه‌ای همراه با نت‌های مشک و عنبر.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // Women’s perfumes
-  // 20
-  {
-    id: 20,
-    name: "بای کیلیان بلومون",
-    category: "women",
-    image: "assets/image/بلومون2.jpg",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "رایحه‌ای گلی-شرقی با تمرکز بر رز و وانیل.",
-    specs: {
-      "برند": "بای کیلیان",
-      "نوع رایحه": "گل‌دار – شرقی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 21
-  {
-    id: 21,
-    name: "بولگاری اکوا امارا",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "نت‌های دریایی و مرکباتی با پس‌زمینه چوب صندل.",
-    specs: {
-      "برند": "بولگاری",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 22
-  {
-    id: 22,
-    name: "زرجوف اکسنتو",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "رایحه‌ای گرم و شرقی با تاکید بر وانیل و چوب صندل.",
-    specs: {
-      "برند": "زارجوف",
-      "نوع رایحه": "شرقی – وانیلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 23
-  {
-    id: 23,
-    name: "ویکتوریا نایت",
-    category: "women",
-    image: "assets/image/وری-سکسی-نایت.jpg",
-    badge: "جدید",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس رمانتیک با ترکیب گل‌های سیاه و وانیل.",
-    specs: {
-      "برند": "ویکتوریا سیکرت",
-      "نوع رایحه": "گل‌دار – شرقی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 24
-  {
-    id: 24,
-    name: "یارا",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری ملایم و گلی با نت‌های یاس و مرکبات.",
-    specs: {
-      "برند": "نامشخص",
-      "نوع رایحه": "گلی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 25
-  {
-    id: 25,
-    name: "بیلی آیلیش",
-    category: "women",
-    image: "assets/image/بیلی.jpg",
-    badge: "ویژه",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "رایحه‌ای مدرن و جوان‌پسند با نت‌های توت و وانیل.",
-    specs: {
-      "برند": "بیلی آیلیش",
-      "نوع رایحه": "میوه‌ای – شرقی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 26
-  {
-    id: 26,
-    name: "لویی ویتون پسفیک چیل",
-    category: "women",
-    image: "assets/image/پسفیک.JPG",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی گیاهی-مرکباتی با تمرکز بر رزماری و پرتقال.",
-    specs: {
-      "برند": "لویی ویتون",
-      "نوع رایحه": "گیاهی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 27
-  {
-    id: 27,
-    name: "لویی ویتون لیمنسیت",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "رایحه‌ای مرکباتی-سبز با نت غالب لیمو.",
-    specs: {
-      "برند": "لویی ویتون",
-      "نوع رایحه": "مرکباتی – سبز",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 28
-  {
-    id: 28,
-    name: "فلورنارکوتیک",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "عطری گل‌دار و میوه‌ای با نت‌های توت و گل‌های بهاری.",
-    specs: {
-      "برند": "فلورنارکوتیک",
-      "نوع رایحه": "گل‌دار – میوه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 29
-  {
-    id: 29,
-    name: "تیزیانا ترنزی کیرکه",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "نت‌های شرقی-گلی با تاکید بر رز و عنبر.",
-    specs: {
-      "برند": "تیزیانا ترنزی",
-      "نوع رایحه": "شرقی – گلی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 30
-  {
-    id: 30,
-    name: "کازاموراتی بوکت ایدل",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی گلی-چوبی با نت‌های مشک و کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "گلی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 31
-  {
-    id: 31,
-    name: "تام فورد لاست چری",
-    category: "women",
-    image: "assets/image/لاستچری.jpg",
-    badge: "جدید",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "رایحه‌ای میوه‌ای با تاکید بر گیلاس و بادام.",
-    specs: {
-      "برند": "تام فورد",
-      "نوع رایحه": "میوه‌ای – گلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 32
-  {
-    id: 32,
-    name: "کازاموراتی مفیستو",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی دودی-چرمی با لمسی از کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "چرمی – دودی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 33
-  {
-    id: 33,
-    name: "آمواج هانر",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "نت‌های چرمی و چوبی با پس‌زمینه مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "چرمی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 34
-  {
-    id: 34,
-    name: "آمواج گایدنس",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // Unisex’s perfumes
-  //35
-  {
-    id: 34,
-    name: "آمواج گایدنس",
-    category: "Unisex",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },          
-];
-
+            {
+                id: 1,
+                name: "شنل پلاتینیوم",
+                category: "men",
+                image: "https://via.placeholder.com/300",
+                badge: "جدید",
+                price: 170,
+                sizes: [
+                    { size: "ده میل", price: 170 },
+                    { size: "بیست میل", price: 290 },
+                    { size: "سی میل", price: 390 },
+                    { size: "پنجاه میل", price: 650 },
+                ],
+                description: "عطری کلاسیک و لوکس با ترکیبی از نت‌های مرکباتی در ابتدا و پایه‌ای از چوب صندل و مشک.",
+                specs: {
+                    "برند": "شنل",
+                    "نوع رایحه": "مرکباتی – چوبی",
+                    "پخش بو": "متوسط تا زیاد"
+                }
+            },
+            {
+                id: 2,
+                name: "تایگار",
+                category: "men",
+                image: "https://via.placeholder.com/300",
+                badge: "پرفروش",
+                price: 190,
+                sizes: [
+                    { size: "ده میل", price: 190 },
+                    { size: "بیست میل", price: 320 },
+                    { size: "سی میل", price: 430 },
+                    { size: "پنجاه میل", price: 700 },
+                ],
+                description: "رایحه‌ای دریایی و تازه با تُن‌های مرکباتی و کمی مشک در پس‌زمینه.",
+                specs: {
+                    "برند": "مونت بلانک",
+                    "نوع رایحه": "آبی – مرکباتی",
+                    "پخش بو": "متوسط"
+                }
+            },
+            {
+                id: 3,
+                name: "مارلی آلتیر",
+                category: "men",
+                image: "https://via.placeholder.com/300",
+                badge: "پرفروش",
+                price: 190,
+                sizes: [
+                    { size: "ده میل", price: 190 },
+                    { size: "بیست میل", price: 320 },
+                    { size: "سی میل", price: 430 },
+                    { size: "پنجاه میل", price: 700 },
+                ],
+                description: "عطری گل‌دار و میوه‌ای با نت‌های یاسمنی در قلب و پایه‌ای خنک از مرکبات.",
+                specs: {
+                    "برند": "مارلی",
+                    "نوع رایحه": "فلورال – میوه‌ای",
+                    "پخش بو": "متوسط"
+                }
+            },
+            {
+                id: 20,
+                name: "بای کیلیان بلومون",
+                category: "women",
+                image: "https://via.placeholder.com/300",
+                price: 170,
+                sizes: [
+                    { size: "ده میل", price: 170 },
+                    { size: "بیست میل", price: 290 },
+                    { size: "سی میل", price: 390 },
+                    { size: "پنجاه میل", price: 650 },
+                ],
+                description: "رایحه‌ای گلی-شرقی با تمرکز بر رز و وانیل.",
+                specs: {
+                    "برند": "بای کیلیان",
+                    "نوع رایحه": "گل‌دار – شرقی",
+                    "پخش بو": "متوسط"
+                }
+            },
+            {
+                id: 21,
+                name: "بولگاری اکوا امارا",
+                category: "women",
+                image: "https://via.placeholder.com/300",
+                price: 170,
+                sizes: [
+                    { size: "ده میل", price: 170 },
+                    { size: "بیست میل", price: 290 },
+                    { size: "سی میل", price: 390 },
+                    { size: "پنجاه میل", price: 650 },
+                ],
+                description: "نت‌های دریایی و مرکباتی با پس‌زمینه چوب صندل.",
+                specs: {
+                    "برند": "بولگاری",
+                    "نوع رایحه": "آبی – مرکباتی",
+                    "پخش بو": "متوسط"
+                }
+            },
+            {
+                id: 34,
+                name: "آمواج گایدنس",
+                category: "unisex",
+                image: "https://via.placeholder.com/300",
+                price: 190,
+                sizes: [
+                    { size: "ده میل", price: 190 },
+                    { size: "بیست میل", price: 320 },
+                    { size: "سی میل", price: 430 },
+                    { size: "پنجاه میل", price: 700 },
+                ],
+                description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
+                specs: {
+                    "برند": "آمواج",
+                    "نوع رایحه": "شرقی – ادویه‌ای",
+                    "پخش بو": "متوسط"
+                }
+            }
+        ];
         
         // Shopping cart and wishlist
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -1847,6 +1564,14 @@
         const mobileWishlist = document.getElementById('mobileWishlist');
         const mobileCart = document.getElementById('mobileCart');
         const toast = document.getElementById('toast');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const closeSearch = document.getElementById('closeSearch');
+        const searchInput = document.getElementById('searchInput');
+        const searchSuggestions = document.getElementById('searchSuggestions');
+        const searchIcon = document.getElementById('searchIcon');
+        const productModal = document.getElementById('productModal');
+        const closeProductModal = document.getElementById('closeProductModal');
+        const productDetailContent = document.getElementById('productDetailContent');
         
         // Generate product cards
         function generateProductCards() {
@@ -1925,6 +1650,18 @@
                         const priceElement = productCard.querySelector('.current-price');
                         priceElement.textContent = `${parseInt(option.dataset.price).toLocaleString('fa')},۰۰۰ تومان`;
                     });
+                });
+                
+                // Product title and image click for details
+                const productTitle = productCard.querySelector('.product-title');
+                const productImage = productCard.querySelector('.product-image');
+                
+                productTitle.addEventListener('click', () => {
+                    showProductDetails(perfume);
+                });
+                
+                productImage.addEventListener('click', () => {
+                    showProductDetails(perfume);
                 });
                 
                 // Add to appropriate category
@@ -2176,6 +1913,166 @@
             showToast('شماره کارت کپی شد!');
         }
         
+        // Search functionality
+        function searchProducts(query) {
+            if (query.length < 2) {
+                searchSuggestions.classList.remove('active');
+                return;
+            }
+            
+            const filteredPerfumes = perfumes.filter(perfume => 
+                perfume.name.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            displaySearchResults(filteredPerfumes);
+        }
+        
+        function displaySearchResults(results) {
+            searchSuggestions.innerHTML = '';
+            
+            if (results.length === 0) {
+                searchSuggestions.innerHTML = '<div class="suggestion-item">محصولی یافت نشد</div>';
+                searchSuggestions.classList.add('active');
+                return;
+            }
+            
+            results.forEach(perfume => {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.className = 'suggestion-item';
+                suggestionItem.innerHTML = `
+                    <img src="${perfume.image}" alt="${perfume.name}">
+                    <div>
+                        <h4>${perfume.name}</h4>
+                        <p>${perfume.category === 'men' ? 'مردانه' : perfume.category === 'women' ? 'زنانه' : 'یونی‌سکس'} - ${perfume.price.toLocaleString('fa')},۰۰۰ تومان</p>
+                    </div>
+                `;
+                
+                suggestionItem.addEventListener('click', () => {
+                    showProductDetails(perfume);
+                    closeSearchOverlay();
+                });
+                
+                searchSuggestions.appendChild(suggestionItem);
+            });
+            
+            searchSuggestions.classList.add('active');
+        }
+        
+        function showSearchOverlay() {
+            searchOverlay.classList.add('active');
+            searchInput.focus();
+        }
+        
+        function closeSearchOverlay() {
+            searchOverlay.classList.remove('active');
+            searchInput.value = '';
+            searchSuggestions.classList.remove('active');
+        }
+        
+        // Product details functionality
+        function showProductDetails(perfume) {
+            // Generate size options HTML for detail modal
+            let sizeOptionsHTML = '';
+            perfume.sizes.forEach(size => {
+                sizeOptionsHTML += `<div class="size-option-detail" data-size="${size.size}" data-price="${size.price}">${size.size}</div>`;
+            });
+            
+            // Generate specs HTML
+            let specsHTML = '';
+            for (const [key, value] of Object.entries(perfume.specs)) {
+                specsHTML += `
+                    <div class="spec-item">
+                        <div class="spec-title">${key}:</div>
+                        <div class="spec-value">${value}</div>
+                    </div>
+                `;
+            }
+            
+            productDetailContent.innerHTML = `
+                <div class="product-detail-image">
+                    <img src="${perfume.image}" alt="${perfume.name}">
+                </div>
+                <div class="product-detail-info">
+                    <h2 class="product-detail-title">${perfume.name}</h2>
+                    <div class="product-detail-price">${perfume.price.toLocaleString('fa')},۰۰۰ تومان</div>
+                    
+                    <div class="product-detail-description">
+                        <p>${perfume.description}</p>
+                    </div>
+                    
+                    <div class="product-detail-specs">
+                        ${specsHTML}
+                    </div>
+                    
+                    <div class="product-detail-sizes">
+                        <h3>حجم محصول:</h3>
+                        <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                            ${sizeOptionsHTML}
+                        </div>
+                    </div>
+                    
+                    <div class="product-detail-actions">
+                        <button class="add-to-cart" style="flex: 1;">
+                            <i class="fas fa-shopping-cart"></i> افزودن به سبد خرید
+                        </button>
+                        <button class="wishlist-btn" style="width: 60px;">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners to size options
+            const sizeOptions = productDetailContent.querySelectorAll('.size-option-detail');
+            const priceElement = productDetailContent.querySelector('.product-detail-price');
+            
+            sizeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    sizeOptions.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                    
+                    // Update the price in the modal
+                    const selectedPrice = parseInt(option.dataset.price);
+                    priceElement.textContent = `${selectedPrice.toLocaleString('fa')},۰۰۰ تومان`;
+                });
+            });
+            
+            // Add to cart button in detail modal
+            const addToCartBtn = productDetailContent.querySelector('.add-to-cart');
+            addToCartBtn.addEventListener('click', () => {
+                const selectedSize = productDetailContent.querySelector('.size-option-detail.active');
+                if (selectedSize) {
+                    const size = selectedSize.dataset.size;
+                    const price = parseInt(selectedSize.dataset.price);
+                    addToCart(perfume, size, price);
+                    showToast('محصول به سبد خرید اضافه شد!');
+                } else {
+                    showToast('لطفاً حجم مورد نظر را انتخاب کنید');
+                }
+            });
+            
+            // Wishlist button in detail modal
+            const wishlistBtn = productDetailContent.querySelector('.wishlist-btn');
+            const isInWishlist = wishlist.some(item => item.id === perfume.id);
+            if (isInWishlist) {
+                wishlistBtn.classList.add('active');
+                wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
+            }
+            
+            wishlistBtn.addEventListener('click', () => {
+                toggleWishlist(perfume, wishlistBtn);
+                if (wishlistBtn.classList.contains('active')) {
+                    wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
+                } else {
+                    wishlistBtn.innerHTML = '<i class="far fa-heart"></i>';
+                }
+            });
+            
+            // Show the modal
+            productModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
         // Event Listeners
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.add('active');
@@ -2233,6 +2130,35 @@
             wishlistModal.classList.remove('open');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
+        });
+        
+        // Search event listeners
+        searchIcon.addEventListener('click', showSearchOverlay);
+        closeSearch.addEventListener('click', closeSearchOverlay);
+        
+        searchInput.addEventListener('input', () => {
+            searchProducts(searchInput.value);
+        });
+        
+        // Close search overlay when clicking outside
+        searchOverlay.addEventListener('click', (e) => {
+            if (e.target === searchOverlay) {
+                closeSearchOverlay();
+            }
+        });
+        
+        // Product modal close
+        closeProductModal.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close product modal when clicking outside
+        productModal.addEventListener('click', (e) => {
+            if (e.target === productModal) {
+                productModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
         
         // Initialize the page
