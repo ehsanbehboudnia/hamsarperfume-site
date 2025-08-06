@@ -1698,7 +1698,118 @@
         // (add to cart, wishlist, size selection functionality)
     });
 }
-                
+
+        function showProductPage(productId) {
+    const product = perfumes.find(p => p.id === productId);
+    if (!product) return;
+
+    // Hide all sections
+    document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // Create product page from template
+    const productPage = document.getElementById('product-template').content.cloneNode(true);
+    const productContainer = document.createElement('div');
+    productContainer.id = 'product-page-container';
+    productContainer.appendChild(productPage);
+    
+    // Insert after header
+    document.querySelector('header').after(productContainer);
+    
+    // Fill product details
+    document.getElementById('product-title').textContent = product.name;
+    document.getElementById('product-image').src = product.image;
+    document.getElementById('product-image').alt = product.name;
+    
+    // Set category
+    const categoryElement = document.getElementById('product-category');
+    if (product.category === 'men') {
+        categoryElement.textContent = 'عطر مردانه';
+    } else if (product.category === 'women') {
+        categoryElement.textContent = 'عطر زنانه';
+    } else {
+        categoryElement.textContent = 'عطر یونی‌سکس';
+    }
+    
+    document.getElementById('product-description').textContent = product.description || 'توضیحات این محصول در دسترس نیست.';
+    document.getElementById('product-full-description').textContent = product.fullDescription || 'توضیحات کامل این محصول در دسترس نیست.';
+    document.getElementById('product-price').textContent = product.price;
+    
+    // Generate size options
+    const sizeOptions = document.getElementById('product-size-options');
+    product.sizes.forEach(size => {
+        const option = document.createElement('div');
+        option.className = 'size-option';
+        option.dataset.size = size.size;
+        option.dataset.price = size.price;
+        option.textContent = size.size;
+        
+        if (size.size === product.size) {
+            option.classList.add('active');
+        }
+        
+        option.addEventListener('click', () => {
+            document.querySelectorAll('#product-size-options .size-option').forEach(opt => {
+                opt.classList.remove('active');
+            });
+            option.classList.add('active');
+            document.getElementById('product-price').textContent = size.price;
+        });
+        
+        sizeOptions.appendChild(option);
+    });
+    
+    // Set up tabs
+    const tabs = document.querySelectorAll('.product-page-tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            document.querySelectorAll('.product-page-tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            const tabId = tab.dataset.tab;
+            document.getElementById(`${tabId}-content`).classList.add('active');
+        });
+    });
+    
+    // Set up back button
+    document.querySelector('.back-to-products').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('product-page-container').remove();
+        document.querySelectorAll('section').forEach(section => {
+            section.style.display = '';
+        });
+    });
+    
+    // Set up add to cart button
+    document.getElementById('product-add-to-cart').addEventListener('click', () => {
+        const selectedSize = document.querySelector('#product-size-options .size-option.active');
+        if (selectedSize) {
+            const size = selectedSize.dataset.size;
+            const price = selectedSize.dataset.price;
+            addToCart(product, size, price);
+        } else {
+            alert('لطفاً حجم مورد نظر را انتخاب کنید');
+        }
+    });
+    
+    // Set up wishlist button
+    const wishlistBtn = document.getElementById('product-wishlist-btn');
+    const isInWishlist = wishlist.some(item => item.id === product.id);
+    if (isInWishlist) {
+        wishlistBtn.classList.add('active');
+        wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
+    }
+    
+    wishlistBtn.addEventListener('click', () => {
+        toggleWishlist(product, wishlistBtn);
+    });
+}
+        
                 // Generate size options HTML
                 let sizeOptionsHTML = '';
                 perfume.sizes.forEach(size => {
