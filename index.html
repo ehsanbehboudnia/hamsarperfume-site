@@ -2460,31 +2460,32 @@
         // Generate order text
         function generateOrder() {
     if (cart.length === 0) {
-        alert('سبد خرید شما خالی است!');
-        return;
-    }
+    alert('سبد خرید شما خالی است!');
+    return;
+  }
 
-    let orderTextContent = 'سلام، سفارش من:\n\n';
-    let total = 0;
+  let orderTextContent = 'سلام، سفارش من:\n\n';
+  let total = 0;
 
-    cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        orderTextContent += `- ${item.name} (${item.size}): ${itemTotal.toLocaleString('fa')} تومان\n`;
-    });
+  cart.forEach(item => {
+    const unitPrice = parsePrice(item.price);
+    const itemTotal = unitPrice * item.quantity;
+    total += itemTotal;
+    orderTextContent += `- ${item.name} (${item.size}): ${itemTotal.toLocaleString('fa')} تومان\n`;
+  });
 
-    orderTextContent += `\nجمع کل: ${total.toLocaleString('fa')} تومان\n\n`;
-    orderTextContent += 'لطفاً برای تکمیل سفارش راهنمایی کنید.';
+  orderTextContent += `\nجمع کل: ${total.toLocaleString('fa')} تومان\n\n`;
+  orderTextContent += 'لطفاً برای تکمیل سفارش راهنمایی کنید.';
 
-    orderText.innerHTML = `
-        <pre>${orderTextContent}</pre>
-        <button class="copy-order" onclick="copyOrderText()">کپی متن سفارش</button>
-        <p class="note" style="margin-top: 15px; color: #666; font-size: 14px;">
-            لطفا متن بالا را کپی کرده و در پیج ما ارسال کنید.
-        </p>
-    `;
-    orderText.style.display = 'block';
-    orderText.scrollIntoView({ behavior: 'smooth' });
+  orderText.innerHTML = `
+    <pre style="direction: ltr; text-align: left;">${orderTextContent}</pre>
+    <button class="copy-order" onclick="copyOrderText()">کپی متن سفارش</button>
+    <p class="note" style="margin-top: 15px; color: #666; font-size: 14px;">
+      لطفا متن بالا را کپی کرده و در پیج ما ارسال کنید.
+    </p>
+  `;
+  orderText.style.display = 'block';
+  orderText.scrollIntoView({ behavior: 'smooth' });
 }
         
         // Copy order text
