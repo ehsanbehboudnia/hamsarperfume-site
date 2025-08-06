@@ -1570,361 +1570,703 @@
     <script>
         // Complete perfume data
         const perfumes = [
-            {
-                id: 1,
-                name: "شنل پلاتینیوم",
-                category: "men",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "جدید",
-                price: 170,
-                sizes: [
-                    { size: "ده میل", price: 170 },
-                    { size: "بیست میل", price: 290 },
-                    { size: "سی میل", price: 390 },
-                    { size: "پنجاه میل", price: 650 },
-                ],
-                description: "عطری کلاسیک و لوکس با ترکیبی از نت‌های مرکباتی در ابتدا و پایه‌ای از چوب صندل و مشک.",
-                specs: {
-                    "برند": "شنل",
-                    "نوع رایحه": "مرکباتی – چوبی",
-                    "پخش بو": "متوسط تا زیاد"
-                }
-            },
-            {
-                id: 2,
-                name: "تایگار",
-                category: "men",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "پرفروش",
-                price: 190,
-                sizes: [
-                    { size: "ده میل", price: 190 },
-                    { size: "بیست میل", price: 320 },
-                    { size: "سی میل", price: 430 },
-                    { size: "پنجاه میل", price: 700 },
-                ],
-                description: "رایحه‌ای دریایی و تازه با تُن‌های مرکباتی و کمی مشک در پس‌زمینه.",
-                specs: {
-                    "برند": "مونت بلانک",
-                    "نوع رایحه": "آبی – مرکباتی",
-                    "پخش بو": "متوسط"
-                }
-            },
-            {
-                id: 3,
-                name: "مارلی آلتیر",
-                category: "men",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "پرفروش",
-                price: 190,
-                sizes: [
-                    { size: "ده میل", price: 190 },
-                    { size: "بیست میل", price: 320 },
-                    { size: "سی میل", price: 430 },
-                    { size: "پنجاه میل", price: 700 },
-                ],
-                description: "عطری گل‌دار و میوه‌ای با نت‌های یاسمنی در قلب و پایه‌ای خنک از مرکبات.",
-                specs: {
-                    "برند": "مارلی",
-                    "نوع رایحه": "فلورال – میوه‌ای",
-                    "پخش بو": "متوسط"
-                }
-            },
-            {
-                id: 4,
-                name: "دیور ساواج",
-                category: "men",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "جدید",
-                price: 210,
-                sizes: [
-                    { size: "ده میل", price: 210 },
-                    { size: "بیست میل", price: 350 },
-                    { size: "سی میل", price: 480 },
-                    { size: "پنجاه میل", price: 750 },
-                ],
-                description: "عطری مدرن و مردانه با رایحه‌ای تازه و چوبی، ترکیبی از فلفل سیاه و وتیور.",
-                specs: {
-                    "برند": "دیور",
-                    "نوع رایحه": "چوبی – ادویه‌ای",
-                    "پخش بو": "زیاد"
-                }
-            },
-            {
-                id: 5,
-                name: "آرمانی کد",
-                category: "men",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "پرفروش",
-                price: 180,
-                sizes: [
-                    { size: "ده میل", price: 180 },
-                    { size: "بیست میل", price: 300 },
-                    { size: "سی میل", price: 410 },
-                    { size: "پنجاه میل", price: 680 },
-                ],
-                description: "رایحه‌ای گرم و شرقی با نت‌های لیمو، زنجبیل و چوب صندل.",
-                specs: {
-                    "برند": "آرمانی",
-                    "نوع رایحه": "شرقی – مرکباتی",
-                    "پخش بو": "متوسط"
-                }
-            },
-            {
-                id: 6,
-                name: "ورساچه اروس",
-                category: "men",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "جدید",
-                price: 200,
-                sizes: [
-                    { size: "ده میل", price: 200 },
-                    { size: "بیست میل", price: 330 },
-                    { size: "سی میل", price: 450 },
-                    { size: "پنجاه میل", price: 720 },
-                ],
-                description: "عطری قدرتمند و جذاب با ترکیبی از نعناع، سیب سبز و چوب آمبر.",
-                specs: {
-                    "برند": "ورساچه",
-                    "نوع رایحه": "مرکباتی – چوبی",
-                    "پخش بو": "زیاد"
-                }
-            },
-            {
-                id: 20,
-                name: "بای کیلیان بلومون",
-                category: "women",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                price: 170,
-                sizes: [
-                    { size: "ده میل", price: 170 },
-                    { size: "بیست میل", price: 290 },
-                    { size: "سی میل", price: 390 },
-                    { size: "پنجاه میل", price: 650 },
-                ],
-                description: "رایحه‌ای گلی-شرقی با تمرکز بر رز و وانیل.",
-                specs: {
-                    "برند": "بای کیلیان",
-                    "نوع رایحه": "گل‌دار – شرقی",
-                    "پخش بو": "متوسط"
-                }
-            },
-            {
-                id: 21,
-                name: "بولگاری اکوا امارا",
-                category: "women",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                price: 170,
-                sizes: [
-                    { size: "ده میل", price: 170 },
-                    { size: "بیست میل", price: 290 },
-                    { size: "سی میل", price: 390 },
-                    { size: "پنجاه میل", price: 650 },
-                ],
-                description: "نت‌های دریایی و مرکباتی با پس‌زمینه چوب صندل.",
-                specs: {
-                    "برند": "بولگاری",
-                    "نوع رایحه": "آبی – مرکباتی",
-                    "پخش بو": "متوسط"
-                }
-            },
-            {
-                id: 22,
-                name: "شانل نمره ۵",
-                category: "women",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "کلاسیک",
-                price: 220,
-                sizes: [
-                    { size: "ده میل", price: 220 },
-                    { size: "بیست میل", price: 380 },
-                    { size: "سی میل", price: 520 },
-                    { size: "پنجاه میل", price: 800 },
-                ],
-                description: "عطری افسانه‌ای و گل‌دار با ترکیبی از رز، یاس و آلدهیدها.",
-                specs: {
-                    "برند": "شانل",
-                    "نوع رایحه": "گل‌دار – آلدهیدی",
-                    "پخش بو": "زیاد"
-                }
-            },
-            {
-                id: 23,
-                name: "دیور جادور",
-                category: "women",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "پرفروش",
-                price: 190,
-                sizes: [
-                    { size: "ده میل", price: 190 },
-                    { size: "بیست میل", price: 320 },
-                    { size: "سی میل", price: 440 },
-                    { size: "پنجاه میل", price: 700 },
-                ],
-                description: "رایحه‌ای شرقی و گرم با نت‌های گل یاس و وانیل.",
-                specs: {
-                    "برند": "دیور",
-                    "نوع رایحه": "شرقی – گل‌دار",
-                    "پخش بو": "متوسط تا زیاد"
-                }
-            },
-            {
-                id: 24,
-                name: "گچی بلک اپیس",
-                category: "women",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                price: 200,
-                sizes: [
-                    { size: "ده میل", price: 200 },
-                    { size: "بیست میل", price: 340 },
-                    { size: "سی میل", price: 460 },
-                    { size: "پنجاه میل", price: 730 },
-                ],
-                description: "عطری مرموز و جذاب با ترکیبی از گل‌های سیاه و مشک.",
-                specs: {
-                    "برند": "گچی",
-                    "نوع رایحه": "گل‌دار – مشک",
-                    "پخش بو": "متوسط"
-                }
-            },
-            {
-                id: 25,
-                name: "لانکوم لاویل",
-                category: "women",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "جدید",
-                price: 180,
-                sizes: [
-                    { size: "ده میل", price: 180 },
-                    { size: "بیست میل", price: 310 },
-                    { size: "سی میل", price: 420 },
-                    { size: "پنجاه میل", price: 690 },
-                ],
-                description: "رایحه‌ای تازه و گل‌دار با نت‌های گل یاس و گلابی.",
-                specs: {
-                    "برند": "لانکوم",
-                    "نوع رایحه": "گل‌دار – میوه‌ای",
-                    "پخش بو": "متوسط"
-                }
-            },
-            {
-                id: 34,
-                name: "آمواج گایدنس",
-                category: "unisex",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                price: 190,
-                sizes: [
-                    { size: "ده میل", price: 190 },
-                    { size: "بیست میل", price: 320 },
-                    { size: "سی میل", price: 430 },
-                    { size: "پنجاه میل", price: 700 },
-                ],
-                description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
-                specs: {
-                    "برند": "آمواج",
-                    "نوع رایحه": "شرقی – ادویه‌ای",
-                    "پخش بو": "متوسط"
-                }
-            },
-            {
-                id: 35,
-                name: "جو مالون وود سیج اند سی سلت",
-                category: "unisex",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "پرفروش",
-                price: 230,
-                sizes: [
-                    { size: "ده میل", price: 230 },
-                    { size: "بیست میل", price: 390 },
-                    { size: "سی میل", price: 530 },
-                    { size: "پنجاه میل", price: 820 },
-                ],
-                description: "رایحه‌ای چوبی و دریایی با ترکیبی از چوب سدر و نمک دریایی.",
-                specs: {
-                    "برند": "جو مالون",
-                    "نوع رایحه": "چوبی – آبی",
-                    "پخش بو": "متوسط"
-                }
-            },
-            {
-                id: 36,
-                name: "کالوین کلین سی‌کیو",
-                category: "unisex",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                price: 170,
-                sizes: [
-                    { size: "ده میل", price: 170 },
-                    { size: "بیست میل", price: 290 },
-                    { size: "سی میل", price: 390 },
-                    { size: "پنجاه میل", price: 650 },
-                ],
-                description: "عطری تازه و تمیز با نت‌های مرکبات و مشک.",
-                specs: {
-                    "برند": "کالوین کلین",
-                    "نوع رایحه": "مرکباتی – مشک",
-                    "پخش بو": "متوسط"
-                }
-            },
-            {
-                id: 37,
-                name: "تام فورد بلک اورشید",
-                category: "unisex",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "لوکس",
-                price: 250,
-                sizes: [
-                    { size: "ده میل", price: 250 },
-                    { size: "بیست میل", price: 420 },
-                    { size: "سی میل", price: 570 },
-                    { size: "پنجاه میل", price: 900 },
-                ],
-                description: "رایحه‌ای مرموز و لوکس با ترکیبی از ترافل سیاه و وانیل.",
-                specs: {
-                    "برند": "تام فورد",
-                    "نوع رایحه": "شرقی – چوبی",
-                    "پخش بو": "زیاد"
-                }
-            },
-            {
-                id: 38,
-                name: "کرید اونتوس",
-                category: "unisex",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                price: 240,
-                sizes: [
-                    { size: "ده میل", price: 240 },
-                    { size: "بیست میل", price: 410 },
-                    { size: "سی میل", price: 550 },
-                    { size: "پنجاه میل", price: 850 },
-                ],
-                description: "عطری پرقدرت و سلطنتی با ترکیبی از آناناس، برکاموت و پچولی.",
-                specs: {
-                    "برند": "کرید",
-                    "نوع رایحه": "میوه‌ای – چوبی",
-                    "پخش بو": "زیاد"
-                }
-            },
-            {
-                id: 39,
-                name: "آکوا دی پارما کلونیا",
-                category: "unisex",
-                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                badge: "کلاسیک",
-                price: 200,
-                sizes: [
-                    { size: "ده میل", price: 200 },
-                    { size: "بیست میل", price: 340 },
-                    { size: "سی میل", price: 460 },
-                    { size: "پنجاه میل", price: 730 },
-                ],
-                description: "رایحه‌ای کلاسیک و تازه با ترکیبی از مرکبات و رزماری.",
-                specs: {
-                    "برند": "آکوا دی پارما",
-                    "نوع رایحه": "مرکباتی – گیاهی",
-                    "پخش بو": "متوسط"
-                }
-            }
-        ];
+  // 1
+  {
+    id: 1,
+    name: "شنل پلاتینیوم",
+    category: "men",
+    image: "assets/image/پلاتینیوم.jpg",
+    badge: "جدید",
+    price: 170,
+    sizes: [
+      { size: "ده میل",   price: 170 },
+      { size: "بیست میل",  price: 290 },
+      { size: "سی میل",    price: 390 },
+      { size: "پنجاه میل", price: 650 },
+    ],
+    description: "عطری کلاسیک و لوکس با ترکیبی از نت‌های مرکباتی در ابتدا و پایه‌ای از چوب صندل و مشک.",
+    specs: {
+      "برند": "شنل",
+      "نوع رایحه": "مرکباتی – چوبی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 2
+  {
+    id: 2,
+    name: "تایگار",
+    category: "men",
+    image: "assets/image/تایگار.JPG",
+    badge: "پرفروش",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "رایحه‌ای دریایی و تازه با تُن‌های مرکباتی و کمی مشک در پس‌زمینه.",
+    specs: {
+      "برند": "بولگاری",
+      "نوع رایحه": "آبی – مرکباتی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 3
+  {
+    id: 3,
+    name: "مارلی آلتیر",
+    category: "men",
+    image: "assets/image/التیر.jpg",
+    badge: "پرفروش",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "عطری گل‌دار و میوه‌ای با نت‌های یاسمنی در قلب و پایه‌ای خنک از مرکبات.",
+    specs: {
+      "برند": "مارلی",
+      "نوع رایحه": "فلورال – میوه‌ای",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 4
+  {
+    id: 4,
+    name: "ایسی میاکی ماجور",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    badge: "جدید",
+    price: "۱۷۰",
+    sizes: [
+      { size: "ده میل",   price: "۱۷۰" },
+      { size: "بیست میل",  price: "۲۹۰" },
+      { size: "سی میل",    price: "۳۹۰" },
+      { size: "پنجاه میل", price: "۶۵۰" },
+    ],
+    description: "الهام‌گرفته از فضای کوهستانی با ترکیبی از نت‌های چوبی و ادویه‌ای.",
+    specs: {
+      "برند": "ایسی میاکی",
+      "نوع رایحه": "چوبی – ادویه‌ای",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 5
+  {
+    id: 5,
+    name: "کرید سیلور مانتین",
+    category: "men",
+    image: "assets/image/سیلور.jpg",
+    badge: "ویژه",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "حسی کوهستانی و خنک با غالب‌بودن نت‌های چوبی و کهربایی.",
+    specs: {
+      "برند": "کرید",
+      "نوع رایحه": "چوبی – کهربایی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 6
+  {
+    id: 6,
+    name: "گانیمد",
+    category: "men",
+    image: "assets/image/گانیمد.jpg",
+    badge: "جدید",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "عطری مدرن با نت‌های فلورال در ترکیب با چوب صندل و مشک.",
+    specs: {
+      "برند": "زارجوف",
+      "نوع رایحه": "فلورال – چوبی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 7
+  {
+    id: 7,
+    name: "ناتیکا ویاژ",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    badge: "پرفروش",
+    price: "۱۷۰",
+    sizes: [
+      { size: "ده میل",   price: "۱۷۰" },
+      { size: "بیست میل",  price: "۲۹۰" },
+      { size: "سی میل",    price: "۳۹۰" },
+      { size: "پنجاه میل", price: "۶۵۰" },
+    ],
+    description: "حسی دریایی و تازه با زمینه‌ای از مرکبات و کمی مشک.",
+    specs: {
+      "برند": "ناتیکا",
+      "نوع رایحه": "آبی – مرکباتی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 8
+  {
+    id: 8,
+    name: "ویکتوریا نایت",
+    category: "men",
+    image: "assets/image/وری-سکسی-نایت.jpg",
+    badge: "جدید",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "نت‌های شرقی-گل‌دار با تاکید بر وانیل و چوب صندل.",
+    specs: {
+      "برند": "ویکتوریا سیکرت",
+      "نوع رایحه": "شرقی – گل‌دار",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 9
+  {
+    id: 9,
+    name: "فرعون",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    badge: "پرفروش",
+    price: 210,
+    sizes: [
+      { size: "ده میل",   price: 210 },
+      { size: "بیست میل",  price: 390 },
+      { size: "سی میل",    price: 490 },
+      { size: "پنجاه میل", price: 800 },
+    ],
+    description: "رایحه‌ای شرقی و ادویه‌ای با نت‌های وانیل و کهربا.",
+    specs: {
+      "برند": "ناتیکا",
+      "نوع رایحه": "شرقی – ادویه‌ای",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 10
+  {
+    id: 10,
+    name: "ایوسن‌لورن وای",
+    category: "men",
+    image: "assets/image/وای.jpg",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "عطری مرکباتی-گلی با نت‌های لیمو و یاس.",
+    specs: {
+      "برند": "ایوسن‌لورن",
+      "نوع رایحه": "مرکباتی – گلی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 11
+  {
+    id: 11,
+    name: "دیور هوم اینتنس",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "رد بویی قوی با ترکیب چوب سدر و توتون.",
+    specs: {
+      "برند": "دیور",
+      "نوع رایحه": "چوبی – توتون",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 12
+  {
+    id: 12,
+    name: "جورجیو آرمانی اکوا دی جیو ابسولو",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    price: 250,
+    sizes: [
+      { size: "ده میل",   price: 250 },
+      { size: "بیست میل",  price: 450 },
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "حسی دریایی و خنک با نت‌های مرکبات و نمک دریایی.",
+    specs: {
+      "برند": "آرمانی",
+      "نوع رایحه": "آبی – مرکباتی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 13
+  {
+    id: 13,
+    name: "مارلی هالتان",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    price: 250,
+    sizes: [
+      { size: "ده میل",   price: 250 },
+      { size: "بیست میل",  price: 450 },
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "رایحه‌ای قدرتمند و پیچیده با نت‌های گل و کهربا.",
+    specs: {
+      "برند": "مارلی",
+      "نوع رایحه": "گل‌دار – کهربایی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 14
+  {
+    id: 14,
+    name: "الکساندریا2",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    price: 250,
+    sizes: [
+      { size: "ده میل",   price: 250 },
+      { size: "بیست میل",  price: 450 },
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "عطری منحصر بفرد با ترکیبی از نت‌های شرقی و چوبی.",
+    specs: {
+      "برند": "الکساندریا",
+      "نوع رایحه": "شرقی – چوبی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 15
+  {
+    id: 15,
+    name: "کرید اونتوس ابسولو",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    price: 250,
+    sizes: [
+      { size: "ده میل",   price: 250 },
+      { size: "بیست میل",  price: 450 },
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "پیچیدگی میوه‌ای و دودی در یک بَچ لوکس.",
+    specs: {
+      "برند": "کرید",
+      "نوع رایحه": "میوه‌ای – دودی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 16
+  {
+    id: 16,
+    name: "مارلی کالان",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    price: 490,
+    sizes: [
+      { size: "سی میل",    price: 490 },
+      { size: "پنجاه میل", price: 800 },
+    ],
+    description: "عطری شرقی و غنی با نت‌های وانیل و مشک.",
+    specs: {
+      "برند": "مارلی",
+      "نوع رایحه": "شرقی – وانیلی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 17
+  {
+    id: 17,
+    name: "کازاموراتی مفیستو",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    price: 590,
+    sizes: [
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "حسی دودی و تنباکویی با لمس کهربا.",
+    specs: {
+      "برند": "کازاموراتی",
+      "نوع رایحه": "دودی – تنباکویی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 18
+  {
+    id: 18,
+    name: "آمواج هانر",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    price: 430,
+    sizes: [
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "ترکیبی قوی از چوب سدر و مشک با حس چرمی.",
+    specs: {
+      "برند": "آمواج",
+      "نوع رایحه": "چرمی – چوبی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 19
+  {
+    id: 19,
+    name: "آمواج گایدنس",
+    category: "men",
+    image: "https://via.placeholder.com/300",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "حس شرقی-ادویه‌ای همراه با نت‌های مشک و عنبر.",
+    specs: {
+      "برند": "آمواج",
+      "نوع رایحه": "شرقی – ادویه‌ای",
+      "پخش بو": "متوسط"
+    }
+  },
+  // Women’s perfumes
+  // 20
+  {
+    id: 20,
+    name: "بای کیلیان بلومون",
+    category: "women",
+    image: "assets/image/بلومون2.jpg",
+    price: 170,
+    sizes: [
+      { size: "ده میل",   price: 170 },
+      { size: "بیست میل",  price: 290 },
+      { size: "سی میل",    price: 390 },
+      { size: "پنجاه میل", price: 650 },
+    ],
+    description: "رایحه‌ای گلی-شرقی با تمرکز بر رز و وانیل.",
+    specs: {
+      "برند": "بای کیلیان",
+      "نوع رایحه": "گل‌دار – شرقی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 21
+  {
+    id: 21,
+    name: "بولگاری اکوا امارا",
+    category: "women",
+    image: "https://via.placeholder.com/300",
+    price: 170,
+    sizes: [
+      { size: "ده میل",   price: 170 },
+      { size: "بیست میل",  price: 290 },
+      { size: "سی میل",    price: 390 },
+      { size: "پنجاه میل", price: 650 },
+    ],
+    description: "نت‌های دریایی و مرکباتی با پس‌زمینه چوب صندل.",
+    specs: {
+      "برند": "بولگاری",
+      "نوع رایحه": "آبی – مرکباتی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 22
+  {
+    id: 22,
+    name: "زرجوف اکسنتو",
+    category: "women",
+    image: "https://via.placeholder.com/300",
+    price: 170,
+    sizes: [
+      { size: "ده میل",   price: 170 },
+      { size: "بیست میل",  price: 290 },
+      { size: "سی میل",    price: 390 },
+      { size: "پنجاه میل", price: 650 },
+    ],
+    description: "رایحه‌ای گرم و شرقی با تاکید بر وانیل و چوب صندل.",
+    specs: {
+      "برند": "زارجوف",
+      "نوع رایحه": "شرقی – وانیلی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 23
+  {
+    id: 23,
+    name: "ویکتوریا نایت",
+    category: "women",
+    image: "assets/image/وری-سکسی-نایت.jpg",
+    badge: "جدید",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "حس رمانتیک با ترکیب گل‌های سیاه و وانیل.",
+    specs: {
+      "برند": "ویکتوریا سیکرت",
+      "نوع رایحه": "گل‌دار – شرقی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 24
+  {
+    id: 24,
+    name: "یارا",
+    category: "women",
+    image: "https://via.placeholder.com/300",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "عطری ملایم و گلی با نت‌های یاس و مرکبات.",
+    specs: {
+      "برند": "نامشخص",
+      "نوع رایحه": "گلی – مرکباتی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 25
+  {
+    id: 25,
+    name: "بیلی آیلیش",
+    category: "women",
+    image: "assets/image/بیلی.jpg",
+    badge: "ویژه",
+    price: 250,
+    sizes: [
+      { size: "ده میل",   price: 250 },
+      { size: "بیست میل",  price: 450 },
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "رایحه‌ای مدرن و جوان‌پسند با نت‌های توت و وانیل.",
+    specs: {
+      "برند": "بیلی آیلیش",
+      "نوع رایحه": "میوه‌ای – شرقی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 26
+  {
+    id: 26,
+    name: "لویی ویتون پسفیک چیل",
+    category: "women",
+    image: "assets/image/پسفیک.JPG",
+    price: 250,
+    sizes: [
+      { size: "ده میل",   price: 250 },
+      { size: "بیست میل",  price: 450 },
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "حسی گیاهی-مرکباتی با تمرکز بر رزماری و پرتقال.",
+    specs: {
+      "برند": "لویی ویتون",
+      "نوع رایحه": "گیاهی – مرکباتی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 27
+  {
+    id: 27,
+    name: "لویی ویتون لیمنسیت",
+    category: "women",
+    image: "https://via.placeholder.com/300",
+    price: 250,
+    sizes: [
+      { size: "ده میل",   price: 250 },
+      { size: "بیست میل",  price: 450 },
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "رایحه‌ای مرکباتی-سبز با نت غالب لیمو.",
+    specs: {
+      "برند": "لویی ویتون",
+      "نوع رایحه": "مرکباتی – سبز",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 28
+  {
+    id: 28,
+    name: "فلورنارکوتیک",
+    category: "women",
+    image: "https://via.placeholder.com/300",
+    price: 590,
+    sizes: [
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "عطری گل‌دار و میوه‌ای با نت‌های توت و گل‌های بهاری.",
+    specs: {
+      "برند": "فلورنارکوتیک",
+      "نوع رایحه": "گل‌دار – میوه‌ای",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 29
+  {
+    id: 29,
+    name: "تیزیانا ترنزی کیرکه",
+    category: "women",
+    image: "https://via.placeholder.com/300",
+    price: 430,
+    sizes: [
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "نت‌های شرقی-گلی با تاکید بر رز و عنبر.",
+    specs: {
+      "برند": "تیزیانا ترنزی",
+      "نوع رایحه": "شرقی – گلی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 30
+  {
+    id: 30,
+    name: "کازاموراتی بوکت ایدل",
+    category: "women",
+    image: "https://via.placeholder.com/300",
+    price: 590,
+    sizes: [
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "حسی گلی-چوبی با نت‌های مشک و کهربا.",
+    specs: {
+      "برند": "کازاموراتی",
+      "نوع رایحه": "گلی – چوبی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 31
+  {
+    id: 31,
+    name: "تام فورد لاست چری",
+    category: "women",
+    image: "assets/image/لاستچری.jpg",
+    badge: "جدید",
+    price: 430,
+    sizes: [
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "رایحه‌ای میوه‌ای با تاکید بر گیلاس و بادام.",
+    specs: {
+      "برند": "تام فورد",
+      "نوع رایحه": "میوه‌ای – گلی",
+      "پخش بو": "متوسط"
+    }
+  },
+  // 32
+  {
+    id: 32,
+    name: "کازاموراتی مفیستو",
+    category: "women",
+    image: "https://via.placeholder.com/300",
+    price: 590,
+    sizes: [
+      { size: "سی میل",    price: 590 },
+      { size: "پنجاه میل", price: 950 },
+    ],
+    description: "حسی دودی-چرمی با لمسی از کهربا.",
+    specs: {
+      "برند": "کازاموراتی",
+      "نوع رایحه": "چرمی – دودی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 33
+  {
+    id: 33,
+    name: "آمواج هانر",
+    category: "women",
+    image: "https://via.placeholder.com/300",
+    price: 430,
+    sizes: [
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "نت‌های چرمی و چوبی با پس‌زمینه مشک.",
+    specs: {
+      "برند": "آمواج",
+      "نوع رایحه": "چرمی – چوبی",
+      "پخش بو": "زیاد"
+    }
+  },
+  // 34
+  {
+    id: 34,
+    name: "آمواج گایدنس",
+    category: "women",
+    image: "https://via.placeholder.com/300",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
+    specs: {
+      "برند": "آمواج",
+      "نوع رایحه": "شرقی – ادویه‌ای",
+      "پخش بو": "متوسط"
+    }
+  },
+  // Unisex’s perfumes
+  //35
+  {
+    id: 34,
+    name: "آمواج گایدنس",
+    category: "Unisex",
+    image: "https://via.placeholder.com/300",
+    price: 190,
+    sizes: [
+      { size: "ده میل",   price: 190 },
+      { size: "بیست میل",  price: 320 },
+      { size: "سی میل",    price: 430 },
+      { size: "پنجاه میل", price: 700 },
+    ],
+    description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
+    specs: {
+      "برند": "آمواج",
+      "نوع رایحه": "شرقی – ادویه‌ای",
+      "پخش بو": "متوسط"
+    }
+  },          
+];
         
         // Shopping cart and wishlist
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
