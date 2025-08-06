@@ -6,6 +6,53 @@
     <title>همسر پرفیوم - فروشگاه تخصصی عطرهای لاکچری</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Add Peima Font Family */
+        @font-face {
+            font-family: 'Peima';
+            font-weight: 100;
+            src: url('https://drive.google.com/uc?export=download&id=1dn55CYeLvmEFkkzoobXAYsWoW7_r08Ir') format('woff2');
+        }
+        @font-face {
+            font-family: 'Peima';
+            font-weight: 200;
+            src: url('https://drive.google.com/uc?export=download&id=1C8OKPRuXmwvKZ_pk9opHsWvTC8lE8dPj') format('woff2');
+        }
+        @font-face {
+            font-family: 'Peima';
+            font-weight: 300;
+            src: url('https://drive.google.com/uc?export=download&id=1a4jLFU4Hvo-UNjJF6FwLEqNnJ5q5T1Pj') format('woff2');
+        }
+        @font-face {
+            font-family: 'Peima';
+            font-weight: 400;
+            src: url('https://drive.google.com/uc?export=download&id=1j3HxI2KAQMSM9oEHKlgX73A_5_tx1qaL') format('woff2');
+        }
+        @font-face {
+            font-family: 'Peima';
+            font-weight: 500;
+            src: url('https://drive.google.com/uc?export=download&id=1JqPwRh8fu5VfJUU6RVo7lpCLwQssFtaS') format('woff2');
+        }
+        @font-face {
+            font-family: 'Peima';
+            font-weight: 600;
+            src: url('https://drive.google.com/uc?export=download&id=1w2zjDDSFPgiepEHK2ASZZVEoAe7xg1Hq') format('woff2');
+        }
+        @font-face {
+            font-family: 'Peima';
+            font-weight: 700;
+            src: url('https://drive.google.com/uc?export=download&id=1lWXjy-aw3qnf9as7lrckyavwQT2dlp8r') format('woff2');
+        }
+        @font-face {
+            font-family: 'Peima';
+            font-weight: 800;
+            src: url('https://drive.google.com/uc?export=download&id=1nitY6mum2d6pQuiQPPFIn-4QIAq3ax2Z') format('woff2');
+        }
+        @font-face {
+            font-family: 'Peima';
+            font-weight: 900;
+            src: url('https://drive.google.com/uc?export=download&id=1GVkN5068TdCKpWvWmWA-Utb4jvWYS26g') format('woff2');
+        }
+
         /* CSS changes for header layout */
         @media (max-width: 992px) {
             .header-container {
@@ -69,11 +116,12 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Peima', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--light);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            font-weight: 400;
         }
         
         /* Header Styles */
@@ -303,7 +351,7 @@
             font-size: 3.5rem;
             color: var(--white);
             margin-bottom: 20px;
-            font-weight: 700;
+            font-weight: 800;
             line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
@@ -312,6 +360,7 @@
             font-size: 1.5rem;
             color: var(--accent-light);
             margin-bottom: 30px;
+            font-weight: 500;
             text-shadow: 0 1px 5px rgba(0,0,0,0.3);
         }
         
@@ -390,7 +439,7 @@
         .section-title h2 {
             font-size: 2.5rem;
             color: var(--dark);
-            font-weight: 700;
+            font-weight: 800;
             display: inline-block;
             padding-bottom: 15px;
         }
@@ -407,9 +456,15 @@
             border-radius: 2px;
         }
         
+        /* PRODUCT GRID CHANGES */
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, minmax(280px, 1fr));
             gap: 40px;
         }
         
@@ -430,7 +485,7 @@
         }
         
         .product-image {
-            height: 250px;
+            height: 300px;
             background-color: #ffffff;
             display: flex;
             align-items: center;
@@ -458,9 +513,9 @@
         }
         
         .product-image img {
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: var(--transition);
             position: relative;
             z-index: 2;
@@ -534,7 +589,7 @@
         
         .current-price {
             font-size: 20px;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--accent);
         }
         
@@ -551,7 +606,7 @@
             padding: 14px;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 600;
             transition: var(--transition);
             display: flex;
             align-items: center;
@@ -621,7 +676,7 @@
         
         .cart-title {
             font-size: 24px;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--dark);
         }
         
@@ -803,7 +858,7 @@
             border-color: var(--accent);
         }
         
-        /* Footer */
+        /* Footer Styles */
         .footer {
             background: var(--gradient);
             color: var(--white);
@@ -826,6 +881,7 @@
             color: var(--accent-light);
             position: relative;
             padding-bottom: 12px;
+            font-weight: 700;
         }
         
         .footer-section h3::after {
@@ -889,6 +945,7 @@
             text-decoration: underline;
         }
         
+        /* FOOTER SOCIAL ICONS VISIBILITY FIX */
         .social-links {
             display: flex;
             gap: 18px;
@@ -923,6 +980,12 @@
         }
         
         /* Responsive */
+        @media (max-width: 1200px) {
+            .products-grid {
+                grid-template-columns: repeat(3, minmax(280px, 1fr));
+            }
+        }
+        
         @media (max-width: 992px) {
             .header-container {
                 display: grid;
@@ -955,8 +1018,14 @@
                 padding: 60px 20px;
             }
             
+            /* MOBILE PRODUCT GRID - 2 COLUMNS */
             .products-grid {
+                grid-template-columns: repeat(2, minmax(140px, 1fr));
                 gap: 25px;
+            }
+            
+            .product-image {
+                height: 250px;
             }
         }
 
@@ -971,6 +1040,11 @@
             
             .section-title h2 {
                 font-size: 2.2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(140px, 1fr));
+                gap: 20px;
             }
         }
         
@@ -991,12 +1065,17 @@
                 font-size: 1.8rem;
             }
             
+            /* MOBILE PRODUCT GRID - 1 COLUMN */
             .products-grid {
-                gap: 20px;
+                grid-template-columns: 1fr;
             }
             
             .header-container {
                 padding: 0 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -1216,6 +1295,7 @@
             font-size: 28px;
             color: var(--dark);
             margin-bottom: 15px;
+            font-weight: 800;
         }
         
         .product-detail-price {
@@ -1372,8 +1452,10 @@
             <h2>عطرهای مردانه</h2>
         </div>
         
-        <div class="products-grid" id="menPerfumes">
-            <!-- Products will be populated by JavaScript -->
+        <div class="products-container">
+            <div class="products-grid" id="menPerfumes">
+                <!-- Products will be populated by JavaScript -->
+            </div>
         </div>
     </section>
     
@@ -1383,8 +1465,10 @@
             <h2>عطرهای زنانه</h2>
         </div>
         
-        <div class="products-grid" id="womenPerfumes">
-            <!-- Products will be populated by JavaScript -->
+        <div class="products-container">
+            <div class="products-grid" id="womenPerfumes">
+                <!-- Products will be populated by JavaScript -->
+            </div>
         </div>
     </section>
     
@@ -1394,8 +1478,10 @@
             <h2>عطرهای یونی‌سکس</h2>
         </div>
         
-        <div class="products-grid" id="unisexPerfumes">
-            <!-- Products will be populated by JavaScript -->
+        <div class="products-container">
+            <div class="products-grid" id="unisexPerfumes">
+                <!-- Products will be populated by JavaScript -->
+            </div>
         </div>
     </section>
     
@@ -1501,6 +1587,12 @@
                         <a href="mailto:info@hamsarperfume.com" class="contact-link">info@hamsarperfume.com</a>
                     </li>
                 </ul>
+                <!-- VISIBLE SOCIAL LINKS IN FOOTER -->
+                <div class="social-links" style="margin-top: 15px;">
+                    <a href="https://instagram.com/hamsarperfume" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/hamsar_perfume" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/989307780817" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
             </div>
         </div>
         
