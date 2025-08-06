@@ -1328,14 +1328,71 @@
         const mobileLogin = document.getElementById('mobileLogin');
         
         // Generate product cards
-        function generateProductCards() {
-            menPerfumes.innerHTML = '';
-            womenPerfumes.innerHTML = '';
-            unisexPerfumes.innerHTML = '';
+        <script>
+    // ... بالای این قسمت همان‌طور که هست بماند (آرایه perfumes و تعریف متغیرها)
+
+    // اینجا تابع generateProductCards را کاملاً با کد زیر جایگزین کنید:
+    function generateProductCards() {
+        menPerfumes.innerHTML = '';
+        womenPerfumes.innerHTML = '';
+        unisexPerfumes.innerHTML = '';
+        
+        perfumes.forEach(perfume => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
             
-            perfumes.forEach(perfume => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
+            // تولید گزینه‌های سایز
+            let sizeOptionsHTML = '';
+            perfume.sizes.forEach(size => {
+                sizeOptionsHTML += `<div class="size-option" data-size="${size.size}" data-price="${size.price}">${size.size}</div>`;
+            });
+            
+            // اینجا innerHTML را به‌روز کنید تا لینک به صفحه محصول اضافه شود
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <a href="product.html?id=${perfume.id}">
+                        <img src="${perfume.image}" alt="${perfume.name}">
+                    </a>
+                    ${perfume.badge ? `<span class="product-badge">${perfume.badge}</span>` : ''}
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">
+                        <a href="product.html?id=${perfume.id}">${perfume.name}</a>
+                    </h3>
+                    
+                    <div class="size-options">
+                        ${sizeOptionsHTML}
+                    </div>
+                    
+                    <div class="product-price">
+                        <span class="current-price">${perfume.price},۰۰۰ تومان</span>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="add-to-cart">
+                            <i class="fas fa-shopping-cart"></i> افزودن به سبد
+                        </button>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // … بقیه کدهای event listener و اضافه کردن به DOM بدون تغییر می‌ماند
+            
+            if (perfume.category === 'men') {
+                menPerfumes.appendChild(productCard);
+            } else if (perfume.category === 'women') {
+                womenPerfumes.appendChild(productCard);
+            } else {
+                unisexPerfumes.appendChild(productCard);
+            }
+        });
+    }
+
+    // … باقی اسکریپت (init و event listenerها) به همان شکل قبلی بماند
+</script>
                 
                 // Generate size options HTML
                 let sizeOptionsHTML = '';
