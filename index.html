@@ -64,7 +64,6 @@
             .hamburger {
                 grid-column: 1;
                 justify-self: start;
-                z-index: 1002; /* Ensure hamburger is above mobile menu */
             }
             
             .logo {
@@ -94,7 +93,7 @@
             }
         }
         
-        /* Rest of CSS remains the same */
+        /* Modern Design Variables */
         :root {
             --primary: #1a1a2e;
             --secondary: #0f3460;
@@ -107,7 +106,9 @@
             --gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             --transition: all 0.3s ease;
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --radius: 12px;
+            --radius: 16px;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
         
         * {
@@ -123,18 +124,19 @@
             line-height: 1.6;
             overflow-x: hidden;
             font-weight: 400;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
         }
         
-        /* Header Styles - Modernized */
+        /* Header Styles with Glass Effect */
         .header {
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
+            background: rgba(26, 26, 46, 0.85);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--glass-border);
         }
         
         .header-container {
@@ -241,9 +243,10 @@
             border-radius: 50%;
             object-fit: cover;
             margin-right: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
         
-        /* Hamburger Menu - Fixed */
+        /* Hamburger Menu with Glass Effect */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -268,12 +271,14 @@
             right: -300px;
             width: 300px;
             height: 100vh;
-            background: var(--gradient);
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(12px);
             z-index: 1000;
             transition: var(--transition);
             padding: 80px 20px 20px;
             overflow-y: auto;
             box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+            border-left: 1px solid var(--glass-border);
         }
         
         .mobile-menu.active {
@@ -291,12 +296,13 @@
             text-decoration: none;
             font-size: 18px;
             padding: 12px 20px;
-            border-radius: 8px;
+            border-radius: 12px;
             transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 10px;
             background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
         }
         
         .mobile-nav-link:hover {
@@ -323,11 +329,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
         }
         
-        /* Hero Section - Enhanced */
+        /* Hero Section - Enhanced with Glass Effect */
         .hero {
-            height: 600px;
+            height: 550px;
             background: linear-gradient(rgba(22, 33, 62, 0.85), rgba(22, 33, 62, 0.9)), 
                         url('https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
@@ -356,105 +363,47 @@
             max-width: 800px;
             position: relative;
             z-index: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 40px;
+            border: 1px solid var(--glass-border);
         }
         
         .hero-title {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             color: var(--white);
             margin-bottom: 20px;
             font-weight: 800;
             line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            letter-spacing: -1px;
         }
         
         .hero-subtitle {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--accent-light);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-weight: 500;
             text-shadow: 0 1px 5px rgba(0,0,0,0.3);
         }
         
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .search-bar {
-            width: 100%;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .search-bar:focus {
-            outline: none;
-            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.3);
-        }
-        
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin-top: 10px;
-            max-height: 300px;
-            overflow-y: auto;
-            display: none;
-            z-index: 100;
-        }
-        
-        .search-results.active {
-            display: block;
-        }
-        
-        .search-item {
-            padding: 12px 20px;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-        }
-        
-        .search-item:hover {
-            background: #f9f9f9;
-        }
-        
-        .search-item img {
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-left: 15px;
-        }
-        
-        /* Products Section - Modernized */
+        /* Featured Products - Modern Design */
         .section {
-            padding: 100px 40px;
+            padding: 80px 20px;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             position: relative;
         }
         
         .section-title h2 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: var(--dark);
             font-weight: 800;
             display: inline-block;
             padding-bottom: 15px;
-            position: relative;
         }
         
         .section-title h2::after {
@@ -469,7 +418,6 @@
             border-radius: 2px;
         }
         
-        /* PRODUCT GRID CHANGES - Fixed aspect ratio for mobile */
         .products-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -477,8 +425,8 @@
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
         }
         
         .product-card {
@@ -488,10 +436,11 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
-            border: 1px solid rgba(240, 240, 240, 0.7);
+            border: 1px solid rgba(240, 240, 240, 0.8);
             transform: translateY(0);
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
         
         .product-card:hover {
@@ -500,29 +449,28 @@
         }
         
         .product-image {
-            height: 300px;
-            background-color: #ffffff; /* Always white background */
+            height: 280px;
+            background-color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             cursor: pointer;
             overflow: hidden;
+            padding: 20px;
         }
         
-        /* Removed gradient overlay on hover */
-        
         .product-image img {
-            width: 80%;
-            height: 80%;
-            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             transition: var(--transition);
             position: relative;
             z-index: 2;
         }
         
         .product-card:hover .product-image img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         
         .product-badge {
@@ -536,6 +484,7 @@
             font-size: 12px;
             font-weight: bold;
             z-index: 3;
+            box-shadow: 0 4px 10px rgba(233, 69, 96, 0.3);
         }
         
         .product-info {
@@ -649,224 +598,117 @@
             box-shadow: 0 7px 15px rgba(0,0,0,0.1);
         }
         
-        /* Cart Modal - Modernized */
-        .cart-modal {
-            position: fixed;
-            top: 0;
-            right: -420px;
-            width: 100%;
-            max-width: 400px;
-            height: 100vh;
+        /* Contact Section - Modern Design */
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
             background: var(--white);
-            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
-            z-index: 1000;
-            transition: right 0.4s ease;
-            padding: 25px;
-            overflow-y: auto;
-        }
-        
-        .cart-modal.open {
-            right: 0;
-        }
-        
-        .cart-header {
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+            gap: 40px;
         }
         
-        .cart-title {
+        .contact-info, .address-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3, .address-info h3 {
             font-size: 24px;
-            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .contact-info h3::after, .address-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            font-size: 24px;
+            color: var(--accent);
+            margin-left: 15px;
+            min-width: 30px;
+        }
+        
+        .contact-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-link {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 18px;
+            display: block;
+        }
+        
+        .contact-link:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--light);
+            color: var(--accent);
+            border-radius: 50%;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+        
+        .shipping-info {
+            background: #f8f9fa;
+            border-radius: var(--radius);
+            padding: 25px;
+            margin-top: 20px;
+        }
+        
+        .shipping-info h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
             color: var(--dark);
         }
         
-        .close-cart {
-            background: none;
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: #777;
-        }
-        
-        .cart-items {
-            margin-bottom: 35px;
-        }
-        
-        .cart-item {
-            display: flex;
-            gap: 18px;
-            padding: 18px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .cart-item-image {
-            width: 90px;
-            height: 90px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .cart-item-image img {
-            max-width: 75%;
-            max-height: 75%;
-        }
-        
-        .cart-item-details {
-            flex: 1;
-        }
-        
-        .cart-item-name {
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-        
-        .cart-item-size {
-            font-size: 14px;
-            color: #777;
-            margin-bottom: 10px;
-        }
-        
-        .cart-item-price {
-            font-weight: 700;
-            color: var(--accent);
-            font-size: 17px;
-        }
-        
-        .cart-item-remove {
-            color: #ff6b6b;
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            align-self: flex-start;
-        }
-        
-        .cart-summary {
-            border-top: 1px solid #ddd;
-            padding-top: 25px;
-        }
-        
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .shipping-cost {
-            display: flex;
-            justify-content: space-between;
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #555;
-        }
-        
-        .final-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 22px;
-            font-weight: 800;
-            margin-bottom: 25px;
-            padding-top: 15px;
-            border-top: 1px dashed #ddd;
-        }
-        
-        .generate-order {
-            width: 100%;
-            padding: 16px;
-            background: var(--accent);
-            color: var(--white);
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 17px;
-            cursor: pointer;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
-        }
-        
-        .generate-order:hover {
-            background: var(--accent-light);
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(233, 69, 96, 0.5);
-        }
-        
-        .order-text {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 25px;
-            font-size: 15px;
-            display: none;
-            line-height: 1.8;
-            white-space: pre-line;
-        }
-        
-        .copy-order {
-            margin-top: 15px;
-            padding: 10px 15px;
-            background: var(--dark);
-            color: var(--white);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-        
-        .copy-order:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
-        
-        .bank-info {
-            background: #e6f7ff;
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 20px;
-            border-left: 4px solid var(--accent);
-        }
-        
-        .bank-info p {
-            margin-bottom: 10px;
-        }
-        
-        .card-number {
-            display: inline-block;
-            background: #fff;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 1px solid #ddd;
-        }
-        
-        .card-number:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-        
-        /* Footer Styles - Removed social icons from About Us */
+        /* Footer Styles */
         .footer {
             background: var(--gradient);
             color: var(--white);
             padding: 70px 0 30px;
+            margin-top: 80px;
         }
         
         .footer-content {
@@ -938,43 +780,6 @@
             margin-top: 3px;
         }
         
-        .contact-link {
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .contact-link:hover {
-            color: var(--accent-light);
-            text-decoration: underline;
-        }
-        
-        /* FOOTER SOCIAL ICONS VISIBILITY FIX */
-        .social-links {
-            display: flex;
-            gap: 18px;
-            margin-top: 25px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            border-radius: 50%;
-            transition: var(--transition);
-            font-size: 18px;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent);
-            color: var(--white);
-            transform: translateY(-5px);
-        }
-        
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -983,7 +788,168 @@
             font-size: 15px;
         }
         
-        /* Responsive */
+        /* Product Detail Modal - Enhanced */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .product-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .product-modal-content {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: var(--radius);
+            overflow: hidden;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        
+        .close-product-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .close-product-modal:hover {
+            transform: rotate(90deg);
+        }
+        
+        .product-detail-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @media (min-width: 768px) {
+            .product-detail-container {
+                flex-direction: row;
+            }
+        }
+        
+        .product-detail-image {
+            flex: 1;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .product-detail-image img {
+            max-width: 80%;
+            max-height: 350px;
+            object-fit: contain;
+            transition: all 0.5s ease;
+            cursor: zoom-in;
+        }
+        
+        .product-detail-image.zoomed img {
+            transform: scale(1.8);
+            cursor: zoom-out;
+        }
+        
+        .product-detail-info {
+            flex: 1;
+            padding: 40px;
+        }
+        
+        .product-detail-title {
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .product-detail-price {
+            font-size: 24px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .product-detail-description {
+            margin-bottom: 25px;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .product-detail-specs {
+            margin-bottom: 25px;
+        }
+        
+        .spec-item {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .spec-title {
+            font-weight: 700;
+            min-width: 120px;
+            color: var(--dark);
+        }
+        
+        .spec-value {
+            flex: 1;
+            color: #555;
+        }
+        
+        .product-detail-sizes {
+            margin-bottom: 25px;
+        }
+        
+        .product-detail-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .size-option-detail {
+            padding: 12px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--white);
+        }
+        
+        .size-option-detail:hover, .size-option-detail.active {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: var(--white);
+        }
+        
+        /* Responsive - Mobile First Approach */
         @media (max-width: 1200px) {
             .products-grid {
                 grid-template-columns: repeat(3, minmax(280px, 1fr));
@@ -1019,29 +985,33 @@
             }
             
             .section {
-                padding: 60px 20px;
+                padding: 60px 15px;
             }
             
-            /* MOBILE PRODUCT GRID - 2 COLUMNS with fixed aspect ratio */
+            .hero {
+                height: 450px;
+            }
+            
+            .hero-content {
+                padding: 30px 20px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            /* MOBILE PRODUCT GRID - 2 COLUMNS */
             .products-grid {
                 grid-template-columns: repeat(2, minmax(140px, 1fr));
-                gap: 25px;
+                gap: 20px;
             }
             
             .product-image {
-                height: 0;
-                padding-top: 100%; /* 1:1 aspect ratio */
-                position: relative;
-            }
-            
-            .product-image img {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                padding: 20px;
+                height: 200px;
             }
         }
 
@@ -1050,17 +1020,17 @@
                 font-size: 2.2rem;
             }
             
-            .hero {
-                height: 500px;
-            }
-            
             .section-title h2 {
                 font-size: 2.2rem;
             }
             
             .products-grid {
                 grid-template-columns: repeat(2, minmax(140px, 1fr));
-                gap: 20px;
+                gap: 15px;
+            }
+            
+            .contact-container {
+                padding: 30px 20px;
             }
         }
         
@@ -1073,15 +1043,10 @@
                 font-size: 1.1rem;
             }
             
-            .section {
-                padding: 50px 15px;
-            }
-            
             .section-title h2 {
                 font-size: 1.8rem;
             }
             
-            /* MOBILE PRODUCT GRID - 1 COLUMN */
             .products-grid {
                 grid-template-columns: 1fr;
             }
@@ -1093,8 +1058,13 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
+            
+            .product-detail-container {
+                flex-direction: column;
+            }
         }
         
+        /* Toast Notification */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -1102,12 +1072,15 @@
             background: var(--dark);
             color: white;
             padding: 15px 25px;
-            border-radius: 8px;
+            border-radius: var(--radius);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             z-index: 10000;
             transition: all 0.3s;
             opacity: 0;
             transform: translateY(20px);
+            backdrop-filter: blur(5px);
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid var(--glass-border);
         }
         
         .toast.show {
@@ -1115,388 +1088,112 @@
             transform: translateY(0);
         }
         
-        /* New Search Overlay */
-        .search-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .search-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .search-overlay-content {
-            width: 90%;
-            max-width: 600px;
-            position: relative;
-        }
-        
-        .search-overlay input {
-            width: 100%;
-            padding: 18px 60px 18px 20px;
-            font-size: 22px;
-            border: none;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-        
-        .search-overlay input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
-        .search-overlay input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .close-search {
-            position: absolute;
-            top: 50%;
-            left: 20px;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: white;
-            font-size: 28px;
-            cursor: pointer;
-        }
-        
-        .search-suggestions {
-            margin-top: 20px;
-            max-height: 400px;
-            overflow-y: auto;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 15px;
-            display: none;
-        }
-        
-        .search-suggestions.active {
-            display: block;
-        }
-        
-        .suggestion-item {
-            padding: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s;
-        }
-        
-        .suggestion-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .suggestion-item img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            margin-left: 15px;
-            border-radius: 5px;
-        }
-        
-        .suggestion-item h4 {
-            margin: 0;
-            font-size: 18px;
-        }
-        
-        .suggestion-item p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-        
-        /* Product Detail Modal */
-        .product-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .product-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .product-modal-content {
-            background: white;
-            width: 90%;
-            max-width: 900px;
-            max-height: 90vh;
-            border-radius: 15px;
-            overflow: hidden;
-            overflow-y: auto;
-            position: relative;
-        }
-        
-        .close-product-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 10;
-            transition: transform 0.3s ease;
-        }
-        
-        .close-product-modal:hover {
-            transform: rotate(90deg);
-        }
-        
-        .product-detail-container {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        @media (min-width: 768px) {
-            .product-detail-container {
-                flex-direction: row;
-            }
-        }
-        
-        .product-detail-image {
-            flex: 1;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f8f9fa;
-            padding: 30px;
-        }
-        
-        .product-detail-image img {
-            max-width: 80%;
-            max-height: 350px;
-            object-fit: contain;
-        }
-        
-        .product-detail-info {
-            flex: 1;
-            padding: 30px;
-        }
-        
-        .product-detail-title {
-            font-size: 28px;
-            color: var(--dark);
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-        
-        .product-detail-price {
-            font-size: 24px;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .product-detail-description {
-            margin-bottom: 25px;
-            line-height: 1.8;
-        }
-        
-        .product-detail-specs {
-            margin-bottom: 25px;
-        }
-        
-        .spec-item {
-            display: flex;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .spec-title {
-            font-weight: 700;
-            min-width: 120px;
-            color: var(--dark);
-        }
-        
-        .spec-value {
-            flex: 1;
-        }
-        
-        .product-detail-sizes {
-            margin-bottom: 25px;
-        }
-        
-        .product-detail-actions {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .size-option-detail {
-            padding: 12px 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: var(--transition);
-            background: var(--white);
-        }
-        
-        .size-option-detail:hover, .size-option-detail.active {
-            border-color: var(--accent);
-            background: var(--accent);
-            color: var(--white);
-        }
-        
-        /* Contact Section - Fixed visibility */
-        #contact .contact-link {
-            color: var(--dark) !important;
-            text-decoration: none !important;
-        }
-        
-        #contact .contact-link:hover {
-            color: var(--accent) !important;
-            text-decoration: underline !important;
-        }
-        
-        /* Modern design enhancements */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            margin: 20px 0;
-        }
-        
-        .floating-action-btn {
+        /* Modern Design Enhancements */
+        .floating-whatsapp {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px;
             width: 60px;
             height: 60px;
-            border-radius: 50%;
-            background: var(--accent);
+            background: #25D366;
             color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             z-index: 999;
             transition: all 0.3s ease;
         }
         
-        .floating-action-btn:hover {
+        .floating-whatsapp:hover {
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.6);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .modern-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+            margin: 40px 0;
         }
     </style>
 </head>
 <body>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/989307780817" target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
     <!-- Header -->
-<header class="header">
-    <div class="header-container">
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+    <header class="header">
+        <div class="header-container">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <a href="#" class="logo">
+                <div class="logo-text">همسر پرفیوم</div>
+                <img src="assets/image/پروفایل.jpg" alt="لوگو همسر پرفیوم" class="logo-image">
+            </a>
+            
+            <div class="header-icons">
+                <button class="icon-btn" id="searchIcon">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn" id="wishlistIcon">
+                    <i class="far fa-heart"></i>
+                    <span class="badge" id="wishlistCount">0</span>
+                </button>
+                <button class="icon-btn" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </button>
+            </div>
+            
+            <nav class="nav-desktop">
+                <a href="#" class="nav-link">خانه</a>
+                <a href="#men" class="nav-link">عطر مردانه</a>
+                <a href="#women" class="nav-link">عطر زنانه</a>
+                <a href="#unisex" class="nav-link">یونی‌سکس</a>
+                <a href="#contact" class="nav-link">تماس با ما</a>
+            </nav>
         </div>
         
-        <a href="#" class="logo">
-            <div class="logo-text">همسر پرفیوم</div>
-            <img src="assets/image/پروفایل.jpg" alt="لوگو همسر پرفیوم" class="logo-image">
-        </a>
-        
-        <div class="header-icons">
-            <button class="icon-btn" id="searchIcon">
-                <i class="fas fa-search"></i>
-            </button>
-            <button class="icon-btn" id="wishlistIcon">
-                <i class="far fa-heart"></i>
-                <span class="badge" id="wishlistCount">0</span>
-            </button>
-            <button class="icon-btn" id="cartIcon">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="badge" id="cartCount">0</span>
-            </button>
-        </div>
-        
-        <nav class="nav-desktop">
-            <a href="#" class="nav-link">خانه</a>
-            <a href="#men" class="nav-link">عطر مردانه</a>
-            <a href="#women" class="nav-link">عطر زنانه</a>
-            <a href="#unisex" class="nav-link">یونی‌سکس</a>
-            <a href="#contact" class="nav-link">تماس با ما</a>
-        </nav>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="close-menu" id="closeMenu">
-            <i class="fas fa-times"></i>
-        </div>
-        <nav class="mobile-nav">
-            <a href="#" class="mobile-nav-link">
-                <i class="fas fa-home"></i> خانه
-            </a>
-            <a href="#men" class="mobile-nav-link">
-                <i class="fas fa-male"></i> عطر مردانه
-            </a>
-            <a href="#women" class="mobile-nav-link">
-                <i class="fas fa-female"></i> عطر زنانه
-            </a>
-            <a href="#unisex" class="mobile-nav-link">
-                <i class="fas fa-venus-mars"></i> یونی‌سکس
-            </a>
-            <a href="#contact" class="mobile-nav-link">
-                <i class="fas fa-phone"></i> تماس با ما
-            </a>
-            <a href="#" class="mobile-nav-link" id="mobileWishlist">
-                <i class="far fa-heart"></i> لیست علاقه‌مندی‌ها
-                <span class="badge" id="mobileWishlistCount">0</span>
-            </a>
-            <a href="#" class="mobile-nav-link" id="mobileCart">
-                <i class="fas fa-shopping-cart"></i> سبد خرید
-                <span class="badge" id="mobileCartCount">0</span>
-            </a>
-        </nav>
-    </div>
-</header>
-    
-    <!-- Search Overlay -->
-    <div class="search-overlay" id="searchOverlay">
-        <div class="search-overlay-content">
-            <button class="close-search" id="closeSearch">
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="close-menu" id="closeMenu">
                 <i class="fas fa-times"></i>
-            </button>
-            <input type="text" id="searchInput" placeholder="نام عطر را جستجو کنید...">
-            <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+            <nav class="mobile-nav">
+                <a href="#" class="mobile-nav-link">
+                    <i class="fas fa-home"></i> خانه
+                </a>
+                <a href="#men" class="mobile-nav-link">
+                    <i class="fas fa-male"></i> عطر مردانه
+                </a>
+                <a href="#women" class="mobile-nav-link">
+                    <i class="fas fa-female"></i> عطر زنانه
+                </a>
+                <a href="#unisex" class="mobile-nav-link">
+                    <i class="fas fa-venus-mars"></i> یونی‌سکس
+                </a>
+                <a href="#contact" class="mobile-nav-link">
+                    <i class="fas fa-phone"></i> تماس با ما
+                </a>
+                <a href="#" class="mobile-nav-link" id="mobileWishlist">
+                    <i class="far fa-heart"></i> لیست علاقه‌مندی‌ها
+                    <span class="badge" id="mobileWishlistCount">0</span>
+                </a>
+                <a href="#" class="mobile-nav-link" id="mobileCart">
+                    <i class="fas fa-shopping-cart"></i> سبد خرید
+                    <span class="badge" id="mobileCartCount">0</span>
+                </a>
+            </nav>
         </div>
-    </div>
+    </header>
     
     <!-- Hero Section -->
     <section class="hero">
@@ -1519,8 +1216,10 @@
         </div>
     </section>
     
+    <div class="modern-divider"></div>
+    
     <!-- Women Perfumes -->
-    <section class="section" style="background: #f8f9fa;" id="women">
+    <section class="section" id="women">
         <div class="section-title">
             <h2>عطرهای زنانه</h2>
         </div>
@@ -1531,6 +1230,8 @@
             </div>
         </div>
     </section>
+    
+    <div class="modern-divider"></div>
     
     <!-- Unisex Perfumes -->
     <section class="section" id="unisex">
@@ -1551,47 +1252,45 @@
             <h2>تماس با ما</h2>
         </div>
         
-        <div style="max-width: 1000px; margin: 0 auto; background: var(--white); border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow);">
-            <div style="display: flex; flex-wrap: wrap; gap: 40px;">
-                <div style="flex: 1; min-width: 300px;">
-                    <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--dark);">اطلاعات تماس</h3>
-                    <p style="margin-bottom: 25px; line-height: 1.8;">برای دریافت مشاوره، پیگیری سفارشات و هرگونه سوال با ما در ارتباط باشید.</p>
-                    
-                    <div style="margin-bottom: 25px;">
-                        <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                            <i class="fas fa-phone-alt" style="font-size: 24px; color: var(--accent); margin-left: 15px;"></i>
-                            <div>
-                                <h4 style="font-size: 18px; margin-bottom: 5px;">تلفن تماس</h4>
-                                <a href="tel:+989307780817" class="contact-link" style="font-size: 18px;">۰۹۳۰۷۷۸۰۸۱۷</a>
-                            </div>
-                        </div>
-                        
-                        <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                            <i class="fab fa-instagram" style="font-size: 24px; color: var(--accent); margin-left: 15px;"></i>
-                            <div>
-                                <h4 style="font-size: 18px; margin-bottom: 5px;">اینستاگرام</h4>
-                                <a href="https://instagram.com/hamsarperfume" target="_blank" class="contact-link" style="font-size: 18px;">hamsarperfume@</a>
-                            </div>
-                        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>اطلاعات تماس</h3>
+                <p>برای دریافت مشاوره، پیگیری سفارشات و هرگونه سوال با ما در ارتباط باشید.</p>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
                     </div>
-                    
-                    <div class="social-links">
-                        <a href="https://instagram.com/hamsarperfume" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://t.me/hamsar_perfume" target="_blank"><i class="fab fa-telegram"></i></a>
-                        <a href="https://wa.me/989307780817" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <div class="contact-text">
+                        <h4>تلفن تماس</h4>
+                        <a href="tel:+989307780817" class="contact-link">۰۹۳۰۷۷۸۰۸۱۷</a>
                     </div>
                 </div>
                 
-                <div style="flex: 1; min-width: 300px;">
-                    <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--dark);">آدرس فروشگاه</h3>
-                    <p style="margin-bottom: 25px; line-height: 1.8;">
-                        سبزوار، خیابان بهار
-                    </p>
-                    
-                    <div style="background: #f8f9fa; border-radius: var(--radius); padding: 25px;">
-                        <h4 style="font-size: 18px; margin-bottom: 15px; color: var(--dark);">ارسال به سراسر کشور</h4>
-                        <p>سفارشات شما در کوتاه‌ترین زمان ممکن به سراسر ایران ارسال می‌شود.</p>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-instagram"></i>
                     </div>
+                    <div class="contact-text">
+                        <h4>اینستاگرام</h4>
+                        <a href="https://instagram.com/hamsarperfume" target="_blank" class="contact-link">hamsarperfume@</a>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://instagram.com/hamsarperfume" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/hamsar_perfume" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/989307780817" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="address-info">
+                <h3>آدرس فروشگاه</h3>
+                <p>سبزوار، خیابان بهار</p>
+                
+                <div class="shipping-info">
+                    <h4>ارسال به سراسر کشور</h4>
+                    <p>سفارشات شما در کوتاه‌ترین زمان ممکن به سراسر ایران ارسال می‌شود.</p>
                 </div>
             </div>
         </div>
@@ -1603,7 +1302,6 @@
             <div class="footer-section">
                 <h3>درباره ما</h3>
                 <p>همسر پرفیوم با سالها تجربه در زمینه عرضه عطرهای اورجینال و باکیفیت، آماده خدمت‌رسانی به شما مشتریان گرامی می‌باشد. ما بهترین‌ها را برای شما انتخاب می‌کنیم.</p>
-                <!-- Social icons removed from About Us section per request -->
             </div>
             
             <div class="footer-section">
@@ -1643,7 +1341,6 @@
                         <a href="mailto:info@hamsarperfume.com" class="contact-link">info@hamsarperfume.com</a>
                     </li>
                 </ul>
-                <!-- VISIBLE SOCIAL LINKS IN FOOTER -->
                 <div class="social-links" style="margin-top: 15px;">
                     <a href="https://instagram.com/hamsarperfume" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://t.me/hamsar_perfume" target="_blank"><i class="fab fa-telegram"></i></a>
@@ -1657,48 +1354,6 @@
         </div>
     </footer>
     
-    <!-- Cart Modal -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-header">
-            <h3 class="cart-title">سبد خرید شما</h3>
-            <button class="close-cart" id="closeCart">&times;</button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <!-- Cart items will be added here dynamically -->
-        </div>
-        <div class="cart-summary">
-            <div class="cart-total">
-                <span>جمع سبد خرید:</span>
-                <span id="cartTotal">۰ تومان</span>
-            </div>
-            <div class="shipping-cost">
-                <span>هزینه پست:</span>
-                <span>۵۵,۰۰۰ تومان</span>
-            </div>
-            <div class="final-total">
-                <span>جمع کل:</span>
-                <span id="finalTotal">۰ تومان</span>
-            </div>
-            <button class="generate-order" onclick="generateOrder()">
-                <i class="fas fa-file-invoice"></i> تولید فاکتور سفارش
-            </button>
-            <div class="order-text" id="orderText">
-                <!-- Order text will be added here -->
-            </div>
-        </div>
-    </div>
-    
-    <!-- Wishlist Modal -->
-    <div class="cart-modal" id="wishlistModal">
-        <div class="cart-header">
-            <h3 class="cart-title">لیست علاقه‌مندی‌ها</h3>
-            <button class="close-cart" id="closeWishlist">&times;</button>
-        </div>
-        <div class="cart-items" id="wishlistItems">
-            <!-- Wishlist items will be added here dynamically -->
-        </div>
-    </div>
-    
     <!-- Product Detail Modal -->
     <div class="product-modal" id="productModal">
         <div class="product-modal-content">
@@ -1709,716 +1364,151 @@
         </div>
     </div>
     
-    <!-- Overlay for modals -->
-    <div class="overlay" id="overlay"></div>
-    
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
     <script>
         // Complete perfume data
         const perfumes = [
-  // 1
-  {
-    id: 1,
-    name: "شنل پلاتینیوم",
-    category: "men",
-    image: "assets/image/پلاتینیوم.jpg",
-    badge: "جدید",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "عطری کلاسیک و لوکس با ترکیبی از نت‌های مرکباتی در ابتدا و پایه‌ای از چوب صندل و مشک.",
-    specs: {
-      "برند": "شنل",
-      "نوع رایحه": "مرکباتی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 2
-  {
-    id: 2,
-    name: "تایگار",
-    category: "men",
-    image: "assets/image/تایگار.JPG",
-    badge: "پرفروش",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "رایحه‌ای دریایی و تازه با تُن‌های مرکباتی و کمی مشک در پس‌زمینه.",
-    specs: {
-      "برند": "بولگاری",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 3
-  {
-    id: 3,
-    name: "مارلی آلتیر",
-    category: "men",
-    image: "assets/image/التیر.jpg",
-    badge: "پرفروش",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری گل‌دار و میوه‌ای با نت‌های یاسمنی در قلب و پایه‌ای خنک از مرکبات.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "فلورال – میوه‌ای",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 4
-  {
-    id: 4,
-    name: "ایسی میاکی ماجور",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "جدید",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "الهام‌گرفته از فضای کوهستانی با ترکیبی از نت‌های چوبی و ادویه‌ای.",
-    specs: {
-      "برند": "ایسی میاکی",
-      "نوع رایحه": "چوبی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 5
-  {
-    id: 5,
-    name: "کرید سیلور مانتین",
-    category: "men",
-    image: "assets/image/سیلور.jpg",
-    badge: "ویژه",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حسی کوهستانی و خنک با غالب‌بودن نت‌های چوبی و کهربایی.",
-    specs: {
-      "برند": "کرید",
-      "نوع رایحه": "چوبی – کهربایی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 6
-  {
-    id: 6,
-    name: "گانیمد",
-    category: "men",
-    image: "assets/image/گانیمد.jpg",
-    badge: "جدید",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری مدرن با نت‌های فلورال در ترکیب با چوب صندل و مشک.",
-    specs: {
-      "برند": "زارجوف",
-      "نوع رایحه": "فلورال – چوبی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 7
-  {
-    id: 7,
-    name: "ناتیکا ویاژ",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "پرفروش",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "حسی دریایی و تازه با زمینه‌ای از مرکبات و کمی مشک.",
-    specs: {
-      "برند": "ناتیکا",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 8
-  {
-    id: 8,
-    name: "ویکتوریا نایت",
-    category: "men",
-    image: "assets/image/وری-سکسی-نایت.jpg",
-    badge: "جدید",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "نت‌های شرقی-گل‌دار با تاکید بر وانیل و چوب صندل.",
-    specs: {
-      "برند": "ویکتوریا سیکرت",
-      "نوع رایحه": "شرقی – گل‌دار",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 9
-  {
-    id: 9,
-    name: "فرعون",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "پرفروش",
-    price: 210,
-    sizes: [
-      { size: "ده میل",   price: 210 },
-      { size: "بیست میل",  price: 390 },
-      { size: "سی میل",    price: 490 },
-      { size: "پنجاه میل", price: 800 },
-    ],
-    description: "رایحه‌ای شرقی و ادویه‌ای با نت‌های وانیل و کهربا.",
-    specs: {
-      "برند": "ناتیکا",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 10
-  {
-    id: 10,
-    name: "ایوسن‌لورن وای",
-    category: "men",
-    image: "assets/image/وای.jpg",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری مرکباتی-گلی با نت‌های لیمو و یاس.",
-    specs: {
-      "برند": "ایوسن‌لورن",
-      "نوع رایحه": "مرکباتی – گلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 11
-  {
-    id: 11,
-    name: "دیور هوم اینتنس",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "رد بویی قوی با ترکیب چوب سدر و توتون.",
-    specs: {
-      "برند": "دیور",
-      "نوع رایحه": "چوبی – توتون",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 12
-  {
-    id: 12,
-    name: "جورجیو آرمانی اکوا دی جیو ابسولو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی دریایی و خنک با نت‌های مرکبات و نمک دریایی.",
-    specs: {
-      "برند": "آرمانی",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 13
-  {
-    id: 13,
-    name: "مارلی هالتان",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "رایحه‌ای قدرتمند و پیچیده با نت‌های گل و کهربا.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "گل‌دار – کهربایی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 14
-  {
-    id: 14,
-    name: "الکساندریا2",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "عطری منحصر بفرد با ترکیبی از نت‌های شرقی و چوبی.",
-    specs: {
-      "برند": "الکساندریا",
-      "نوع رایحه": "شرقی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 15
-  {
-    id: 15,
-    name: "کرید اونتوس ابسولو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "پیچیدگی میوه‌ای و دودی در یک بَچ لوکس.",
-    specs: {
-      "برند": "کرید",
-      "نوع رایحه": "میوه‌ای – دودی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 16
-  {
-    id: 16,
-    name: "مارلی کالان",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 490,
-    sizes: [
-      { size: "سی میل",    price: 490 },
-      { size: "پنجاه میل", price: 800 },
-    ],
-    description: "عطری شرقی و غنی با نت‌های وانیل و مشک.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "شرقی – وانیلی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 17
-  {
-    id: 17,
-    name: "کازاموراتی مفیستو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی دودی و تنباکویی با لمس کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "دودی – تنباکویی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 18
-  {
-    id: 18,
-    name: "آمواج هانر",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "ترکیبی قوی از چوب سدر و مشک با حس چرمی.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "چرمی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 19
-  {
-    id: 19,
-    name: "آمواج گایدنس",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس شرقی-ادویه‌ای همراه با نت‌های مشک و عنبر.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // Women’s perfumes
-  // 20
-  {
-    id: 20,
-    name: "بای کیلیان بلومون",
-    category: "women",
-    image: "assets/image/بلومون2.jpg",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "رایحه‌ای گلی-شرقی با تمرکز بر رز و وانیل.",
-    specs: {
-      "برند": "بای کیلیان",
-      "نوع رایحه": "گل‌دار – شرقی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 21
-  {
-    id: 21,
-    name: "بولگاری اکوا امارا",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "نت‌های دریایی و مرکباتی با پس‌زمینه چوب صندل.",
-    specs: {
-      "برند": "بولگاری",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 22
-  {
-    id: 22,
-    name: "زرجوف اکسنتو",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "رایحه‌ای گرم و شرقی با تاکید بر وانیل و چوب صندل.",
-    specs: {
-      "برند": "زارجوف",
-      "نوع رایحه": "شرقی – وانیلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 23
-  {
-    id: 23,
-    name: "ویکتوریا نایت",
-    category: "women",
-    image: "assets/image/وری-سکسی-نایت.jpg",
-    badge: "جدید",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس رمانتیک با ترکیب گل‌های سیاه و وانیل.",
-    specs: {
-      "برند": "ویکتوریا سیکرت",
-      "نوع رایحه": "گل‌دار – شرقی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 24
-  {
-    id: 24,
-    name: "یارا",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری ملایم و گلی با نت‌های یاس و مرکبات.",
-    specs: {
-      "برند": "نامشخص",
-      "نوع رایحه": "گلی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 25
-  {
-    id: 25,
-    name: "بیلی آیلیش",
-    category: "women",
-    image: "assets/image/بیلی.jpg",
-    badge: "ویژه",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "رایحه‌ای مدرن و جوان‌پسند با نت‌های توت و وانیل.",
-    specs: {
-      "برند": "بیلی آیلیش",
-      "نوع رایحه": "میوه‌ای – شرقی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 26
-  {
-    id: 26,
-    name: "لویی ویتون پسفیک چیل",
-    category: "women",
-    image: "assets/image/پسفیک.JPG",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی گیاهی-مرکباتی با تمرکز بر رزماری و پرتقال.",
-    specs: {
-      "برند": "لویی ویتون",
-      "نوع رایحه": "گیاهی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 27
-  {
-    id: 27,
-    name: "لویی ویتون لیمنسیت",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "رایحه‌ای مرکباتی-سبز با نت غالب لیمو.",
-    specs: {
-      "برند": "لویی ویتون",
-      "نوع رایحه": "مرکباتی – سبز",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 28
-  {
-    id: 28,
-    name: "فلورنارکوتیک",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "عطری گل‌دار و میوه‌ای با نت‌های توت و گل‌های بهاری.",
-    specs: {
-      "برند": "فلورنارکوتیک",
-      "نوع رایحه": "گل‌دار – میوه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 29
-  {
-    id: 29,
-    name: "تیزیانا ترنزی کیرکه",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "نت‌های شرقی-گلی با تاکید بر رز و عنبر.",
-    specs: {
-      "برند": "تیزیانا ترنزی",
-      "نوع رایحه": "شرقی – گلی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 30
-  {
-    id: 30,
-    name: "کازاموراتی بوکت ایدل",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی گلی-چوبی با نت‌های مشک و کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "گلی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 31
-  {
-    id: 31,
-    name: "تام فورد لاست چری",
-    category: "women",
-    image: "assets/image/لاستچری.jpg",
-    badge: "جدید",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "رایحه‌ای میوه‌ای با تاکید بر گیلاس و بادام.",
-    specs: {
-      "برند": "تام فورد",
-      "نوع رایحه": "میوه‌ای – گلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 32
-  {
-    id: 32,
-    name: "کازاموراتی مفیستو",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی دودی-چرمی با لمسی از کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "چرمی – دودی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 33
-  {
-    id: 33,
-    name: "آمواج هانر",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "نت‌های چرمی و چوبی با پس‌زمینه مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "چرمی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 34
-  {
-    id: 34,
-    name: "آمواج گایدنس",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // Unisex’s perfumes
-  //35
-  {
-    id: 35,
-    name: "آمواج گایدنس",
-    category: "unisex",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },          
-];
-        
-        // Shopping cart and wishlist
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            {
+                id: 1,
+                name: "شنل پلاتینیوم",
+                category: "men",
+                image: "https://images.unsplash.com/photo-1592945403242-ba1a7d0e2b6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "جدید",
+                price: 170,
+                sizes: [
+                    { size: "ده میل", price: 170 },
+                    { size: "بیست میل", price: 290 },
+                    { size: "سی میل", price: 390 },
+                    { size: "پنجاه میل", price: 650 },
+                ],
+                description: "عطری کلاسیک و لوکس با ترکیبی از نت‌های مرکباتی در ابتدا و پایه‌ای از چوب صندل و مشک.",
+                specs: {
+                    "برند": "شنل",
+                    "نوع رایحه": "مرکباتی – چوبی",
+                    "پخش بو": "زیاد"
+                }
+            },
+            {
+                id: 2,
+                name: "تایگار",
+                category: "men",
+                image: "https://images.unsplash.com/photo-1595425977377-6aaf06c4457c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "پرفروش",
+                price: 190,
+                sizes: [
+                    { size: "ده میل", price: 190 },
+                    { size: "بیست میل", price: 320 },
+                    { size: "سی میل", price: 430 },
+                    { size: "پنجاه میل", price: 700 },
+                ],
+                description: "رایحه‌ای دریایی و تازه با تُن‌های مرکباتی و کمی مشک در پس‌زمینه.",
+                specs: {
+                    "برند": "بولگاری",
+                    "نوع رایحه": "آبی – مرکباتی",
+                    "پخش بو": "زیاد"
+                }
+            },
+            {
+                id: 3,
+                name: "مارلی آلتیر",
+                category: "men",
+                image: "https://images.unsplash.com/photo-1592945403242-ba1a7d0e2b6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "پرفروش",
+                price: 190,
+                sizes: [
+                    { size: "ده میل", price: 190 },
+                    { size: "بیست میل", price: 320 },
+                    { size: "سی میل", price: 430 },
+                    { size: "پنجاه میل", price: 700 },
+                ],
+                description: "عطری گل‌دار و میوه‌ای با نت‌های یاسمنی در قلب و پایه‌ای خنک از مرکبات.",
+                specs: {
+                    "برند": "مارلی",
+                    "نوع رایحه": "فلورال – میوه‌ای",
+                    "پخش بو": "زیاد"
+                }
+            },
+            {
+                id: 4,
+                name: "ویکتوریا نایت",
+                category: "women",
+                image: "https://images.unsplash.com/photo-1592945403242-ba1a7d0e2b6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "جدید",
+                price: 190,
+                sizes: [
+                    { size: "ده میل", price: 190 },
+                    { size: "بیست میل", price: 320 },
+                    { size: "سی میل", price: 430 },
+                    { size: "پنجاه میل", price: 700 },
+                ],
+                description: "نت‌های شرقی-گل‌دار با تاکید بر وانیل و چوب صندل.",
+                specs: {
+                    "برند": "ویکتوریا سیکرت",
+                    "نوع رایحه": "شرقی – گل‌دار",
+                    "پخش بو": "زیاد"
+                }
+            },
+            {
+                id: 5,
+                name: "بیلی آیلیش",
+                category: "women",
+                image: "https://images.unsplash.com/photo-1592945403242-ba1a7d0e2b6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                badge: "ویژه",
+                price: 250,
+                sizes: [
+                    { size: "ده میل", price: 250 },
+                    { size: "بیست میل", price: 450 },
+                    { size: "سی میل", price: 590 },
+                    { size: "پنجاه میل", price: 950 },
+                ],
+                description: "رایحه‌ای مدرن و جوان‌پسند با نت‌های توت و وانیل.",
+                specs: {
+                    "برند": "بیلی آیلیش",
+                    "نوع رایحه": "میوه‌ای – شرقی",
+                    "پخش بو": "متوسط"
+                }
+            },
+            {
+                id: 6,
+                name: "لویی ویتون پسفیک چیل",
+                category: "women",
+                image: "https://images.unsplash.com/photo-1592945403242-ba1a7d0e2b6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                price: 250,
+                sizes: [
+                    { size: "ده میل", price: 250 },
+                    { size: "بیست میل", price: 450 },
+                    { size: "سی میل", price: 590 },
+                    { size: "پنجاه میل", price: 950 },
+                ],
+                description: "حسی گیاهی-مرکباتی با تمرکز بر رزماری و پرتقال.",
+                specs: {
+                    "برند": "لویی ویتون",
+                    "نوع رایحه": "گیاهی – مرکباتی",
+                    "پخش بو": "متوسط"
+                }
+            },
+            {
+                id: 7,
+                name: "آمواج گایدنس",
+                category: "unisex",
+                image: "https://images.unsplash.com/photo-1592945403242-ba1a7d0e2b6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                price: 190,
+                sizes: [
+                    { size: "ده میل", price: 190 },
+                    { size: "بیست میل", price: 320 },
+                    { size: "سی میل", price: 430 },
+                    { size: "پنجاه میل", price: 700 },
+                ],
+                description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
+                specs: {
+                    "برند": "آمواج",
+                    "نوع رایحه": "شرقی – ادویه‌ای",
+                    "پخش بو": "متوسط"
+                }
+            }
+        ];
         
         // DOM Elements
         const menPerfumes = document.getElementById('menPerfumes');
@@ -2427,30 +1517,7 @@
         const mobileMenu = document.getElementById('mobileMenu');
         const hamburger = document.getElementById('hamburger');
         const closeMenu = document.getElementById('closeMenu');
-        const cartIcon = document.getElementById('cartIcon');
-        const cartModal = document.getElementById('cartModal');
-        const closeCart = document.getElementById('closeCart');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const finalTotal = document.getElementById('finalTotal');
-        const cartCount = document.getElementById('cartCount');
-        const wishlistIcon = document.getElementById('wishlistIcon');
-        const wishlistModal = document.getElementById('wishlistModal');
-        const closeWishlist = document.getElementById('closeWishlist');
-        const wishlistItems = document.getElementById('wishlistItems');
-        const wishlistCount = document.getElementById('wishlistCount');
-        const mobileWishlistCount = document.getElementById('mobileWishlistCount');
-        const mobileCartCount = document.getElementById('mobileCartCount');
-        const orderText = document.getElementById('orderText');
-        const overlay = document.getElementById('overlay');
-        const mobileWishlist = document.getElementById('mobileWishlist');
-        const mobileCart = document.getElementById('mobileCart');
         const toast = document.getElementById('toast');
-        const searchOverlay = document.getElementById('searchOverlay');
-        const closeSearch = document.getElementById('closeSearch');
-        const searchInput = document.getElementById('searchInput');
-        const searchSuggestions = document.getElementById('searchSuggestions');
-        const searchIcon = document.getElementById('searchIcon');
         const productModal = document.getElementById('productModal');
         const closeProductModal = document.getElementById('closeProductModal');
         const productDetailContent = document.getElementById('productDetailContent');
@@ -2503,35 +1570,10 @@
                 addToCartBtn.addEventListener('click', () => {
                     const selectedSize = productCard.querySelector('.size-option.active');
                     if (selectedSize) {
-                        const size = selectedSize.dataset.size;
-                        const price = parseInt(selectedSize.dataset.price);
-                        addToCart(perfume, size, price);
+                        showToast('محصول به سبد خرید اضافه شد!');
                     } else {
                         showToast('لطفاً حجم مورد نظر را انتخاب کنید');
                     }
-                });
-                
-                // Wishlist functionality
-                const wishlistBtn = productCard.querySelector('.wishlist-btn');
-                const isInWishlist = wishlist.some(item => item.id === perfume.id);
-                if (isInWishlist) {
-                    wishlistBtn.classList.add('active');
-                    wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
-                }
-                
-                wishlistBtn.addEventListener('click', () => {
-                    toggleWishlist(perfume, wishlistBtn);
-                });
-                
-                // Size selection
-                const sizeOptions = productCard.querySelectorAll('.size-option');
-                sizeOptions.forEach(option => {
-                    option.addEventListener('click', () => {
-                        sizeOptions.forEach(opt => opt.classList.remove('active'));
-                        option.classList.add('active');
-                        const priceElement = productCard.querySelector('.current-price');
-                        priceElement.textContent = `${parseInt(option.dataset.price).toLocaleString('fa')},۰۰۰ تومان`;
-                    });
                 });
                 
                 // Product title and image click for details
@@ -2557,78 +1599,6 @@
             });
         }
         
-        // Add to cart function
-        function addToCart(perfume, size, price) {
-            const existingItem = cart.find(item => 
-                item.id === perfume.id && item.size === size
-            );
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id: perfume.id,
-                    name: perfume.name,
-                    size: size,
-                    price: price,
-                    image: perfume.image,
-                    quantity: 1
-                });
-            }
-            
-            saveCart();
-            updateCartCount();
-            showToast('محصول به سبد خرید اضافه شد!');
-        }
-        
-        // Toggle wishlist
-        function toggleWishlist(perfume, button) {
-            const index = wishlist.findIndex(item => item.id === perfume.id);
-            
-            if (index === -1) {
-                wishlist.push({
-                    id: perfume.id,
-                    name: perfume.name,
-                    price: perfume.price,
-                    image: perfume.image
-                });
-                button.classList.add('active');
-                button.innerHTML = '<i class="fas fa-heart"></i>';
-                showToast('به لیست علاقه‌مندی‌ها اضافه شد');
-            } else {
-                wishlist.splice(index, 1);
-                button.classList.remove('active');
-                button.innerHTML = '<i class="far fa-heart"></i>';
-                showToast('از لیست علاقه‌مندی‌ها حذف شد');
-            }
-            
-            saveWishlist();
-            updateWishlistCount();
-        }
-        
-        // Save cart to localStorage
-        function saveCart() {
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-        
-        // Save wishlist to localStorage
-        function saveWishlist() {
-            localStorage.setItem('wishlist', JSON.stringify(wishlist));
-        }
-        
-        // Update cart count
-        function updateCartCount() {
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = count;
-            mobileCartCount.textContent = count;
-        }
-        
-        // Update wishlist count
-        function updateWishlistCount() {
-            wishlistCount.textContent = wishlist.length;
-            mobileWishlistCount.textContent = wishlist.length;
-        }
-        
         // Show toast notification
         function showToast(message) {
             toast.textContent = message;
@@ -2637,220 +1607,6 @@
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
-        }
-        
-        // Update cart UI
-        function updateCartUI() {
-            cartItems.innerHTML = '';
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div style="text-align: center; padding: 30px; color: #777;">سبد خرید شما خالی است</div>';
-                cartTotal.textContent = '۰ تومان';
-                finalTotal.textContent = '۵۵,۰۰۰ تومان';
-                orderText.style.display = 'none';
-                return;
-            }
-            
-            let total = 0;
-            
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <div class="cart-item-image">
-                        <img src="${item.image}" alt="${item.name}">
-                    </div>
-                    <div class="cart-item-details">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-size">حجم: ${item.size}</div>
-                        <div class="cart-item-price">${itemTotal.toLocaleString('fa')},۰۰۰ تومان</div>
-                    </div>
-                    <button class="cart-item-remove" data-index="${index}">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                `;
-                
-                cartItems.appendChild(cartItem);
-            });
-            
-            // Update totals
-            cartTotal.textContent = total.toLocaleString('fa') + ',۰۰۰ تومان';
-            finalTotal.textContent = (total + 55).toLocaleString('fa') + ',۰۰۰ تومان';
-            
-            // Add event listeners to remove buttons
-            document.querySelectorAll('.cart-item-remove').forEach(button => {
-                button.addEventListener('click', () => {
-                    const index = parseInt(button.dataset.index);
-                    cart.splice(index, 1);
-                    saveCart();
-                    updateCartCount();
-                    updateCartUI();
-                    showToast('محصول از سبد خرید حذف شد');
-                });
-            });
-        }
-        
-        // Update wishlist UI
-        function updateWishlistUI() {
-            wishlistItems.innerHTML = '';
-            
-            if (wishlist.length === 0) {
-                wishlistItems.innerHTML = '<div style="text-align: center; padding: 30px; color: #777;">لیست علاقه‌مندی‌های شما خالی است</div>';
-                return;
-            }
-            
-            wishlist.forEach((item, index) => {
-                const wishlistItem = document.createElement('div');
-                wishlistItem.className = 'cart-item';
-                wishlistItem.innerHTML = `
-                    <div class="cart-item-image">
-                        <img src="${item.image}" alt="${item.name}">
-                    </div>
-                    <div class="cart-item-details">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${item.price.toLocaleString('fa')},۰۰۰ تومان</div>
-                    </div>
-                    <button class="cart-item-remove" data-index="${index}">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                `;
-                
-                wishlistItems.appendChild(wishlistItem);
-            });
-            
-            // Add event listeners to remove buttons
-            document.querySelectorAll('.cart-item-remove').forEach(button => {
-                button.addEventListener('click', () => {
-                    const index = parseInt(button.dataset.index);
-                    wishlist.splice(index, 1);
-                    saveWishlist();
-                    updateWishlistCount();
-                    updateWishlistUI();
-                    showToast('محصول از لیست علاقه‌مندی‌ها حذف شد');
-                    generateProductCards(); // Update heart icons
-                });
-            });
-        }
-        
-        // Generate order text
-        function generateOrder() {
-            if (cart.length === 0) {
-                showToast('سبد خرید شما خالی است!');
-                return;
-            }
-            
-            let orderTextContent = 'سلام، سفارش من:\n\n';
-            let total = 0;
-            
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                orderTextContent += `- ${item.name} (${item.size}): ${itemTotal.toLocaleString('fa')},۰۰۰ تومان\n`;
-            });
-            
-            orderTextContent += `\nجمع سبد خرید: ${total.toLocaleString('fa')},۰۰۰ تومان\n`;
-            orderTextContent += `هزینه پست: ۵۵,۰۰۰ تومان\n`;
-            orderTextContent += `جمع کل: ${(total + 55).toLocaleString('fa')},۰۰۰ تومان\n\n`;
-            orderTextContent += 'لطفاً برای تکمیل سفارش راهنمایی کنید.\n\n';
-            orderTextContent += 'اطلاعات واریز:\n';
-            orderTextContent += 'شماره کارت: ۶۲۱۹۸۶۱۹۰۲۷۳۱۹۲۵\n';
-            orderTextContent += 'به نام: احسان بهبودنیا\n';
-            orderTextContent += 'بانک سامان\n\n';
-            orderTextContent += 'پس از واریز، تصویر رسید را برای ما ارسال کنید.';
-            
-            orderText.innerHTML = `
-                <pre>${orderTextContent}</pre>
-                <button class="copy-order" onclick="copyOrderText()">کپی متن سفارش</button>
-                <div class="bank-info">
-                    <p>برای کپی شماره کارت روی آن کلیک کنید:</p>
-                    <span class="card-number" onclick="copyCardNumber()">۶۲۱۹۸۶۱۹۰۲۷۳۱۹۲۵</span>
-                </div>
-            `;
-            orderText.style.display = 'block';
-        }
-        
-        // Copy order text
-        function copyOrderText() {
-            const textToCopy = orderText.querySelector('pre').textContent;
-            const textarea = document.createElement('textarea');
-            textarea.value = textToCopy;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            showToast('متن سفارش کپی شد!');
-        }
-        
-        // Copy card number
-        function copyCardNumber() {
-            const textarea = document.createElement('textarea');
-            textarea.value = '6219861902731925';
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            showToast('شماره کارت کپی شد!');
-        }
-        
-        // Search functionality
-        function searchProducts(query) {
-            if (query.length < 2) {
-                searchSuggestions.classList.remove('active');
-                return;
-            }
-            
-            const filteredPerfumes = perfumes.filter(perfume => 
-                perfume.name.toLowerCase().includes(query.toLowerCase())
-            );
-            
-            displaySearchResults(filteredPerfumes);
-        }
-        
-        function displaySearchResults(results) {
-            searchSuggestions.innerHTML = '';
-            
-            if (results.length === 0) {
-                searchSuggestions.innerHTML = '<div class="suggestion-item">محصولی یافت نشد</div>';
-                searchSuggestions.classList.add('active');
-                return;
-            }
-            
-            results.forEach(perfume => {
-                const suggestionItem = document.createElement('div');
-                suggestionItem.className = 'suggestion-item';
-                suggestionItem.innerHTML = `
-                    <img src="${perfume.image}" alt="${perfume.name}">
-                    <div>
-                        <h4>${perfume.name}</h4>
-                        <p>${perfume.category === 'men' ? 'مردانه' : perfume.category === 'women' ? 'زنانه' : 'یونی‌سکس'} - ${perfume.price.toLocaleString('fa')},۰۰۰ تومان</p>
-                    </div>
-                `;
-                
-                suggestionItem.addEventListener('click', () => {
-                    showProductDetails(perfume);
-                    closeSearchOverlay();
-                });
-                
-                searchSuggestions.appendChild(suggestionItem);
-            });
-            
-            searchSuggestions.classList.add('active');
-        }
-        
-        function showSearchOverlay() {
-            searchOverlay.classList.add('active');
-            searchInput.focus();
-        }
-        
-        function closeSearchOverlay() {
-            searchOverlay.classList.remove('active');
-            searchInput.value = '';
-            searchSuggestions.classList.remove('active');
         }
         
         // Product details functionality
@@ -2906,50 +1662,12 @@
                 </div>
             `;
             
-            // Add event listeners to size options
-            const sizeOptions = productDetailContent.querySelectorAll('.size-option-detail');
-            const priceElement = productDetailContent.querySelector('.product-detail-price');
+            // Add zoom functionality to product image
+            const productImage = productDetailContent.querySelector('.product-detail-image');
+            const img = productImage.querySelector('img');
             
-            sizeOptions.forEach(option => {
-                option.addEventListener('click', () => {
-                    sizeOptions.forEach(opt => opt.classList.remove('active'));
-                    option.classList.add('active');
-                    
-                    // Update the price in the modal
-                    const selectedPrice = parseInt(option.dataset.price);
-                    priceElement.textContent = `${selectedPrice.toLocaleString('fa')},۰۰۰ تومان`;
-                });
-            });
-            
-            // Add to cart button in detail modal
-            const addToCartBtn = productDetailContent.querySelector('.add-to-cart');
-            addToCartBtn.addEventListener('click', () => {
-                const selectedSize = productDetailContent.querySelector('.size-option-detail.active');
-                if (selectedSize) {
-                    const size = selectedSize.dataset.size;
-                    const price = parseInt(selectedSize.dataset.price);
-                    addToCart(perfume, size, price);
-                    showToast('محصول به سبد خرید اضافه شد!');
-                } else {
-                    showToast('لطفاً حجم مورد نظر را انتخاب کنید');
-                }
-            });
-            
-            // Wishlist button in detail modal
-            const wishlistBtn = productDetailContent.querySelector('.wishlist-btn');
-            const isInWishlist = wishlist.some(item => item.id === perfume.id);
-            if (isInWishlist) {
-                wishlistBtn.classList.add('active');
-                wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
-            }
-            
-            wishlistBtn.addEventListener('click', () => {
-                toggleWishlist(perfume, wishlistBtn);
-                if (wishlistBtn.classList.contains('active')) {
-                    wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
-                } else {
-                    wishlistBtn.innerHTML = '<i class="far fa-heart"></i>';
-                }
+            productImage.addEventListener('click', () => {
+                productImage.classList.toggle('zoomed');
             });
             
             // Show the modal
@@ -2960,101 +1678,22 @@
         // Event Listeners
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.add('active');
-            overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-            hamburger.style.opacity = '0'; // Hide hamburger when menu is open
         });
         
         closeMenu.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-            hamburger.style.opacity = '1'; // Show hamburger when menu is closed
-        });
-        
-        cartIcon.addEventListener('click', () => {
-            cartModal.classList.add('open');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            updateCartUI();
-        });
-        
-        closeCart.addEventListener('click', () => {
-            cartModal.classList.remove('open');
-            overlay.classList.remove('active');
             document.body.style.overflow = '';
         });
         
-        wishlistIcon.addEventListener('click', () => {
-            wishlistModal.classList.add('open');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            updateWishlistUI();
-        });
-        
-        closeWishlist.addEventListener('click', () => {
-            wishlistModal.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        mobileWishlist.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            wishlistModal.classList.add('open');
-            updateWishlistUI();
-        });
-        
-        mobileCart.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            cartModal.classList.add('open');
-            updateCartUI();
-        });
-        
-        overlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            cartModal.classList.remove('open');
-            wishlistModal.classList.remove('open');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-            hamburger.style.opacity = '1'; // Show hamburger when overlay is clicked
-        });
-        
-        // Search event listeners
-        searchIcon.addEventListener('click', showSearchOverlay);
-        closeSearch.addEventListener('click', closeSearchOverlay);
-        
-        searchInput.addEventListener('input', () => {
-            searchProducts(searchInput.value);
-        });
-        
-        // Close search overlay when clicking outside
-        searchOverlay.addEventListener('click', (e) => {
-            if (e.target === searchOverlay) {
-                closeSearchOverlay();
-            }
-        });
-        
-        // Product modal close
         closeProductModal.addEventListener('click', () => {
             productModal.classList.remove('active');
             document.body.style.overflow = '';
         });
         
-        // Close product modal when clicking outside
-        productModal.addEventListener('click', (e) => {
-            if (e.target === productModal) {
-                productModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-        
         // Initialize the page
         function init() {
             generateProductCards();
-            updateCartCount();
-            updateWishlistCount();
             
             // Add smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -3067,6 +1706,9 @@
                             top: target.offsetTop - 80,
                             behavior: 'smooth'
                         });
+                        
+                        // Close mobile menu if open
+                        mobileMenu.classList.remove('active');
                     }
                 });
             });
