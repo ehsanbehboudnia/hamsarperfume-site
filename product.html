@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>جزئیات محصول</title>
+  <link rel="stylesheet" href="styles.css"><!-- اگر فایل استایل جدا دارید -->
+</head>
+<body>
+  <div id="productDetail" class="section"></div>
+
+  <script>
+    // آرایه perfumes را اینجا هم کپی کنید یا آن را از یک فایل مشترک import کنید
+    const perfumes = [ /* ... همان داده‌های index.html ... */ ];
+
+    // خواندن id از URL
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+    const perfume = perfumes.find(p => p.id === id);
+
+    const container = document.getElementById('productDetail');
+    if (!perfume) {
+      container.innerHTML = '<p>محصول یافت نشد.</p>';
+    } else {
+      container.innerHTML = `
+        <h2>${perfume.name}</h2>
+        <img src="${perfume.image}" alt="${perfume.name}" style="max-width:300px;">
+        <p>دسته: ${perfume.category === 'men' ? 'مردانه' : perfume.category === 'women' ? 'زنانه' : 'یونی‌سکس'}</p>
+        <p>قیمت پایه: ${perfume.price},۰۰۰ تومان</p>
+        <h3>توضیحات کوتاه</h3>
+        <p>اینجا توضیحات خلاصهٔ عطر را بنویسید. مثلاً نت‌های آغازین، میانی و پایانی.</p>
+        <button onclick="document.getElementById('moreInfo').classList.toggle('hidden')">
+          جزئیات بیشتر ▼
+        </button>
+        <div id="moreInfo" class="hidden">
+          <p>نت‌های آغازین: مرکبات و...</p>
+          <p>نت‌های میانی: گل یاسمین و...</p>
+          <p>نت‌های پایه: مشک و...</p>
+        </div>
+        <a href="index.html" style="display:inline-block;margin-top:20px;">← بازگشت به فروشگاه</a>
+      `;
+    }
+  </script>
+  <style>
+    .hidden { display: none; }
+    /* اضافه‌کردن استایل‌های ساده یا بارگذاری styles.css */
+  </style>
+</body>
+</html>
