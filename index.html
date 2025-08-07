@@ -664,6 +664,13 @@
             font-family: 'Vazirmatn', Tahoma, sans-serif;
         }
         
+        .order-text pre {
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            white-space: pre-wrap;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+        
         .copy-order {
             margin-top: 15px;
             padding: 10px 15px;
@@ -710,6 +717,46 @@
             background: var(--accent);
             color: white;
             border-color: var(--accent);
+        }
+        
+        .social-order-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .social-order-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-order-btn.telegram {
+            background: #0088cc;
+        }
+        
+        .social-order-btn.instagram {
+            background: #e1306c;
+        }
+        
+        .social-order-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .order-instruction {
+            background: rgba(255, 255, 230, 0.5);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
         
         /* Footer Styles */
@@ -911,7 +958,8 @@
         
         @media (max-width: 576px) {
             .products-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, minmax(140px, 1fr));
+                gap: 12px;
             }
             
             .header-container {
@@ -1423,9 +1471,6 @@
         
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
-            <div class="close-menu" id="closeMenu">
-                <i class="fas fa-times"></i>
-            </div>
             <nav class="mobile-nav">
                 <a href="#" class="mobile-nav-link">
                     <i class="fas fa-home"></i> خانه
@@ -2407,7 +2452,6 @@
         const unisexPerfumes = document.getElementById('unisexPerfumes');
         const mobileMenu = document.getElementById('mobileMenu');
         const hamburger = document.getElementById('hamburger');
-        const closeMenu = document.getElementById('closeMenu');
         const cartIcon = document.getElementById('cartIcon');
         const cartModal = document.getElementById('cartModal');
         const closeCart = document.getElementById('closeCart');
@@ -2766,18 +2810,29 @@
             orderTextContent += `\nجمع سبد خرید: ${total.toLocaleString('fa')},۰۰۰ تومان\n`;
             orderTextContent += `هزینه پست: ۵۵,۰۰۰ تومان\n`;
             orderTextContent += `جمع کل: ${(total + 55).toLocaleString('fa')},۰۰۰ تومان\n\n`;
-            orderTextContent += 'لطفاً متن بالا را کپی کرده و برای ما در تلگرام یا اینستاگرام ارسال کنید:\n';
-            orderTextContent += 'تلگرام: https://t.me/hamsar_perfume\n';
-            orderTextContent += 'اینستاگرام: https://instagram.com/hamsarperfume\n\n';
+            orderTextContent += 'لطفاً متن سفارش را کپی کرده و از طریق دکمه‌های زیر برای ما ارسال کنید\n\n';
+            orderTextContent += 'پس از واریز، تصویر رسید را برای ما ارسال کنید.\n\n';
             orderTextContent += 'اطلاعات واریز:\n';
             orderTextContent += 'شماره کارت: ۶۲۱۹۸۶۱۹۰۲۷۳۱۹۲۵\n';
             orderTextContent += 'به نام: احسان بهبودنیا\n';
-            orderTextContent += 'بانک سامان\n\n';
-            orderTextContent += 'پس از واریز، تصویر رسید را برای ما ارسال کنید.';
+            orderTextContent += 'بانک سامان';
             
             orderText.innerHTML = `
+                <div class="order-instruction">
+                    لطفاً متن سفارش را کپی کرده و از طریق دکمه‌های زیر برای ما ارسال کنید
+                </div>
                 <pre>${orderTextContent}</pre>
-                <button class="copy-order" onclick="copyOrderText()">کپی متن سفارش</button>
+                <div class="social-order-buttons">
+                    <a href="https://t.me/hamsar_perfume" target="_blank" class="social-order-btn telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://instagram.com/hamsarperfume" target="_blank" class="social-order-btn instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <button class="copy-order" onclick="copyOrderText()">
+                    <i class="far fa-copy"></i> کپی متن سفارش
+                </button>
                 <div class="bank-info">
                     <p>برای کپی شماره کارت روی آن کلیک کنید:</p>
                     <span class="card-number" onclick="copyCardNumber()">۶۲۱۹۸۶۱۹۰۲۷۳۱۹۲۵</span>
@@ -2788,7 +2843,8 @@
         
         // Copy order text
         function copyOrderText() {
-            const textToCopy = orderText.querySelector('pre').textContent;
+            const preElement = orderText.querySelector('pre');
+            const textToCopy = preElement.textContent;
             const textarea = document.createElement('textarea');
             textarea.value = textToCopy;
             document.body.appendChild(textarea);
@@ -2985,13 +3041,6 @@
             mobileMenu.classList.toggle('active');
             overlay.classList.toggle('active');
             document.body.style.overflow = 'hidden';
-        });
-        
-        closeMenu.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
         });
         
         cartIcon.addEventListener('click', () => {
