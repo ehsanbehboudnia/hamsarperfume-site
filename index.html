@@ -11,46 +11,55 @@
             font-family: 'Peima';
             font-weight: 100;
             src: url('https://drive.google.com/uc?export=download&id=1dn55CYeLvmEFkkzoobXAYsWoW7_r08Ir') format('woff2');
+            font-display: swap;
         }
         @font-face {
             font-family: 'Peima';
             font-weight: 200;
             src: url('https://drive.google.com/uc?export=download&id=1C8OKPRuXmwvKZ_pk9opHsWvTC8lE8dPj') format('woff2');
+            font-display: swap;
         }
         @font-face {
             font-family: 'Peima';
             font-weight: 300;
             src: url('https://drive.google.com/uc?export=download&id=1a4jLFU4Hvo-UNjJF6FwLEqNnJ5q5T1Pj') format('woff2');
+            font-display: swap;
         }
         @font-face {
             font-family: 'Peima';
             font-weight: 400;
             src: url('https://drive.google.com/uc?export=download&id=1j3HxI2KAQMSM9oEHKlgX73A_5_tx1qaL') format('woff2');
+            font-display: swap;
         }
         @font-face {
             font-family: 'Peima';
             font-weight: 500;
             src: url('https://drive.google.com/uc?export=download&id=1JqPwRh8fu5VfJUU6RVo7lpCLwQssFtaS') format('woff2');
+            font-display: swap;
         }
         @font-face {
             font-family: 'Peima';
             font-weight: 600;
             src: url('https://drive.google.com/uc?export=download&id=1w2zjDDSFPgiepEHK2ASZZVEoAe7xg1Hq') format('woff2');
+            font-display: swap;
         }
         @font-face {
             font-family: 'Peima';
             font-weight: 700;
             src: url('https://drive.google.com/uc?export=download&id=1lWXjy-aw3qnf9as7lrckyavwQT2dlp8r') format('woff2');
+            font-display: swap;
         }
         @font-face {
             font-family: 'Peima';
             font-weight: 800;
             src: url('https://drive.google.com/uc?export=download&id=1nitY6mum2d6pQuiQPPFIn-4QIAq3ax2Z') format('woff2');
+            font-display: swap;
         }
         @font-face {
             font-family: 'Peima';
             font-weight: 900;
             src: url('https://drive.google.com/uc?export=download&id=1GVkN5068TdCKpWvWmWA-Utb4jvWYS26g') format('woff2');
+            font-display: swap;
         }
 
         /* CSS changes for header layout */
@@ -577,29 +586,69 @@
             color: var(--accent);
         }
         
-        .size-options {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+        .size-selector {
+            position: relative;
+            margin: 15px 0;
+            width: 100%;
         }
         
-        .size-option {
-            padding: 8px 15px;
+        .selected-size {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(224, 224, 224, 0.5);
             border-radius: 8px;
-            font-size: 14px;
             cursor: pointer;
-            transition: var(--transition);
-            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
             backdrop-filter: blur(5px);
         }
         
-        .size-option:hover, .size-option.active {
+        .selected-size:hover {
             border-color: var(--accent);
-            background: var(--accent);
-            color: var(--white);
+        }
+        
+        .size-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-top: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        
+        .size-dropdown.active {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .size-option {
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .size-option:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .size-option .price {
+            color: var(--accent);
+            font-weight: 600;
         }
         
         .product-price {
@@ -1099,11 +1148,6 @@
                 font-size: 16px;
             }
             
-            .size-option {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-            
             .current-price {
                 font-size: 18px;
             }
@@ -1532,6 +1576,76 @@
         .overlay.active {
             opacity: 1;
             visibility: visible;
+        }
+        
+        /* Hide close search button */
+        #closeSearch {
+            display: none;
+        }
+        
+        /* New size selector */
+        .size-selector-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .size-selector-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(224, 224, 224, 0.5);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .size-selector-header:hover {
+            border-color: var(--accent);
+        }
+        
+        .size-selector-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-top: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        
+        .size-selector-options.active {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .size-option-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .size-option-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .size-option-item .option-price {
+            color: var(--accent);
+            font-weight: 600;
         }
     </style>
 </head>
@@ -2587,7 +2701,12 @@
                 // Generate size options HTML
                 let sizeOptionsHTML = '';
                 perfume.sizes.forEach(size => {
-                    sizeOptionsHTML += `<div class="size-option" data-size="${size.size}" data-price="${size.price}">${size.size}</div>`;
+                    sizeOptionsHTML += `
+                        <div class="size-option-item" data-size="${size.size}" data-price="${size.price}">
+                            <span>${size.size}</span>
+                            <span class="option-price">${size.price.toLocaleString('fa')},۰۰۰ تومان</span>
+                        </div>
+                    `;
                 });
                 
                 productCard.innerHTML = `
@@ -2598,8 +2717,14 @@
                     <div class="product-info">
                         <h3 class="product-title">${perfume.name}</h3>
                         
-                        <div class="size-options">
-                            ${sizeOptionsHTML}
+                        <div class="size-selector-box">
+                            <div class="size-selector-header">
+                                <span>انتخاب حجم</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="size-selector-options">
+                                ${sizeOptionsHTML}
+                            </div>
                         </div>
                         
                         <div class="product-price">
@@ -2620,7 +2745,7 @@
                 // Add to cart functionality
                 const addToCartBtn = productCard.querySelector('.add-to-cart');
                 addToCartBtn.addEventListener('click', () => {
-                    const selectedSize = productCard.querySelector('.size-option.active');
+                    const selectedSize = productCard.querySelector('.size-option-item.selected');
                     if (selectedSize) {
                         const size = selectedSize.dataset.size;
                         const price = parseInt(selectedSize.dataset.price);
@@ -2643,13 +2768,33 @@
                 });
                 
                 // Size selection
-                const sizeOptions = productCard.querySelectorAll('.size-option');
+                const sizeSelectorHeader = productCard.querySelector('.size-selector-header');
+                const sizeOptions = productCard.querySelectorAll('.size-option-item');
+                
+                sizeSelectorHeader.addEventListener('click', () => {
+                    const options = productCard.querySelector('.size-selector-options');
+                    options.classList.toggle('active');
+                });
+                
                 sizeOptions.forEach(option => {
                     option.addEventListener('click', () => {
-                        sizeOptions.forEach(opt => opt.classList.remove('active'));
-                        option.classList.add('active');
+                        // Remove selected class from all options
+                        sizeOptions.forEach(opt => opt.classList.remove('selected'));
+                        
+                        // Add selected class to clicked option
+                        option.classList.add('selected');
+                        
+                        // Update the header text
+                        const size = option.dataset.size;
+                        sizeSelectorHeader.querySelector('span').textContent = size;
+                        
+                        // Update the price
                         const priceElement = productCard.querySelector('.current-price');
                         priceElement.textContent = `${parseInt(option.dataset.price).toLocaleString('fa')},۰۰۰ تومان`;
+                        
+                        // Close the dropdown
+                        const options = productCard.querySelector('.size-selector-options');
+                        options.classList.remove('active');
                     });
                 });
                 
@@ -2981,7 +3126,12 @@
             // Generate size options HTML for detail modal
             let sizeOptionsHTML = '';
             perfume.sizes.forEach(size => {
-                sizeOptionsHTML += `<div class="size-option-detail" data-size="${size.size}" data-price="${size.price}">${size.size}</div>`;
+                sizeOptionsHTML += `
+                    <div class="size-option-item" data-size="${size.size}" data-price="${size.price}">
+                        <span>${size.size}</span>
+                        <span class="option-price">${size.price.toLocaleString('fa')},۰۰۰ تومان</span>
+                    </div>
+                `;
             });
             
             // Generate specs HTML
@@ -3013,8 +3163,14 @@
                     
                     <div class="product-detail-sizes">
                         <h3>حجم محصول:</h3>
-                        <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
-                            ${sizeOptionsHTML}
+                        <div class="size-selector-box">
+                            <div class="size-selector-header">
+                                <span>انتخاب حجم</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="size-selector-options">
+                                ${sizeOptionsHTML}
+                            </div>
                         </div>
                     </div>
                     
@@ -3029,25 +3185,41 @@
                 </div>
             `;
             
-            // Add event listeners to size options
-            const sizeOptions = productDetailContent.querySelectorAll('.size-option-detail');
+            // Add event listeners to size options in modal
+            const sizeSelectorHeader = productDetailContent.querySelector('.size-selector-header');
+            const sizeOptions = productDetailContent.querySelectorAll('.size-option-item');
             const priceElement = productDetailContent.querySelector('.product-detail-price');
+            
+            sizeSelectorHeader.addEventListener('click', () => {
+                const options = productDetailContent.querySelector('.size-selector-options');
+                options.classList.toggle('active');
+            });
             
             sizeOptions.forEach(option => {
                 option.addEventListener('click', () => {
-                    sizeOptions.forEach(opt => opt.classList.remove('active'));
-                    option.classList.add('active');
+                    // Remove selected class from all options
+                    sizeOptions.forEach(opt => opt.classList.remove('selected'));
                     
-                    // Update the price in the modal
-                    const selectedPrice = parseInt(option.dataset.price);
-                    priceElement.textContent = `${selectedPrice.toLocaleString('fa')},۰۰۰ تومان`;
+                    // Add selected class to clicked option
+                    option.classList.add('selected');
+                    
+                    // Update the header text
+                    const size = option.dataset.size;
+                    sizeSelectorHeader.querySelector('span').textContent = size;
+                    
+                    // Update the price
+                    priceElement.textContent = `${parseInt(option.dataset.price).toLocaleString('fa')},۰۰۰ تومان`;
+                    
+                    // Close the dropdown
+                    const options = productDetailContent.querySelector('.size-selector-options');
+                    options.classList.remove('active');
                 });
             });
             
             // Add to cart button in detail modal
             const addToCartBtn = productDetailContent.querySelector('.add-to-cart');
             addToCartBtn.addEventListener('click', () => {
-                const selectedSize = productDetailContent.querySelector('.size-option-detail.active');
+                const selectedSize = productDetailContent.querySelector('.size-option-item.selected');
                 if (selectedSize) {
                     const size = selectedSize.dataset.size;
                     const price = parseInt(selectedSize.dataset.price);
