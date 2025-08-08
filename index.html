@@ -6,6 +6,8 @@
     <title>همسر پرفیوم - فروشگاه تخصصی عطرهای لاکچری</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <!-- Firebase Auth UI -->
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     <style>
         :root {
             --primary: #1a1a2e;
@@ -142,6 +144,20 @@
             transform: translateY(-2px);
         }
         
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid var(--accent-light);
+            transition: var(--transition);
+        }
+        
+        .user-avatar:hover {
+            transform: scale(1.1);
+        }
+        
         .badge {
             position: absolute;
             top: -8px;
@@ -259,6 +275,292 @@
         
         .close-menu:hover {
             transform: rotate(90deg);
+        }
+        
+        /* Auth Modal */
+        .auth-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .auth-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .auth-modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: var(--blur);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        
+        .close-auth-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .auth-tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #777;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .auth-tab.active {
+            color: var(--accent);
+        }
+        
+        .auth-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .auth-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .auth-form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .auth-form-input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: var(--transition);
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+        }
+        
+        .auth-form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
+        }
+        
+        .auth-form-button {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+        
+        .auth-form-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+        
+        .auth-form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+        
+        .auth-form-footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #777;
+        }
+        
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+        
+        .auth-divider::before {
+            margin-left: 15px;
+        }
+        
+        .auth-divider::after {
+            margin-right: 15px;
+        }
+        
+        .auth-social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .auth-social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid #ddd;
+            background: white;
+            color: #333;
+        }
+        
+        .auth-social-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .auth-social-button i {
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        
+        .auth-social-button.google {
+            color: #DB4437;
+            border-color: #DB4437;
+        }
+        
+        /* User Dropdown */
+        .user-dropdown {
+            position: relative;
+        }
+        
+        .user-dropdown-menu {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .user-dropdown:hover .user-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .user-dropdown-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .user-dropdown-item:first-child {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        
+        .user-dropdown-item:last-child {
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        
+        .user-dropdown-item:hover {
+            background: #f8f9fa;
+            color: var(--accent);
+        }
+        
+        .user-dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* User Profile */
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .user-profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-light);
+        }
+        
+        .user-profile-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .user-profile-info p {
+            color: #777;
+            font-size: 14px;
         }
         
         /* Hero Section - Enhanced with Glass Effect */
@@ -1458,6 +1760,27 @@
                     <i class="fas fa-shopping-cart"></i>
                     <span class="badge" id="cartCount">0</span>
                 </button>
+                
+                <!-- User Avatar (hidden by default) -->
+                <div class="user-dropdown" id="userDropdown" style="display: none;">
+                    <img src="https://via.placeholder.com/150" alt="پروفایل کاربر" class="user-avatar" id="userAvatar">
+                    <div class="user-dropdown-menu">
+                        <a href="#" class="user-dropdown-item" id="profileLink">
+                            <i class="fas fa-user"></i> پروفایل
+                        </a>
+                        <a href="#" class="user-dropdown-item" id="ordersLink">
+                            <i class="fas fa-shopping-bag"></i> سفارشات
+                        </a>
+                        <a href="#" class="user-dropdown-item" id="logoutLink">
+                            <i class="fas fa-sign-out-alt"></i> خروج
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Login Button (shown by default) -->
+                <button class="icon-btn" id="loginBtn">
+                    <i class="fas fa-user"></i>
+                </button>
             </div>
             
             <nav class="nav-desktop">
@@ -1495,9 +1818,92 @@
                     <i class="fas fa-shopping-cart"></i> سبد خرید
                     <span class="badge" id="mobileCartCount">0</span>
                 </a>
+                <a href="#" class="mobile-nav-link" id="mobileProfile" style="display: none;">
+                    <i class="fas fa-user"></i> پروفایل
+                </a>
+                <a href="#" class="mobile-nav-link" id="mobileLogout" style="display: none;">
+                    <i class="fas fa-sign-out-alt"></i> خروج
+                </a>
+                <a href="#" class="mobile-nav-link" id="mobileLogin">
+                    <i class="fas fa-sign-in-alt"></i> ورود / ثبت‌نام
+                </a>
             </nav>
         </div>
     </header>
+    
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal-content">
+            <button class="close-auth-modal" id="closeAuthModal">&times;</button>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-tab="login">ورود</div>
+                <div class="auth-tab" data-tab="register">ثبت‌نام</div>
+            </div>
+            
+            <div class="auth-form active" id="loginForm">
+                <div class="auth-form-group">
+                    <label for="loginEmail" class="auth-form-label">ایمیل</label>
+                    <input type="email" id="loginEmail" class="auth-form-input" placeholder="example@example.com">
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="loginPassword" class="auth-form-label">رمز عبور</label>
+                    <input type="password" id="loginPassword" class="auth-form-input" placeholder="رمز عبور">
+                </div>
+                
+                <button class="auth-form-button" id="loginButton">ورود به حساب</button>
+                
+                <div class="auth-form-footer">
+                    حساب کاربری ندارید؟ <a href="#" id="showRegister">ثبت‌نام کنید</a>
+                </div>
+                
+                <div class="auth-divider">یا</div>
+                
+                <div class="auth-social-buttons">
+                    <button class="auth-social-button google" id="googleLogin">
+                        <i class="fab fa-google"></i> ورود با گوگل
+                    </button>
+                </div>
+            </div>
+            
+            <div class="auth-form" id="registerForm">
+                <div class="auth-form-group">
+                    <label for="registerName" class="auth-form-label">نام کامل</label>
+                    <input type="text" id="registerName" class="auth-form-input" placeholder="نام و نام خانوادگی">
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="registerEmail" class="auth-form-label">ایمیل</label>
+                    <input type="email" id="registerEmail" class="auth-form-input" placeholder="example@example.com">
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="registerPassword" class="auth-form-label">رمز عبور</label>
+                    <input type="password" id="registerPassword" class="auth-form-input" placeholder="حداقل ۶ کاراکتر">
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="registerConfirmPassword" class="auth-form-label">تکرار رمز عبور</label>
+                    <input type="password" id="registerConfirmPassword" class="auth-form-input" placeholder="تکرار رمز عبور">
+                </div>
+                
+                <button class="auth-form-button" id="registerButton">ثبت‌نام</button>
+                
+                <div class="auth-form-footer">
+                    حساب کاربری دارید؟ <a href="#" id="showLogin">وارد شوید</a>
+                </div>
+                
+                <div class="auth-divider">یا</div>
+                
+                <div class="auth-social-buttons">
+                    <button class="auth-social-button google" id="googleRegister">
+                        <i class="fab fa-google"></i> ثبت‌نام با گوگل
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- Search Header -->
     <div class="search-header" id="searchHeader">
@@ -1739,10 +2145,52 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+
     <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDEXAMPLEEXAMPLEEXAMPLEEXAMPLE",
+            authDomain: "hamsarperfume-example.firebaseapp.com",
+            projectId: "hamsarperfume-example",
+            storageBucket: "hamsarperfume-example.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:abcdef1234567890abcdef"
+        };
+        
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        
+        // Firebase UI config
+        const uiConfig = {
+            signInSuccessUrl: '#',
+            signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID
+            ],
+            tosUrl: '#',
+            privacyPolicyUrl: '#',
+            signInFlow: 'popup',
+            credentialHelper: firebaseui.auth.CredentialHelper.NONE,
+            callbacks: {
+                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                    // User successfully signed in
+                    handleAuthStateChanged(authResult.user);
+                    return false; // Don't redirect
+                }
+            }
+        };
+        
+        // Initialize Firebase UI
+        const ui = new firebaseui.auth.AuthUI(auth);
+        
         // Complete perfume data
         const perfumes = [
-  // 1
+      // 1
   {
     id: 1,
     name: "شنل پلاتینیوم",
@@ -2457,12 +2905,13 @@
     }
   },          
 ];
-        
+  
         // Shopping cart and wishlist
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
         let selectedPerfume = null;
         let selectedSize = null;
+        let currentUser = null;
         
         // DOM Elements
         const menPerfumes = document.getElementById('menPerfumes');
@@ -2502,6 +2951,28 @@
         const closeSearch = document.getElementById('closeSearch');
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
+        
+        // Auth elements
+        const authModal = document.getElementById('authModal');
+        const closeAuthModal = document.getElementById('closeAuthModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const userDropdown = document.getElementById('userDropdown');
+        const userAvatar = document.getElementById('userAvatar');
+        const profileLink = document.getElementById('profileLink');
+        const ordersLink = document.getElementById('ordersLink');
+        const logoutLink = document.getElementById('logoutLink');
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const loginButton = document.getElementById('loginButton');
+        const registerButton = document.getElementById('registerButton');
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+        const googleLogin = document.getElementById('googleLogin');
+        const googleRegister = document.getElementById('googleRegister');
+        const mobileProfile = document.getElementById('mobileProfile');
+        const mobileLogout = document.getElementById('mobileLogout');
+        const mobileLogin = document.getElementById('mobileLogin');
         
         // Generate product cards
         function generateProductCards() {
@@ -3053,6 +3524,52 @@
             });
         }
         
+        // Handle auth state changes
+        function handleAuthStateChanged(user) {
+            currentUser = user;
+            
+            if (user) {
+                // User is signed in
+                loginBtn.style.display = 'none';
+                userDropdown.style.display = 'block';
+                mobileLogin.style.display = 'none';
+                mobileProfile.style.display = 'flex';
+                mobileLogout.style.display = 'flex';
+                
+                // Update user avatar
+                if (user.photoURL) {
+                    userAvatar.src = user.photoURL;
+                } else {
+                    // Default avatar with first letter of display name
+                    const name = user.displayName || 'کاربر';
+                    userAvatar.src = `https://ui-avatars.com/api/?name=${name}&background=random&color=fff`;
+                }
+                
+                // Close auth modal if open
+                authModal.classList.remove('active');
+                overlay.classList.remove('active');
+                
+                showToast(`خوش آمدید ${user.displayName || 'کاربر'}!`);
+            } else {
+                // User is signed out
+                loginBtn.style.display = 'block';
+                userDropdown.style.display = 'none';
+                mobileLogin.style.display = 'flex';
+                mobileProfile.style.display = 'none';
+                mobileLogout.style.display = 'none';
+            }
+        }
+        
+        // Sign out user
+        function signOut() {
+            auth.signOut().then(() => {
+                showToast('با موفقیت خارج شدید');
+            }).catch((error) => {
+                showToast('خطا در خروج از حساب');
+                console.error(error);
+            });
+        }
+        
         // Event Listeners
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
@@ -3129,12 +3646,168 @@
             }
         });
         
+        // Auth modal toggle
+        loginBtn.addEventListener('click', () => {
+            authModal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeAuthModal.addEventListener('click', () => {
+            authModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Switch between login and register tabs
+        authTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.dataset.tab;
+                
+                authTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'none';
+                
+                if (tabId === 'login') {
+                    loginForm.style.display = 'block';
+                } else {
+                    registerForm.style.display = 'block';
+                }
+            });
+        });
+        
+        // Show register form
+        showRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('.auth-tab[data-tab="register"]').click();
+        });
+        
+        // Show login form
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('.auth-tab[data-tab="login"]').click();
+        });
+        
+        // Login with email/password
+        loginButton.addEventListener('click', () => {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!email || !password) {
+                showToast('لطفاً ایمیل و رمز عبور را وارد کنید');
+                return;
+            }
+            
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Handled in auth state change
+                })
+                .catch((error) => {
+                    showToast('خطا در ورود: ' + error.message);
+                });
+        });
+        
+        // Register with email/password
+        registerButton.addEventListener('click', () => {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            
+            if (!name || !email || !password || !confirmPassword) {
+                showToast('لطفاً تمام فیلدها را پر کنید');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showToast('رمز عبور و تکرار آن مطابقت ندارند');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showToast('رمز عبور باید حداقل ۶ کاراکتر باشد');
+                return;
+            }
+            
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Update user profile
+                    return userCredential.user.updateProfile({
+                        displayName: name
+                    });
+                })
+                .then(() => {
+                    showToast('حساب کاربری با موفقیت ایجاد شد!');
+                    document.querySelector('.auth-tab[data-tab="login"]').click();
+                })
+                .catch((error) => {
+                    showToast('خطا در ثبت‌نام: ' + error.message);
+                });
+        });
+        
+        // Login with Google
+        googleLogin.addEventListener('click', () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    // Handled in auth state change
+                })
+                .catch((error) => {
+                    showToast('خطا در ورود با گوگل: ' + error.message);
+                });
+        });
+        
+        // Register with Google
+        googleRegister.addEventListener('click', () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    // Handled in auth state change
+                })
+                .catch((error) => {
+                    showToast('خطا در ثبت‌نام با گوگل: ' + error.message);
+                });
+        });
+        
+        // Logout
+        logoutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            signOut();
+        });
+        
+        mobileLogout.addEventListener('click', (e) => {
+            e.preventDefault();
+            signOut();
+        });
+        
+        // Profile link
+        profileLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showToast('پروفایل کاربر در حال توسعه است');
+        });
+        
+        mobileProfile.addEventListener('click', (e) => {
+            e.preventDefault();
+            showToast('پروفایل کاربر در حال توسعه است');
+        });
+        
+        // Orders link
+        ordersLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showToast('سفارشات کاربر در حال توسعه است');
+        });
+        
         // Initialize the page
         function init() {
             generateProductCards();
             updateCartCount();
             updateWishlistCount();
             setupSearch();
+            
+            // Set up auth state listener
+            auth.onAuthStateChanged(handleAuthStateChanged);
             
             // Add smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
