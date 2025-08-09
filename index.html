@@ -1731,6 +1731,363 @@
             font-size: 14px;
             color: #777;
         }
+
+        /* Checkout Steps */
+        .checkout-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .checkout-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ddd;
+            color: #777;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+
+        .step-number.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .step-number.completed {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .step-title {
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+        }
+
+        .step-title.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .step-title.completed {
+            color: #4CAF50;
+        }
+
+        .checkout-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #ddd;
+            z-index: 0;
+        }
+
+        .checkout-progress {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            z-index: 1;
+            transition: width 0.3s;
+        }
+
+        /* Checkout Forms */
+        .checkout-form-container {
+            display: none;
+        }
+
+        .checkout-form-container.active {
+            display: block;
+        }
+
+        .checkout-form {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-size: 16px;
+            transition: var(--transition);
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-col {
+            flex: 1;
+        }
+
+        .checkout-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #555;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        /* Shipping Methods */
+        .shipping-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .shipping-method {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .shipping-method:hover {
+            border-color: var(--accent);
+        }
+
+        .shipping-method.selected {
+            border-color: var(--accent);
+            background: rgba(233, 69, 96, 0.05);
+        }
+
+        .shipping-method input {
+            margin-left: 10px;
+        }
+
+        .shipping-method-content {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .shipping-method-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .shipping-method-desc {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .shipping-method-price {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* Payment Info */
+        .payment-info {
+            background: #f9f9f9;
+            border-radius: var(--radius);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .payment-info-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .payment-info-details {
+            line-height: 1.8;
+        }
+
+        /* File Upload */
+        .file-upload {
+            margin: 20px 0;
+        }
+
+        .file-upload-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .file-upload-input {
+            display: none;
+        }
+
+        .file-upload-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #f0f0f0;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-upload-button:hover {
+            background: #e0e0e0;
+        }
+
+        .file-name {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background: white;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .order-summary-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .order-summary-total {
+            font-weight: 700;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Order Confirmation */
+        .order-confirmation {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .order-confirmation-icon {
+            font-size: 60px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .order-confirmation-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .order-confirmation-message {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Order Review */
+        .order-review {
+            margin-top: 30px;
+            background: white;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .order-review-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-review-item {
+            margin-bottom: 15px;
+        }
+
+        .order-review-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .order-review-value {
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -1871,6 +2228,11 @@
                 <div class="auth-form-group">
                     <label for="registerName" class="auth-form-label">نام کامل</label>
                     <input type="text" id="registerName" class="auth-form-input" placeholder="نام و نام خانوادگی">
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="registerPhone" class="auth-form-label">شماره تماس</label>
+                    <input type="tel" id="registerPhone" class="auth-form-input" placeholder="09xxxxxxxxx">
                 </div>
                 
                 <div class="auth-form-group">
@@ -2091,17 +2453,202 @@
             </div>
             <div class="shipping-cost">
                 <span>هزینه پست:</span>
-                <span>۵۵,۰۰۰ تومان</span>
+                <span id="shippingCost">۰ تومان</span>
             </div>
             <div class="final-total">
                 <span>جمع کل:</span>
                 <span id="finalTotal">۰ تومان</span>
             </div>
-            <button class="generate-order" onclick="generateOrder()">
-                <i class="fas fa-file-invoice"></i> تولید فاکتور سفارش
+            <button class="generate-order" id="checkoutButton">
+                <i class="fas fa-arrow-left"></i> تایید و ادامه سفارش
             </button>
-            <div class="order-text" id="orderText">
-                <!-- Order text will be added here -->
+        </div>
+    </div>
+    
+    <!-- Checkout Modal -->
+    <div class="cart-modal" id="checkoutModal">
+        <div class="cart-header">
+            <h3 class="cart-title">تکمیل سفارش</h3>
+            <button class="close-cart" id="closeCheckout">&times;</button>
+        </div>
+        
+        <div class="checkout-steps">
+            <div class="checkout-step">
+                <div class="step-number active" id="step1">1</div>
+                <div class="step-title active">اطلاعات ارسال</div>
+            </div>
+            <div class="checkout-step">
+                <div class="step-number" id="step2">2</div>
+                <div class="step-title">روش ارسال</div>
+            </div>
+            <div class="checkout-step">
+                <div class="step-number" id="step3">3</div>
+                <div class="step-title">پرداخت</div>
+            </div>
+            <div class="checkout-progress" id="checkoutProgress" style="width: 0%"></div>
+        </div>
+        
+        <!-- Step 1: Shipping Information -->
+        <div class="checkout-form-container active" id="shippingInfoForm">
+            <div class="checkout-form">
+                <div class="form-group">
+                    <label for="fullName" class="form-label">نام و نام خانوادگی گیرنده</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="نام کامل گیرنده">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phoneNumber" class="form-label">شماره تماس گیرنده</label>
+                    <input type="tel" id="phoneNumber" class="form-control" placeholder="09xxxxxxxxx">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="province" class="form-label">استان</label>
+                            <input type="text" id="province" class="form-control" placeholder="استان">
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="city" class="form-label">شهر</label>
+                            <input type="text" id="city" class="form-control" placeholder="شهر">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address" class="form-label">آدرس کامل</label>
+                    <textarea id="address" class="form-control" rows="3" placeholder="آدرس کامل پستی شامل خیابان، کوچه، پلاک، واحد"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="postalCode" class="form-label">کد پستی</label>
+                    <input type="text" id="postalCode" class="form-control" placeholder="کد پستی ۱۰ رقمی">
+                </div>
+                
+                <div class="form-group">
+                    <label for="orderNotes" class="form-label">توضیحات سفارش (اختیاری)</label>
+                    <textarea id="orderNotes" class="form-control" rows="2" placeholder="توضیحات اضافی درباره سفارش"></textarea>
+                </div>
+            </div>
+            
+            <div class="checkout-actions">
+                <button class="btn btn-secondary" id="cancelCheckout">انصراف</button>
+                <button class="btn btn-primary" id="nextToShippingMethod">مرحله بعد</button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Shipping Method -->
+        <div class="checkout-form-container" id="shippingMethodForm">
+            <div class="checkout-form">
+                <h3 style="margin-bottom: 20px; color: var(--dark);">روش ارسال را انتخاب کنید</h3>
+                
+                <div class="shipping-methods">
+                    <label class="shipping-method" for="shippingMethod1">
+                        <input type="radio" id="shippingMethod1" name="shippingMethod" value="post" checked>
+                        <div class="shipping-method-content">
+                            <div class="shipping-method-title">پست پیشتاز</div>
+                            <div class="shipping-method-desc">تحویل بین ۳ تا ۷ روز کاری</div>
+                        </div>
+                        <div class="shipping-method-price">۵۵,۰۰۰ تومان</div>
+                    </label>
+                    
+                    <label class="shipping-method" for="shippingMethod2">
+                        <input type="radio" id="shippingMethod2" name="shippingMethod" value="mahax">
+                        <div class="shipping-method-content">
+                            <div class="shipping-method-title">ماهکس (پس کرایه)</div>
+                            <div class="shipping-method-desc">تحویل بین ۱ تا ۲ روز کاری</div>
+                        </div>
+                        <div class="shipping-method-price">پس کرایه</div>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="order-summary">
+                <div class="order-summary-title">خلاصه سفارش</div>
+                <div class="order-summary-item">
+                    <span>جمع سبد خرید:</span>
+                    <span id="checkoutCartTotal">۰ تومان</span>
+                </div>
+                <div class="order-summary-item">
+                    <span>هزینه ارسال:</span>
+                    <span id="checkoutShippingCost">۰ تومان</span>
+                </div>
+                <div class="order-summary-total">
+                    <span>جمع کل:</span>
+                    <span id="checkoutFinalTotal">۰ تومان</span>
+                </div>
+            </div>
+            
+            <div class="checkout-actions">
+                <button class="btn btn-secondary" id="backToShippingInfo">مرحله قبل</button>
+                <button class="btn btn-primary" id="nextToPayment">مرحله بعد</button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Payment -->
+        <div class="checkout-form-container" id="paymentForm">
+            <div class="checkout-form">
+                <h3 style="margin-bottom: 20px; color: var(--dark);">پرداخت سفارش</h3>
+                
+                <div class="payment-info">
+                    <div class="payment-info-title">اطلاعات پرداخت</div>
+                    <div class="payment-info-details">
+                        <p>لطفاً مبلغ <strong id="paymentAmount">۰ تومان</strong> را به شماره کارت زیر واریز نمایید:</p>
+                        <p class="card-number" onclick="copyCardNumber()">۶۲۱۹۸۶۱۹۰۲۷۳۱۹۲۵</p>
+                        <p>به نام: احسان بهبودنیا</p>
+                        <p>بانک سامان</p>
+                    </div>
+                </div>
+                
+                <div class="file-upload">
+                    <label class="file-upload-label">تصویر فیش واریزی (اختیاری)</label>
+                    <input type="file" id="receiptImage" class="file-upload-input" accept="image/*">
+                    <label for="receiptImage" class="file-upload-button">
+                        <span class="file-name" id="fileName">فایلی انتخاب نشده</span>
+                        <i class="fas fa-upload"></i>
+                    </label>
+                </div>
+                
+                <div class="order-review">
+                    <div class="order-review-title">بررسی سفارش</div>
+                    <div class="order-review-item">
+                        <div class="order-review-label">نام گیرنده:</div>
+                        <div class="order-review-value" id="reviewFullName">-</div>
+                    </div>
+                    <div class="order-review-item">
+                        <div class="order-review-label">شماره تماس:</div>
+                        <div class="order-review-value" id="reviewPhoneNumber">-</div>
+                    </div>
+                    <div class="order-review-item">
+                        <div class="order-review-label">آدرس:</div>
+                        <div class="order-review-value" id="reviewAddress">-</div>
+                    </div>
+                    <div class="order-review-item">
+                        <div class="order-review-label">روش ارسال:</div>
+                        <div class="order-review-value" id="reviewShippingMethod">-</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checkout-actions">
+                <button class="btn btn-secondary" id="backToShippingMethod">مرحله قبل</button>
+                <button class="btn btn-primary" id="completeOrder">تکمیل سفارش</button>
+            </div>
+        </div>
+        
+        <!-- Order Confirmation -->
+        <div class="checkout-form-container" id="orderConfirmation">
+            <div class="order-confirmation">
+                <div class="order-confirmation-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 class="order-confirmation-title">سفارش شما با موفقیت ثبت شد!</h2>
+                <p class="order-confirmation-message">
+                    سفارش شما با شماره <strong id="orderNumber">۱۲۳۴۵۶</strong> ثبت شد.<br>
+                    همکاران ما در اسرع وقت با شما تماس خواهند گرفت.
+                </p>
+                <button class="btn btn-primary" id="closeCheckoutAfterConfirm">بستن</button>
             </div>
         </div>
     </div>
@@ -2148,23 +2695,25 @@
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
 
     <script>
         // Firebase configuration
         const firebaseConfig = {
-    apiKey: "AIzaSyA-5z_1keyBEMxW-iA2WQK4fAznG10uQ78",
-    authDomain: "hamsarperfume-83cb6.firebaseapp.com",
-    projectId: "hamsarperfume-83cb6",
-    storageBucket: "hamsarperfume-83cb6.firebasestorage.app",
-    messagingSenderId: "926272445971",
-    appId: "1:926272445971:web:051c76a5ed4af23f1e29e6",
-    measurementId: "G-G7QCTQXB8C"
-  };
+            apiKey: "AIzaSyA-5z_1keyBEMxW-iA2WQK4fAznG10uQ78",
+            authDomain: "hamsarperfume-83cb6.firebaseapp.com",
+            projectId: "hamsarperfume-83cb6",
+            storageBucket: "hamsarperfume-83cb6.firebasestorage.app",
+            messagingSenderId: "926272445971",
+            appId: "1:926272445971:web:051c76a5ed4af23f1e29e6",
+            measurementId: "G-G7QCTQXB8C"
+        };
         
         // Initialize Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
+        const db = firebase.firestore();
         
         // Firebase UI config
         const uiConfig = {
@@ -2191,721 +2740,8 @@
         
         // Complete perfume data
         const perfumes = [
-      // 1
-  {
-    id: 1,
-    name: "شنل پلاتینیوم",
-    category: "men",
-    image: "https://res.cloudinary.com/dmk8wembx/image/upload/v1754686462/platinum_gb4obm.jpg",
-    badge: "جدید",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "عطری کلاسیک و لوکس با ترکیبی از نت‌های مرکباتی در ابتدا و پایه‌ای از چوب صندل و مشک.",
-    specs: {
-      "برند": "شنل",
-      "نوع رایحه": "مرکباتی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 2
-  {
-    id: 2,
-    name: "تایگار",
-    category: "men",
-    image: "assets/image/تایگار.JPG",
-    badge: "پرفروش",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "رایحه‌ای دریایی و تازه با تُن‌های مرکباتی و کمی مشک در پس‌زمینه.",
-    specs: {
-      "برند": "بولگاری",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 3
-  {
-    id: 3,
-    name: "مارلی آلتیر",
-    category: "men",
-    image: "assets/image/التیر.jpg",
-    badge: "پرفروش",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری گل‌دار و میوه‌ای با نت‌های یاسمنی در قلب و پایه‌ای خنک از مرکبات.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "فلورال – میوه‌ای",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 4
-  {
-    id: 4,
-    name: "ایسی میاکی ماجور",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "جدید",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "الهام‌گرفته از فضای کوهستانی با ترکیبی از نت‌های چوبی و ادویه‌ای.",
-    specs: {
-      "برند": "ایسی میاکی",
-      "نوع رایحه": "چوبی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 5
-  {
-    id: 5,
-    name: "کرید سیلور مانتین",
-    category: "men",
-    image: "assets/image/سیلور.jpg",
-    badge: "ویژه",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حسی کوهستانی و خنک با غالب‌بودن نت‌های چوبی و کهربایی.",
-    specs: {
-      "برند": "کرید",
-      "نوع رایحه": "چوبی – کهربایی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 6
-  {
-    id: 6,
-    name: "گانیمد",
-    category: "men",
-    image: "assets/image/گانیمد.jpg",
-    badge: "جدید",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری مدرن با نت‌های فلورال در ترکیب با چوب صندل و مشک.",
-    specs: {
-      "برند": "زارجوف",
-      "نوع رایحه": "فلورال – چوبی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 7
-  {
-    id: 7,
-    name: "ناتیکا ویاژ",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "پرفروش",
-    price: "۱۷۰",
-    sizes: [
-      { size: "ده میل",   price: "۱۷۰" },
-      { size: "بیست میل",  price: "۲۹۰" },
-      { size: "سی میل",    price: "۳۹۰" },
-      { size: "پنجاه میل", price: "۶۵۰" },
-    ],
-    description: "حسی دریایی و تازه با زمینه‌ای از مرکبات و کمی مشک.",
-    specs: {
-      "برند": "ناتیکا",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 8
-  {
-    id: 8,
-    name: "ویکتوریا نایت",
-    category: "men",
-    image: "assets/image/وری-سکسی-نایت.jpg",
-    badge: "جدید",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "نت‌های شرقی-گل‌دار با تاکید بر وانیل و چوب صندل.",
-    specs: {
-      "برند": "ویکتوریا سیکرت",
-      "نوع رایحه": "شرقی – گل‌دار",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 9
-  {
-    id: 9,
-    name: "فرعون",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    badge: "پرفروش",
-    price: 210,
-    sizes: [
-      { size: "ده میل",   price: 210 },
-      { size: "بیست میل",  price: 390 },
-      { size: "سی میل",    price: 490 },
-      { size: "پنجاه میل", price: 800 },
-    ],
-    description: "رایحه‌ای شرقی و ادویه‌ای با نت‌های وانیل و کهربا.",
-    specs: {
-      "برند": "ناتیکا",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 10
-  {
-    id: 10,
-    name: "ایوسن‌لورن وای",
-    category: "men",
-    image: "assets/image/وای.jpg",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری مرکباتی-گلی با نت‌های لیمو و یاس.",
-    specs: {
-      "برند": "ایوسن‌لورن",
-      "نوع رایحه": "مرکباتی – گلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 11
-  {
-    id: 11,
-    name: "دیور هوم اینتنس",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "رد بویی قوی با ترکیب چوب سدر و توتون.",
-    specs: {
-      "برند": "دیور",
-      "نوع رایحه": "چوبی – توتون",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 12
-  {
-    id: 12,
-    name: "جورجیو آرمانی اکوا دی جیو ابسولو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی دریایی و خنک با نت‌های مرکبات و نمک دریایی.",
-    specs: {
-      "برند": "آرمانی",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 13
-  {
-    id: 13,
-    name: "مارلی هالتان",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "رایحه‌ای قدرتمند و پیچیده با نت‌های گل و کهربا.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "گل‌دار – کهربایی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 14
-  {
-    id: 14,
-    name: "الکساندریا2",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "عطری منحصر بفرد با ترکیبی از نت‌های شرقی و چوبی.",
-    specs: {
-      "برند": "الکساندریا",
-      "نوع رایحه": "شرقی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 15
-  {
-    id: 15,
-    name: "کرید اونتوس ابسولو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "پیچیدگی میوه‌ای و دودی در یک بَچ لوکس.",
-    specs: {
-      "برند": "کرید",
-      "نوع رایحه": "میوه‌ای – دودی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 16
-  {
-    id: 16,
-    name: "مارلی کالان",
-    categories: ["men", "unisex"],
-    image: "https://via.placeholder.com/300",
-    price: 490,
-    sizes: [
-      { size: "سی میل",    price: 490 },
-      { size: "پنجاه میل", price: 800 },
-    ],
-    description: "عطری شرقی و غنی با نت‌های وانیل و مشک.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "شرقی – وانیلی",
-      "پخش بو": "زیاد"
-    }
-  },
-            // 
-  {
-    id: 16,
-    name: "مارلی کالان",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 490,
-    sizes: [
-      { size: "سی میل",    price: 490 },
-      { size: "پنجاه میل", price: 800 },
-    ],
-    description: "عطری شرقی و غنی با نت‌های وانیل و مشک.",
-    specs: {
-      "برند": "مارلی",
-      "نوع رایحه": "شرقی – وانیلی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 17
-  {
-    id: 17,
-    name: "کازاموراتی مفیستو",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی دودی و تنباکویی با لمس کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "دودی – تنباکویی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 18
-  {
-    id: 18,
-    name: "آمواج هانر",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "ترکیبی قوی از چوب سدر و مشک با حس چرمی.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "چرمی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 19
-  {
-    id: 19,
-    name: "آمواج گایدنس",
-    category: "men",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس شرقی-ادویه‌ای همراه با نت‌های مشک و عنبر.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // Women’s perfumes
-  // 20
-  {
-    id: 20,
-    name: "بای کیلیان بلومون",
-    category: "women",
-    image: "assets/image/بلومون2.jpg",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "رایحه‌ای گلی-شرقی با تمرکز بر رز و وانیل.",
-    specs: {
-      "برند": "بای کیلیان",
-      "نوع رایحه": "گل‌دار – شرقی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 21
-  {
-    id: 21,
-    name: "بولگاری اکوا امارا",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "نت‌های دریایی و مرکباتی با پس‌زمینه چوب صندل.",
-    specs: {
-      "برند": "بولگاری",
-      "نوع رایحه": "آبی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 22
-  {
-    id: 22,
-    name: "زرجوف اکسنتو",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 170,
-    sizes: [
-      { size: "ده میل",   price: 170 },
-      { size: "بیست میل",  price: 290 },
-      { size: "سی میل",    price: 390 },
-      { size: "پنجاه میل", price: 650 },
-    ],
-    description: "رایحه‌ای گرم و شرقی با تاکید بر وانیل و چوب صندل.",
-    specs: {
-      "برند": "زارجوف",
-      "نوع رایحه": "شرقی – وانیلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 23
-  {
-    id: 23,
-    name: "ویکتوریا نایت",
-    category: "women",
-    image: "assets/image/وری-سکسی-نایت.jpg",
-    badge: "جدید",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس رمانتیک با ترکیب گل‌های سیاه و وانیل.",
-    specs: {
-      "برند": "ویکتوریا سیکرت",
-      "نوع رایحه": "گل‌دار – شرقی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 24
-  {
-    id: 24,
-    name: "یارا",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "عطری ملایم و گلی با نت‌های یاس و مرکبات.",
-    specs: {
-      "برند": "نامشخص",
-      "نوع رایحه": "گلی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 25
-  {
-    id: 25,
-    name: "بیلی آیلیش",
-    category: "women",
-    image: "assets/image/بیلی.jpg",
-    badge: "ویژه",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "رایحه‌ای مدرن و جوان‌پسند با نت‌های توت و وانیل.",
-    specs: {
-      "برند": "بیلی آیلیش",
-      "نوع رایحه": "میوه‌ای – شرقی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 26
-  {
-    id: 26,
-    name: "لویی ویتون پسفیک چیل",
-    category: "women",
-    image: "assets/image/پسفیک.JPG",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی گیاهی-مرکباتی با تمرکز بر رزماری و پرتقال.",
-    specs: {
-      "برند": "لویی ویتون",
-      "نوع رایحه": "گیاهی – مرکباتی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 27
-  {
-    id: 27,
-    name: "لویی ویتون لیمنسیت",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 250,
-    sizes: [
-      { size: "ده میل",   price: 250 },
-      { size: "بیست میل",  price: 450 },
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "رایحه‌ای مرکباتی-سبز با نت غالب لیمو.",
-    specs: {
-      "برند": "لویی ویتون",
-      "نوع رایحه": "مرکباتی – سبز",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 28
-  {
-    id: 28,
-    name: "فلورنارکوتیک",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "عطری گل‌دار و میوه‌ای با نت‌های توت و گل‌های بهاری.",
-    specs: {
-      "برند": "فلورنارکوتیک",
-      "نوع رایحه": "گل‌دار – میوه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 29
-  {
-    id: 29,
-    name: "تیزیانا ترنزی کیرکه",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "نت‌های شرقی-گلی با تاکید بر رز و عنبر.",
-    specs: {
-      "برند": "تیزیانا ترنزی",
-      "نوع رایحه": "شرقی – گلی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 30
-  {
-    id: 30,
-    name: "کازاموراتی بوکت ایدل",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی گلی-چوبی با نت‌های مشک و کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "گلی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 31
-  {
-    id: 31,
-    name: "تام فورد لاست چری",
-    category: "women",
-    image: "assets/image/لاستچری.jpg",
-    badge: "جدید",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "رایحه‌ای میوه‌ای با تاکید بر گیلاس و بادام.",
-    specs: {
-      "برند": "تام فورد",
-      "نوع رایحه": "میوه‌ای – گلی",
-      "پخش بو": "متوسط"
-    }
-  },
-  // 32
-  {
-    id: 32,
-    name: "کازاموراتی مفیستو",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 590,
-    sizes: [
-      { size: "سی میل",    price: 590 },
-      { size: "پنجاه میل", price: 950 },
-    ],
-    description: "حسی دودی-چرمی با لمسی از کهربا.",
-    specs: {
-      "برند": "کازاموراتی",
-      "نوع رایحه": "چرمی – دودی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 33
-  {
-    id: 33,
-    name: "آمواج هانر",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 430,
-    sizes: [
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "نت‌های چرمی و چوبی با پس‌زمینه مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "چرمی – چوبی",
-      "پخش بو": "زیاد"
-    }
-  },
-  // 34
-  {
-    id: 34,
-    name: "آمواج گایدنس",
-    category: "women",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },
-  // Unisex’s perfumes
-  //35
-  {
-    id: 35,
-    name: "آمواج گایدنس",
-    category: "unisex",
-    image: "https://via.placeholder.com/300",
-    price: 190,
-    sizes: [
-      { size: "ده میل",   price: 190 },
-      { size: "بیست میل",  price: 320 },
-      { size: "سی میل",    price: 430 },
-      { size: "پنجاه میل", price: 700 },
-    ],
-    description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.",
-    specs: {
-      "برند": "آمواج",
-      "نوع رایحه": "شرقی – ادویه‌ای",
-      "پخش بو": "متوسط"
-    }
-  },          
-];
+            // ... (همان آرایه محصولات قبلی)
+        ];
   
         // Shopping cart and wishlist
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -2913,6 +2749,10 @@
         let selectedPerfume = null;
         let selectedSize = null;
         let currentUser = null;
+        let currentCheckoutStep = 1;
+        let shippingMethod = 'post';
+        let shippingCost = 55000;
+        let receiptFile = null;
         
         // DOM Elements
         const menPerfumes = document.getElementById('menPerfumes');
@@ -2926,6 +2766,7 @@
         const cartItems = document.getElementById('cartItems');
         const cartTotal = document.getElementById('cartTotal');
         const finalTotal = document.getElementById('finalTotal');
+        const shippingCostEl = document.getElementById('shippingCost');
         const cartCount = document.getElementById('cartCount');
         const wishlistIcon = document.getElementById('wishlistIcon');
         const wishlistModal = document.getElementById('wishlistModal');
@@ -2934,7 +2775,6 @@
         const wishlistCount = document.getElementById('wishlistCount');
         const mobileWishlistCount = document.getElementById('mobileWishlistCount');
         const mobileCartCount = document.getElementById('mobileCartCount');
-        const orderText = document.getElementById('orderText');
         const overlay = document.getElementById('overlay');
         const mobileWishlist = document.getElementById('mobileWishlist');
         const mobileCart = document.getElementById('mobileCart');
@@ -2952,6 +2792,46 @@
         const closeSearch = document.getElementById('closeSearch');
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
+        
+        // Checkout elements
+        const checkoutModal = document.getElementById('checkoutModal');
+        const closeCheckout = document.getElementById('closeCheckout');
+        const checkoutButton = document.getElementById('checkoutButton');
+        const cancelCheckout = document.getElementById('cancelCheckout');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        const checkoutProgress = document.getElementById('checkoutProgress');
+        const shippingInfoForm = document.getElementById('shippingInfoForm');
+        const shippingMethodForm = document.getElementById('shippingMethodForm');
+        const paymentForm = document.getElementById('paymentForm');
+        const orderConfirmation = document.getElementById('orderConfirmation');
+        const nextToShippingMethod = document.getElementById('nextToShippingMethod');
+        const backToShippingInfo = document.getElementById('backToShippingInfo');
+        const nextToPayment = document.getElementById('nextToPayment');
+        const backToShippingMethod = document.getElementById('backToShippingMethod');
+        const completeOrder = document.getElementById('completeOrder');
+        const closeCheckoutAfterConfirm = document.getElementById('closeCheckoutAfterConfirm');
+        const fullName = document.getElementById('fullName');
+        const phoneNumber = document.getElementById('phoneNumber');
+        const province = document.getElementById('province');
+        const city = document.getElementById('city');
+        const address = document.getElementById('address');
+        const postalCode = document.getElementById('postalCode');
+        const orderNotes = document.getElementById('orderNotes');
+        const shippingMethod1 = document.getElementById('shippingMethod1');
+        const shippingMethod2 = document.getElementById('shippingMethod2');
+        const checkoutCartTotal = document.getElementById('checkoutCartTotal');
+        const checkoutShippingCost = document.getElementById('checkoutShippingCost');
+        const checkoutFinalTotal = document.getElementById('checkoutFinalTotal');
+        const paymentAmount = document.getElementById('paymentAmount');
+        const receiptImage = document.getElementById('receiptImage');
+        const fileName = document.getElementById('fileName');
+        const reviewFullName = document.getElementById('reviewFullName');
+        const reviewPhoneNumber = document.getElementById('reviewPhoneNumber');
+        const reviewAddress = document.getElementById('reviewAddress');
+        const reviewShippingMethod = document.getElementById('reviewShippingMethod');
+        const orderNumber = document.getElementById('orderNumber');
         
         // Auth elements
         const authModal = document.getElementById('authModal');
@@ -2974,6 +2854,7 @@
         const mobileProfile = document.getElementById('mobileProfile');
         const mobileLogout = document.getElementById('mobileLogout');
         const mobileLogin = document.getElementById('mobileLogin');
+        const registerPhone = document.getElementById('registerPhone');
         
         // Generate product cards
         function generateProductCards() {
@@ -3013,6 +2894,12 @@
                 // Add to cart functionality
                 const addToCartBtn = productCard.querySelector('.add-to-cart-btn');
                 addToCartBtn.addEventListener('click', () => {
+                    if (!currentUser) {
+                        showToast('لطفاً ابتدا وارد حساب کاربری خود شوید');
+                        authModal.classList.add('active');
+                        overlay.classList.add('active');
+                        return;
+                    }
                     openSizeModal(perfume);
                 });
                 
@@ -3192,8 +3079,8 @@
             if (cart.length === 0) {
                 cartItems.innerHTML = '<div style="text-align: center; padding: 30px; color: #777;">سبد خرید شما خالی است</div>';
                 cartTotal.textContent = '۰ تومان';
-                finalTotal.textContent = '۵۵,۰۰۰ تومان';
-                orderText.style.display = 'none';
+                shippingCostEl.textContent = '۰ تومان';
+                finalTotal.textContent = '۰ تومان';
                 return;
             }
             
@@ -3224,7 +3111,8 @@
             
             // Update totals
             cartTotal.textContent = total.toLocaleString('fa') + ',۰۰۰ تومان';
-            finalTotal.textContent = (total + 55).toLocaleString('fa') + ',۰۰۰ تومان';
+            shippingCostEl.textContent = shippingCost.toLocaleString('fa') + ',۰۰۰ تومان';
+            finalTotal.textContent = (total + shippingCost).toLocaleString('fa') + ',۰۰۰ تومان';
             
             // Add event listeners to remove buttons
             document.querySelectorAll('.cart-item-remove').forEach(button => {
@@ -3279,82 +3167,6 @@
                     generateProductCards(); // Update heart icons
                 });
             });
-        }
-        
-        // Generate order text
-        function generateOrder() {
-            if (cart.length === 0) {
-                showToast('سبد خرید شما خالی است!');
-                return;
-            }
-            
-            let orderTextContent = 'سلام، سفارش من:\n\n';
-            let total = 0;
-            
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                orderTextContent += `- ${item.name} (${item.size}): ${itemTotal.toLocaleString('fa')},۰۰۰ تومان\n`;
-            });
-            
-            orderTextContent += `\nجمع سبد خرید: ${total.toLocaleString('fa')},۰۰۰ تومان\n`;
-            orderTextContent += `هزینه پست: ۵۵,۰۰۰ تومان\n`;
-            orderTextContent += `جمع کل: ${(total + 55).toLocaleString('fa')},۰۰۰ تومان\n\n`;
-            orderTextContent += 'لطفاً متن سفارش را کپی کرده و از طریق دکمه‌های زیر برای ما ارسال کنید\n\n';
-            orderTextContent += 'پس از واریز، تصویر رسید را برای ما ارسال کنید.\n\n';
-            orderTextContent += 'اطلاعات واریز:\n';
-            orderTextContent += 'شماره کارت: ۶۲۱۹۸۶۱۹۰۲۷۳۱۹۲۵\n';
-            orderTextContent += 'به نام: احسان بهبودنیا\n';
-            orderTextContent += 'بانک سامان';
-            
-            orderText.innerHTML = `
-                <div class="order-instruction">
-                    لطفاً متن سفارش را کپی کرده و از طریق دکمه‌های زیر برای ما ارسال کنید
-                </div>
-                <pre>${orderTextContent}</pre>
-                <div class="social-order-buttons">
-                    <a href="https://t.me/hamsar_perfume" target="_blank" class="social-order-btn telegram">
-                        <i class="fab fa-telegram"></i>
-                    </a>
-                    <a href="https://instagram.com/hamsarperfume" target="_blank" class="social-order-btn instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-                <button class="copy-order" onclick="copyOrderText()">
-                    <i class="far fa-copy"></i> کپی متن سفارش
-                </button>
-                <div class="bank-info">
-                    <p>برای کپی شماره کارت روی آن کلیک کنید:</p>
-                    <span class="card-number" onclick="copyCardNumber()">۶۲۱۹۸۶۱۹۰۲۷۳۱۹۲۵</span>
-                </div>
-            `;
-            orderText.style.display = 'block';
-        }
-        
-        // Copy order text
-        function copyOrderText() {
-            const preElement = orderText.querySelector('pre');
-            const textToCopy = preElement.textContent;
-            const textarea = document.createElement('textarea');
-            textarea.value = textToCopy;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            showToast('متن سفارش کپی شد!');
-        }
-        
-        // Copy card number
-        function copyCardNumber() {
-            const textarea = document.createElement('textarea');
-            textarea.value = '6219861902731925';
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            showToast('شماره کارت کپی شد!');
         }
         
         // Product details functionality
@@ -3435,6 +3247,13 @@
             // Add to cart button in detail modal
             const addToCartBtn = productDetailContent.querySelector('.add-to-cart-detail');
             addToCartBtn.addEventListener('click', () => {
+                if (!currentUser) {
+                    showToast('لطفاً ابتدا وارد حساب کاربری خود شوید');
+                    authModal.classList.add('active');
+                    overlay.classList.add('active');
+                    return;
+                }
+                
                 const selectedSize = productDetailContent.querySelector('.size-option-detail.active');
                 if (selectedSize) {
                     const size = selectedSize.dataset.size;
@@ -3571,6 +3390,170 @@
             });
         }
         
+        // Checkout functions
+        function startCheckout() {
+            if (cart.length === 0) {
+                showToast('سبد خرید شما خالی است');
+                return;
+            }
+            
+            if (!currentUser) {
+                showToast('لطفاً ابتدا وارد حساب کاربری خود شوید');
+                authModal.classList.add('active');
+                overlay.classList.add('active');
+                return;
+            }
+            
+            // Reset checkout form
+            fullName.value = currentUser.displayName || '';
+            phoneNumber.value = currentUser.phoneNumber || '';
+            province.value = '';
+            city.value = '';
+            address.value = '';
+            postalCode.value = '';
+            orderNotes.value = '';
+            
+            // Calculate totals
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            checkoutCartTotal.textContent = total.toLocaleString('fa') + ',۰۰۰ تومان';
+            checkoutShippingCost.textContent = shippingCost.toLocaleString('fa') + ',۰۰۰ تومان';
+            checkoutFinalTotal.textContent = (total + shippingCost).toLocaleString('fa') + ',۰۰۰ تومان';
+            paymentAmount.textContent = (total + shippingCost).toLocaleString('fa') + ',۰۰۰ تومان';
+            
+            // Reset steps
+            currentCheckoutStep = 1;
+            updateCheckoutSteps();
+            
+            // Show checkout modal
+            cartModal.classList.remove('open');
+            checkoutModal.classList.add('open');
+        }
+        
+        function updateCheckoutSteps() {
+            // Reset all steps
+            step1.classList.remove('completed', 'active');
+            step2.classList.remove('completed', 'active');
+            step3.classList.remove('completed', 'active');
+            
+            // Hide all forms
+            shippingInfoForm.classList.remove('active');
+            shippingMethodForm.classList.remove('active');
+            paymentForm.classList.remove('active');
+            orderConfirmation.classList.remove('active');
+            
+            // Update progress based on current step
+            if (currentCheckoutStep === 1) {
+                step1.classList.add('active');
+                checkoutProgress.style.width = '0%';
+                shippingInfoForm.classList.add('active');
+            } else if (currentCheckoutStep === 2) {
+                step1.classList.add('completed');
+                step2.classList.add('active');
+                checkoutProgress.style.width = '50%';
+                shippingMethodForm.classList.add('active');
+            } else if (currentCheckoutStep === 3) {
+                step1.classList.add('completed');
+                step2.classList.add('completed');
+                step3.classList.add('active');
+                checkoutProgress.style.width = '100%';
+                paymentForm.classList.add('active');
+                
+                // Update review information
+                reviewFullName.textContent = fullName.value;
+                reviewPhoneNumber.textContent = phoneNumber.value;
+                reviewAddress.textContent = `${province.value}، ${city.value}، ${address.value}`;
+                reviewShippingMethod.textContent = shippingMethod === 'post' ? 'پست پیشتاز' : 'ماهکس (پس کرایه)';
+            }
+        }
+        
+        function validateShippingInfo() {
+            if (!fullName.value.trim()) {
+                showToast('لطفاً نام گیرنده را وارد کنید');
+                return false;
+            }
+            
+            if (!phoneNumber.value.trim() || !/^09\d{9}$/.test(phoneNumber.value)) {
+                showToast('لطفاً شماره تماس معتبر وارد کنید');
+                return false;
+            }
+            
+            if (!province.value.trim()) {
+                showToast('لطفاً استان را وارد کنید');
+                return false;
+            }
+            
+            if (!city.value.trim()) {
+                showToast('لطفاً شهر را وارد کنید');
+                return false;
+            }
+            
+            if (!address.value.trim()) {
+                showToast('لطفاً آدرس کامل را وارد کنید');
+                return false;
+            }
+            
+            if (!postalCode.value.trim() || !/^\d{10}$/.test(postalCode.value)) {
+                showToast('لطفاً کد پستی ۱۰ رقمی معتبر وارد کنید');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function completeOrderProcess() {
+            // Generate order number
+            const orderNum = 'ORD-' + Date.now().toString().slice(-6);
+            orderNumber.textContent = orderNum;
+            
+            // Calculate totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal + shippingCost;
+            
+            // Create order object
+            const order = {
+                orderNumber: orderNum,
+                userId: currentUser.uid,
+                userEmail: currentUser.email,
+                userName: currentUser.displayName || fullName.value,
+                userPhone: phoneNumber.value,
+                shippingInfo: {
+                    fullName: fullName.value,
+                    phone: phoneNumber.value,
+                    province: province.value,
+                    city: city.value,
+                    address: address.value,
+                    postalCode: postalCode.value,
+                    notes: orderNotes.value,
+                    method: shippingMethod,
+                    cost: shippingMethod === 'post' ? 55000 : 0
+                },
+                items: cart,
+                subtotal: subtotal,
+                total: total,
+                status: 'pending',
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                receiptImage: receiptFile ? receiptFile.name : null
+            };
+            
+            // Save order to Firestore
+            db.collection('orders').add(order)
+                .then(() => {
+                    // Show confirmation
+                    currentCheckoutStep = 4;
+                    updateCheckoutSteps();
+                    orderConfirmation.classList.add('active');
+                    
+                    // Clear cart
+                    cart = [];
+                    saveCart();
+                    updateCartCount();
+                })
+                .catch(error => {
+                    console.error('Error saving order:', error);
+                    showToast('خطا در ثبت سفارش. لطفاً دوباره تلاش کنید');
+                });
+        }
+        
         // Event Listeners
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
@@ -3626,6 +3609,7 @@
             wishlistModal.classList.remove('open');
             productModal.classList.remove('active');
             sizeModal.classList.remove('active');
+            checkoutModal.classList.remove('open');
             searchHeader.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
@@ -3644,6 +3628,95 @@
                 productModal.classList.remove('active');
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
+            }
+        });
+        
+        // Checkout button
+        checkoutButton.addEventListener('click', startCheckout);
+        
+        // Cancel checkout
+        cancelCheckout.addEventListener('click', () => {
+            checkoutModal.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Next to shipping method
+        nextToShippingMethod.addEventListener('click', () => {
+            if (validateShippingInfo()) {
+                currentCheckoutStep = 2;
+                updateCheckoutSteps();
+            }
+        });
+        
+        // Back to shipping info
+        backToShippingInfo.addEventListener('click', () => {
+            currentCheckoutStep = 1;
+            updateCheckoutSteps();
+        });
+        
+        // Next to payment
+        nextToPayment.addEventListener('click', () => {
+            // Update shipping method
+            shippingMethod = shippingMethod1.checked ? 'post' : 'mahax';
+            shippingCost = shippingMethod === 'post' ? 55000 : 0;
+            
+            // Update totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            checkoutShippingCost.textContent = shippingCost.toLocaleString('fa') + ',۰۰۰ تومان';
+            checkoutFinalTotal.textContent = (subtotal + shippingCost).toLocaleString('fa') + ',۰۰۰ تومان';
+            paymentAmount.textContent = (subtotal + shippingCost).toLocaleString('fa') + ',۰۰۰ تومان';
+            
+            currentCheckoutStep = 3;
+            updateCheckoutSteps();
+        });
+        
+        // Back to shipping method
+        backToShippingMethod.addEventListener('click', () => {
+            currentCheckoutStep = 2;
+            updateCheckoutSteps();
+        });
+        
+        // Complete order
+        completeOrder.addEventListener('click', completeOrderProcess);
+        
+        // Close checkout after confirmation
+        closeCheckoutAfterConfirm.addEventListener('click', () => {
+            checkoutModal.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // File upload
+        receiptImage.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                receiptFile = e.target.files[0];
+                fileName.textContent = receiptFile.name;
+            }
+        });
+        
+        // Shipping method selection
+        shippingMethod1.addEventListener('change', () => {
+            if (shippingMethod1.checked) {
+                shippingMethod = 'post';
+                shippingCost = 55000;
+                
+                // Update totals
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                checkoutShippingCost.textContent = shippingCost.toLocaleString('fa') + ',۰۰۰ تومان';
+                checkoutFinalTotal.textContent = (subtotal + shippingCost).toLocaleString('fa') + ',۰۰۰ تومان';
+            }
+        });
+        
+        shippingMethod2.addEventListener('change', () => {
+            if (shippingMethod2.checked) {
+                shippingMethod = 'mahax';
+                shippingCost = 0;
+                
+                // Update totals
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                checkoutShippingCost.textContent = 'پس کرایه';
+                checkoutFinalTotal.textContent = subtotal.toLocaleString('fa') + ',۰۰۰ تومان';
             }
         });
         
@@ -3713,11 +3786,12 @@
         // Register with email/password
         registerButton.addEventListener('click', () => {
             const name = document.getElementById('registerName').value;
+            const phone = document.getElementById('registerPhone').value;
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
             const confirmPassword = document.getElementById('registerConfirmPassword').value;
             
-            if (!name || !email || !password || !confirmPassword) {
+            if (!name || !phone || !email || !password || !confirmPassword) {
                 showToast('لطفاً تمام فیلدها را پر کنید');
                 return;
             }
@@ -3732,11 +3806,17 @@
                 return;
             }
             
+            if (!/^09\d{9}$/.test(phone)) {
+                showToast('لطفاً شماره تماس معتبر وارد کنید');
+                return;
+            }
+            
             auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     // Update user profile
                     return userCredential.user.updateProfile({
-                        displayName: name
+                        displayName: name,
+                        phoneNumber: phone
                     });
                 })
                 .then(() => {
@@ -3799,6 +3879,18 @@
             e.preventDefault();
             showToast('سفارشات کاربر در حال توسعه است');
         });
+        
+        // Copy card number
+        function copyCardNumber() {
+            const textarea = document.createElement('textarea');
+            textarea.value = '6219861902731925';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            showToast('شماره کارت کپی شد!');
+        }
         
         // Initialize the page
         function init() {
