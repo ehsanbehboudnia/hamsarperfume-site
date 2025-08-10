@@ -3213,6 +3213,28 @@
         let shippingCost = 55000;
         let receiptFile = null;
         
+        const IMGBB_API_KEY = 'de55bc5b6525015fc1ef403f5adbb2f9';
+const EMAILJS_PUBLIC_KEY = 'xluvNfOZ9_o0SFRVi';
+const EMAILJS_SERVICE_ID = 'service_93422fg';
+const EMAILJS_TEMPLATE_ID = 'template_d6wdpb4';
+
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+function uploadToImgbb(file) {
+  return new Promise((resolve, reject) => {
+    if (!file) return resolve(null);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result.split(',')[1];
+      const form = new FormData();
+      form.append('image', base64);
+      fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: 'POST', body: form })
+        .then(r => r.json()).then(d => resolve(d.data.url)).catch(reject);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+        
         // عناصر DOM
         const menPerfumes = document.getElementById('menPerfumes');
         const womenPerfumes = document.getElementById('womenPerfumes');
