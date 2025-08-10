@@ -3931,6 +3931,25 @@ function uploadToImgbb(file) {
                 return;
             }
             
+    if (!shippingInfo.fullName || !shippingInfo.phone || !shippingInfo.address || !shippingInfo.province || !shippingInfo.city) {
+        showToast('لطفا تمام فیلدهای مورد نیاز را پر کنید');
+        return;
+    }
+
+    let order = {
+        shippingInfo: shippingInfo,
+        total: totalPrice,
+        orderNumber: Date.now(),
+        items: cart
+    };
+    sendOrderEmail(order);
+
+    showToast('سفارش شما با موفقیت ثبت شد');
+    cart.length = 0;
+    updateCart();
+    checkoutModal.style.display = 'none';
+}
+            
             if (!currentUser) {
                 showToast('لطفاً ابتدا وارد حساب کاربری خود شوید');
                 authModal.classList.add('active');
