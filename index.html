@@ -4011,6 +4011,40 @@
             
             return true;
         }
+
+        async function sendOrderEmail(order) {
+    try {
+        // پارامترهای ایمیل
+        const emailParams = {
+            order_number: order.orderNumber,
+            customer_name: order.userName,
+            customer_email: order.userEmail,
+            customer_phone: order.userPhone,
+            shipping_address: `${order.shippingInfo.province}، ${order.shippingInfo.city}، ${order.shippingInfo.address}`,
+            shipping_method: order.shippingInfo.method === 'post' ? 'پست پیشتاز' : 'ماهکس (پس کرایه)',
+            order_items: order.items.map(item => 
+                `${item.name} (${item.size}) - ${item.quantity} عدد - ${item.price * item.quantity} تومان`
+            ).join('\n'),
+            subtotal: order.subtotal,
+            shipping_cost: order.shippingInfo.cost,
+            total: order.total,
+            order_date: new Date().toLocaleDateString('fa-IR')
+        };
+
+        // ارسال ایمیل با استفاده از EmailJS
+        const response = await emailjs.send(
+            'YOUR_SERVICE_ID', // جایگزین با Service ID واقعی
+            'YOUR_TEMPLATE_ID', // جایگزین با Template ID واقعی
+            emailParams
+        );
+
+        console.log('ایمیل با موفقیت ارسال شد:', response);
+        return true;
+    } catch (error) {
+        console.error('خطا در ارسال ایمیل:', error);
+        return false;
+    }
+}
         
         // تکمیل فرآیند سفارش
         async function completeOrderProcess() {
