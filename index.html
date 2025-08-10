@@ -4093,20 +4093,41 @@ function uploadToImgbb(file) {
                 });
         }
         
-        // ارسال ایمیل سفارش
         async function sendOrderEmail(order) {
-  let receiptUrl = await uploadToImgbb(receiptFile);
-  await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    order_number: order.orderNumber,
-    customer_name: order.shippingInfo.fullName,
-    customer_phone: order.shippingInfo.phone,
-    shipping_address: `${order.shippingInfo.province} - ${order.shippingInfo.city} - ${order.shippingInfo.address}`,
-    items_html: JSON.stringify(order.items),
-    total: order.total,
-    receipt_image_url: receiptUrl || ''
-  });
-  showToast('ایمیل با موفقیت ارسال شد');
+  try {
+    showToast('در حال ارسال اطلاعات سفارش...');
+
+    // آپلود فیش به imgbb
+    let receiptUrl = null;
+    if (receiptFile) {
+      try {
+        receiptUrl = await uploadToImgbb(receiptFile);
+      } catch (err) {
+        console.error('خطا در آپلود imgbb', err);
+      }
+    }
+
+    // پارامترها مطابق Template EmailJS شما
+    const templateParams = {
+      name: order.shippingInfo.fullName,
+      phone: order.shippingInfo.phone,
+      address: `${order.shippingInfo.province} - ${order.shippingInfo.city} - ${order.shippingInfo.address}`,
+      shipping: order.shippingInfo.shippingMethod || '',
+      note: order.shippingInfo.note || '',
+      receipt: receiptUrl || ''
+    };
+
+    // ارسال ایمیل
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+
+    showToast('ایمیل با موفقیت ارسال شد.');
+    console.log('EmailJS ارسال شد', templateParams);
+  } catch (err) {
+    console.error('خطا در sendOrderEmail:', err);
+    showToast('خطا در ارسال ایمیل سفارش.');
+  }
 }
+
 
         
         // رویدادها
