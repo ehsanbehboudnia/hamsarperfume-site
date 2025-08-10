@@ -4013,70 +4013,68 @@
         }
         
         // تکمیل فرآیند سفارش
-        function completeOrderProcess() {
-            // تولید شماره سفارش
-            const orderNum = 'ORD-' + Date.now().toString().slice(-6);
-            orderNumber.textContent = orderNum;
-            
-            // محاسبه مجموع
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const total = subtotal + shippingCost;
-            
-            // ایجاد شیء سفارش
-            const order = {
-                orderNumber: orderNum,
-                userId: currentUser.uid,
-                userEmail: currentUser.email,
-                userName: currentUser.displayName || fullName.value,
-                userPhone: phoneNumber.value,
-                shippingInfo: {
-                    fullName: fullName.value,
-                    phone: phoneNumber.value,
-                    province: provinceSelect.value,
-                    city: citySelect.value,
-                    address: address.value,
-                    postalCode: postalCode.value,
-                    notes: orderNotes.value,
-                    method: shippingMethod,
-                    cost: shippingMethod === 'post' ? 55000 : 0
-                },
-                items: cart,
-                subtotal: subtotal,
-                total: total,
-                status: 'pending',
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                receiptImage: receiptFile ? receiptFile.name : null
-            };
-            
-            // ذخیره سفارش در Firestore
-            db.collection('orders').add(order)
-                .then(() => {
-                    // نمایش تاییدیه
-                    currentCheckoutStep = 4;
-                    updateCheckoutSteps();
-                    orderConfirmation.classList.add('active');
-                    
-                    // پاک کردن سبد خرید
-                    cart = [];
-                    saveCart();
-                    updateCartCount();
-                    
-                    // ارسال ایمیل
-                    sendOrderEmail(order);
-                })
-                .catch(error => {
-                    console.error('خطا در ثبت سفارش:', error);
-                    showToast('خطا در ثبت سفارش. لطفاً دوباره تلاش کنید');
-                });
-        }
+        async function completeOrderProcess() {
+    // تولید شماره سفارش
+    const orderNum = 'ORD-' + Date.now().toString().slice(-6);
+    orderNumber.textContent = orderNum;
+    
+    // محاسبه مجموع
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const total = subtotal + shippingCost;
+    
+    // ایجاد شیء سفارش
+    const order = {
+        orderNumber: orderNum,
+        userId: currentUser.uid,
+        userEmail: currentUser.email,
+        userName: currentUser.displayName || fullName.value,
+        userPhone: phoneNumber.value,
+        shippingInfo: {
+            fullName: fullName.value,
+            phone: phoneNumber.value,
+            province: provinceSelect.value,
+            city: citySelect.value,
+            address: address.value,
+            postalCode: postalCode.value,
+            notes: orderNotes.value,
+            method: shippingMethod,
+            cost: shippingMethod === 'post' ? 55000 : 0
+        },
+        items: cart,
+        subtotal: subtotal,
+        total: total,
+        status: 'pending',
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        receiptImage: receiptFile ? receiptFile.name : null
+    };
+    
+    try {
+        // ذخیره سفارش در Firestore
+        await db.collection('orders').add(order);
         
-        // ارسال ایمیل سفارش
-        function sendOrderEmail(order) {
-            // در اینجا باید از EmailJS برای ارسال ایمیل استفاده کنید
-            // این بخش نیاز به پیاده‌سازی با استفاده از API EmailJS دارد
-            console.log('ارسال ایمیل برای سفارش:', order);
-            showToast('جزئیات سفارش به ایمیل مدیریت ارسال شد');
+        // ارسال ایمیل
+        const emailSent = await sendOrderEmail(order);
+        
+        if (emailSent) {
+            // نمایش تاییدیه
+            currentCheckoutStep = 4;
+            updateCheckoutSteps();
+            orderConfirmation.classList.add('active');
+            
+            // پاک کردن سبد خرید
+            cart = [];
+            saveCart();
+            updateCartCount();
+            
+            showToast('سفارش با موفقیت ثبت شد و ایمیل ارسال گردید');
+        } else {
+            showToast('سفارش ثبت شد اما ارسال ایمیل با مشکل مواجه شد');
         }
+    } catch (error) {
+        console.error('خطا در ثبت سفارش:', error);
+        showToast('خطا در ثبت سفارش. لطفاً دوباره تلاش کنید');
+    }
+}
         
         // رویدادها
         hamburger.addEventListener('click', () => {
