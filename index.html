@@ -4062,7 +4062,8 @@ function uploadToImgbb(file) {
                     notes: orderNotes.value,
                     method: shippingMethod,
                     cost: shippingMethod === 'post' ? 55000 : 0
-                },
+                }
+    sendOrderEmail(order);,
                 items: cart,
                 subtotal: subtotal,
                 total: total,
