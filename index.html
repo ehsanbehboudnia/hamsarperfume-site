@@ -9,7 +9,6 @@
     <!-- Firebase Auth UI -->
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     <style>
-        /* استایل‌های پایه و ریشه */
         :root {
             --primary: #1a1a2e;
             --secondary: #0f3460;
@@ -44,7 +43,7 @@
             font-weight: 400;
         }
         
-        /* هدر - بهینه‌سازی برای موبایل */
+        /* Header Styles - Modernized with Glass Effect */
         .header {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: var(--blur);
@@ -175,7 +174,7 @@
             justify-content: center;
         }
         
-        /* منوی همبرگر - بهینه برای موبایل */
+        /* Hamburger Menu - Fixed with Glass Effect */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -278,7 +277,7 @@
             transform: rotate(90deg);
         }
         
-        /* مودال احراز هویت - بهینه برای موبایل */
+        /* Auth Modal */
         .auth-modal {
             position: fixed;
             top: 0;
@@ -305,12 +304,10 @@
             backdrop-filter: var(--blur);
             width: 90%;
             max-width: 500px;
-            max-height: 90vh;
             border-radius: 15px;
             padding: 30px;
             position: relative;
             box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            overflow-y: auto;
         }
         
         .close-auth-modal {
@@ -481,7 +478,7 @@
             border-color: #DB4437;
         }
         
-        /* منوی کاربر */
+        /* User Dropdown */
         .user-dropdown {
             position: relative;
         }
@@ -537,7 +534,7 @@
             text-align: center;
         }
         
-        /* پروفایل کاربر */
+        /* User Profile */
         .user-profile {
             display: flex;
             align-items: center;
@@ -566,7 +563,7 @@
             font-size: 14px;
         }
         
-        /* بخش قهرمان - بهینه برای موبایل */
+        /* Hero Section - Enhanced with Glass Effect */
         .hero {
             height: 500px;
             background: linear-gradient(rgba(22, 33, 62, 0.85), rgba(22, 33, 62, 0.9)), 
@@ -627,7 +624,7 @@
             box-shadow: 0 5px 20px rgba(233, 69, 96, 0.3);
         }
         
-        /* بخش محصولات - بهینه برای موبایل */
+        /* Products Section - Modernized with Square Images */
         .section {
             padding: 60px 20px;
         }
@@ -697,7 +694,7 @@
             position: relative;
             cursor: pointer;
             overflow: hidden;
-            aspect-ratio: 1/1; /* مربع شکل */
+            aspect-ratio: 1/1; /* Make it square */
         }
         
         .product-image img {
@@ -789,7 +786,7 @@
             transform: scale(1.1);
         }
         
-        /* مودال سبد خرید - بهینه برای موبایل */
+        /* Cart Modal - Modernized with Glass Effect */
         .cart-modal {
             position: fixed;
             top: 0;
@@ -914,24 +911,6 @@
             margin-bottom: 15px;
         }
         
-        .shipping-cost {
-            display: flex;
-            justify-content: space-between;
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #555;
-        }
-        
-        .final-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 22px;
-            font-weight: 900;
-            margin-bottom: 25px;
-            padding-top: 15px;
-            border-top: 1px dashed #ddd;
-        }
-        
         .generate-order {
             width: 100%;
             padding: 16px;
@@ -956,115 +935,7 @@
             box-shadow: 0 7px 20px rgba(233, 69, 96, 0.5);
         }
         
-        .order-text {
-            background: rgba(248, 249, 250, 0.5);
-            backdrop-filter: var(--blur);
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 25px;
-            font-size: 15px;
-            display: none;
-            line-height: 1.8;
-            white-space: pre-line;
-            font-family: 'Vazirmatn', Tahoma, sans-serif;
-        }
-        
-        .order-text pre {
-            font-family: 'Vazirmatn', Tahoma, sans-serif;
-            white-space: pre-wrap;
-            line-height: 1.8;
-            margin: 15px 0;
-        }
-        
-        .copy-order {
-            margin-top: 15px;
-            padding: 10px 15px;
-            background: var(--dark);
-            color: var(--white);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-        
-        .copy-order:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
-        
-        .bank-info {
-            background: rgba(230, 247, 255, 0.5);
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 20px;
-            border-left: 4px solid var(--accent);
-            backdrop-filter: var(--blur);
-        }
-        
-        .bank-info p {
-            margin-bottom: 10px;
-        }
-        
-        .card-number {
-            display: inline-block;
-            background: #fff;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 1px solid #ddd;
-        }
-        
-        .card-number:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-        
-        .social-order-buttons {
-            display: flex;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .social-order-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            color: white;
-            font-size: 20px;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .social-order-btn.telegram {
-            background: #0088cc;
-        }
-        
-        .social-order-btn.instagram {
-            background: #e1306c;
-        }
-        
-        .social-order-btn:hover {
-            transform: translateY(-3px);
-        }
-        
-        .order-instruction {
-            background: rgba(255, 255, 230, 0.5);
-            border-left: 4px solid var(--accent);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        
-        /* فوتر */
+        /* Footer Styles */
         .footer {
             background: var(--gradient);
             color: var(--white);
@@ -1184,7 +1055,7 @@
             font-size: 15px;
         }
         
-        /* واکنش‌گرا */
+        /* Responsive */
         @media (max-width: 1200px) {
             .products-grid {
                 grid-template-columns: repeat(3, minmax(280px, 1fr));
@@ -1259,6 +1130,13 @@
             .product-price {
                 font-size: 16px;
             }
+            
+            /* Mobile menu positioning fix */
+            .mobile-menu {
+                padding-top: 60px;
+                height: calc(100vh - 60px);
+                top: 60px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1282,15 +1160,6 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
-            }
-            
-            .auth-modal-content {
-                padding: 20px;
-            }
-            
-            .auth-tab {
-                padding: 12px 15px;
-                font-size: 14px;
             }
         }
         
@@ -1317,7 +1186,7 @@
             transform: translateY(0);
         }
         
-        /* مودال جزئیات محصول با افکت شیشه‌ای */
+        /* Product Detail Modal with Glass Effect */
         .product-modal {
             position: fixed;
             top: 0;
@@ -1534,7 +1403,7 @@
             background: #fff0f3;
         }
         
-        /* اوورلی برای مودال‌ها */
+        /* Overlay for modals */
         .overlay {
             position: fixed;
             top: 0;
@@ -1553,7 +1422,7 @@
             visibility: visible;
         }
         
-        /* مودال انتخاب حجم */
+        /* Size Selection Modal */
         .size-modal {
             position: fixed;
             top: 0;
@@ -1656,7 +1525,7 @@
             background: var(--accent-light);
         }
         
-        /* نوار جستجو */
+        /* Search Bar */
         .search-header {
             position: fixed;
             top: 0;
@@ -1744,7 +1613,7 @@
             color: #777;
         }
 
-        /* مراحل تکمیل سفارش */
+        /* Checkout Steps */
         .checkout-steps {
             display: flex;
             justify-content: space-between;
@@ -1758,7 +1627,6 @@
             align-items: center;
             position: relative;
             z-index: 1;
-            flex: 1;
         }
 
         .step-number {
@@ -1774,6 +1642,7 @@
             margin-bottom: 8px;
             transition: all 0.3s;
             z-index: 2;
+            position: relative;
         }
 
         .step-number.active {
@@ -1791,6 +1660,7 @@
             color: #777;
             text-align: center;
             max-width: 100px;
+            line-height: 1.3;
         }
 
         .step-title.active {
@@ -1823,7 +1693,7 @@
             transition: width 0.3s;
         }
 
-        /* فرم‌های تکمیل سفارش */
+        /* Checkout Forms */
         .checkout-form-container {
             display: none;
         }
@@ -1911,7 +1781,7 @@
             background: #e0e0e0;
         }
 
-        /* روش‌های ارسال */
+        /* Shipping Methods */
         .shipping-methods {
             display: flex;
             flex-direction: column;
@@ -1962,7 +1832,7 @@
             color: var(--accent);
         }
 
-        /* اطلاعات پرداخت */
+        /* Payment Info */
         .payment-info {
             background: #f9f9f9;
             border-radius: var(--radius);
@@ -1980,7 +1850,7 @@
             line-height: 1.8;
         }
 
-        /* آپلود فایل */
+        /* File Upload */
         .file-upload {
             margin: 20px 0;
         }
@@ -2015,7 +1885,7 @@
             color: #777;
         }
 
-        /* خلاصه سفارش */
+        /* Order Summary */
         .order-summary {
             background: white;
             border-radius: var(--radius);
@@ -2047,7 +1917,7 @@
             border-top: 1px solid #eee;
         }
 
-        /* تایید سفارش */
+        /* Order Confirmation */
         .order-confirmation {
             text-align: center;
             padding: 40px 20px;
@@ -2073,7 +1943,7 @@
             line-height: 1.6;
         }
 
-        /* بررسی سفارش */
+        /* Order Review */
         .order-review {
             margin-top: 30px;
             background: white;
@@ -2104,7 +1974,142 @@
             color: #555;
         }
         
-        /* لیست استان و شهر */
+        /* Profile and Orders Modals */
+        .profile-modal, .orders-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-modal.active, .orders-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .profile-modal-content, .orders-modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: var(--blur);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 15px;
+            overflow: hidden;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            padding: 30px;
+        }
+        
+        .close-profile-modal, .close-orders-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .profile-section, .orders-section {
+            margin-bottom: 25px;
+        }
+        
+        .profile-section h3, .orders-section h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-item {
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .order-item:hover {
+            box-shadow: var(--shadow);
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .order-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            background: #ffecb3;
+            color: #ff9800;
+        }
+        
+        .status-shipped {
+            background: #c8e6c9;
+            color: #388e3c;
+        }
+        
+        .status-cancelled {
+            background: #ffcdd2;
+            color: #d32f2f;
+        }
+        
+        .order-products {
+            margin: 15px 0;
+        }
+        
+        .order-product {
+            display: flex;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .order-product:last-child {
+            border-bottom: none;
+        }
+        
+        .order-product-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+        
+        .order-product-info {
+            flex: 1;
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        /* Province and City Dropdown */
         .province-city-container {
             display: flex;
             gap: 15px;
@@ -2117,199 +2122,42 @@
             border: 1px solid #ddd;
             border-radius: var(--radius);
             font-size: 16px;
-            background-color: white;
+            background: white;
             cursor: pointer;
         }
         
         .province-select:focus, .city-select:focus {
             outline: none;
             border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
         }
         
-        /* بخش پروفایل و سفارشات */
-        .profile-container, .orders-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        .profile-header, .orders-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 30px;
-        }
-        
-        .profile-content, .orders-content {
-            background: white;
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-        }
-        
-        .profile-info, .order-details {
-            margin-bottom: 30px;
-        }
-        
-        .info-item {
-            display: flex;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .info-label {
-            font-weight: 600;
-            min-width: 150px;
-            color: var(--dark);
-        }
-        
-        .info-value {
-            flex: 1;
-        }
-        
-        .order-card {
-            border: 1px solid #eee;
-            border-radius: var(--radius);
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: var(--transition);
-        }
-        
-        .order-card:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .order-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-        
-        .order-products {
-            margin-top: 15px;
-        }
-        
-        .order-product {
-            display: flex;
-            gap: 15px;
-            padding: 10px 0;
-            border-bottom: 1px solid #f5f5f5;
-        }
-        
-        .order-product-image {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-        }
-        
-        /* پنل مدیریت */
-        .admin-panel {
-            background: white;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 30px;
-        }
-        
-        .admin-nav {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .admin-nav-link {
-            padding: 10px 15px;
-            border-radius: var(--radius);
-            background: #f8f9fa;
-            color: var(--dark);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .admin-nav-link.active, .admin-nav-link:hover {
+        /* Admin Panel Link */
+        .admin-link {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
             background: var(--accent);
             color: white;
-        }
-        
-        .admin-content {
-            padding: 20px;
-        }
-        
-        .order-status {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 20px;
+            padding: 10px 15px;
+            border-radius: 30px;
+            text-decoration: none;
             font-size: 14px;
-            font-weight: 500;
+            z-index: 1000;
+            opacity: 0.3;
+            transition: opacity 0.3s;
         }
         
-        .status-pending {
-            background: #ff9800;
-            color: white;
-        }
-        
-        .status-shipped {
-            background: #2196f3;
-            color: white;
-        }
-        
-        .status-delivered {
-            background: #4caf50;
-            color: white;
-        }
-        
-        .status-cancelled {
-            background: #f44336;
-            color: white;
-        }
-        
-        .status-select {
-            padding: 5px 10px;
-            border-radius: var(--radius);
-            border: 1px solid #ddd;
-            cursor: pointer;
-        }
-        
-        /* اسکرول سفارشی برای موبایل */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
-        }
-        
-        /* راهنمای ورود اطلاعات */
-        .input-hint {
-            font-size: 12px;
-            color: #777;
-            margin-top: 5px;
-            display: block;
+        .admin-link:hover {
+            opacity: 1;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
-    <!-- هدر -->
+    <!-- Admin Panel Link (Hidden) -->
+    <a href="admin.html" class="admin-link">پنل مدیریت</a>
+    
+    <!-- Header -->
     <header class="header">
         <div class="header-container">
             <div class="hamburger" id="hamburger">
@@ -2336,14 +2184,14 @@
                     <span class="badge" id="cartCount">0</span>
                 </button>
                 
-                <!-- آواتار کاربر (پیش‌فرض مخفی) -->
+                <!-- User Avatar (hidden by default) -->
                 <div class="user-dropdown" id="userDropdown" style="display: none;">
                     <img src="https://via.placeholder.com/150" alt="پروفایل کاربر" class="user-avatar" id="userAvatar">
                     <div class="user-dropdown-menu">
-                        <a href="#profile" class="user-dropdown-item" id="profileLink">
+                        <a href="#" class="user-dropdown-item" id="profileLink">
                             <i class="fas fa-user"></i> پروفایل
                         </a>
-                        <a href="#orders" class="user-dropdown-item" id="ordersLink">
+                        <a href="#" class="user-dropdown-item" id="ordersLink">
                             <i class="fas fa-shopping-bag"></i> سفارشات
                         </a>
                         <a href="#" class="user-dropdown-item" id="logoutLink">
@@ -2352,7 +2200,7 @@
                     </div>
                 </div>
                 
-                <!-- دکمه ورود (پیش‌فرض نمایش داده می‌شود) -->
+                <!-- Login Button (shown by default) -->
                 <button class="icon-btn" id="loginBtn">
                     <i class="fas fa-user"></i>
                 </button>
@@ -2367,11 +2215,8 @@
             </nav>
         </div>
         
-        <!-- منوی موبایل -->
+        <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
-            <div class="close-menu" id="closeMobileMenu">
-                <i class="fas fa-times"></i>
-            </div>
             <nav class="mobile-nav">
                 <a href="#" class="mobile-nav-link">
                     <i class="fas fa-home"></i> خانه
@@ -2388,12 +2233,6 @@
                 <a href="#contact" class="mobile-nav-link">
                     <i class="fas fa-phone"></i> تماس با ما
                 </a>
-                <a href="#profile" class="mobile-nav-link" id="mobileProfile" style="display: none;">
-                    <i class="fas fa-user"></i> پروفایل
-                </a>
-                <a href="#orders" class="mobile-nav-link" id="mobileOrders" style="display: none;">
-                    <i class="fas fa-shopping-bag"></i> سفارشات
-                </a>
                 <a href="#" class="mobile-nav-link" id="mobileWishlist">
                     <i class="far fa-heart"></i> لیست علاقه‌مندی‌ها
                     <span class="badge" id="mobileWishlistCount">0</span>
@@ -2401,6 +2240,9 @@
                 <a href="#" class="mobile-nav-link" id="mobileCart">
                     <i class="fas fa-shopping-cart"></i> سبد خرید
                     <span class="badge" id="mobileCartCount">0</span>
+                </a>
+                <a href="#" class="mobile-nav-link" id="mobileProfile" style="display: none;">
+                    <i class="fas fa-user"></i> پروفایل
                 </a>
                 <a href="#" class="mobile-nav-link" id="mobileLogout" style="display: none;">
                     <i class="fas fa-sign-out-alt"></i> خروج
@@ -2412,7 +2254,7 @@
         </div>
     </header>
     
-    <!-- مودال احراز هویت -->
+    <!-- Auth Modal -->
     <div class="auth-modal" id="authModal">
         <div class="auth-modal-content">
             <button class="close-auth-modal" id="closeAuthModal">&times;</button>
@@ -2452,13 +2294,12 @@
                 <div class="auth-form-group">
                     <label for="registerName" class="auth-form-label">نام کامل</label>
                     <input type="text" id="registerName" class="auth-form-input" placeholder="نام و نام خانوادگی">
-                    <span class="input-hint">(فارسی یا انگلیسی)</span>
                 </div>
                 
                 <div class="auth-form-group">
                     <label for="registerPhone" class="auth-form-label">شماره تماس</label>
                     <input type="tel" id="registerPhone" class="auth-form-input" placeholder="09xxxxxxxxx">
-                    <span class="input-hint">(فقط اعداد انگلیسی)</span>
+                    <small style="display: block; margin-top: 5px; color: #777;">(فقط اعداد انگلیسی)</small>
                 </div>
                 
                 <div class="auth-form-group">
@@ -2493,7 +2334,7 @@
         </div>
     </div>
     
-    <!-- هدر جستجو -->
+    <!-- Search Header -->
     <div class="search-header" id="searchHeader">
         <div class="search-header-container">
             <button class="close-search" id="closeSearch">
@@ -2502,11 +2343,11 @@
             <input type="text" class="search-input" id="searchInput" placeholder="جستجوی محصولات...">
         </div>
         <div class="search-results" id="searchResults">
-            <!-- نتایج جستجو اینجا نمایش داده می‌شود -->
+            <!-- Search results will be populated here -->
         </div>
     </div>
     
-    <!-- بخش قهرمان -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">کشف رایحه‌های منحصر به فرد</h1>
@@ -2514,125 +2355,7 @@
         </div>
     </section>
     
-    <!-- بخش پروفایل کاربر -->
-    <section class="section" id="profile" style="display: none;">
-        <div class="profile-container">
-            <div class="profile-header">
-                <h2>پروفایل کاربری</h2>
-            </div>
-            <div class="profile-content">
-                <div class="user-profile">
-                    <img src="https://via.placeholder.com/150" alt="پروفایل کاربر" class="user-profile-avatar">
-                    <div class="user-profile-info">
-                        <h3 id="profileName">نام کاربر</h3>
-                        <p id="profileEmail">example@example.com</p>
-                    </div>
-                </div>
-                
-                <div class="profile-info">
-                    <div class="info-item">
-                        <div class="info-label">نام کامل:</div>
-                        <div class="info-value" id="profileFullName">احسان بهبودنیا</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">شماره تماس:</div>
-                        <div class="info-value" id="profilePhone">۰۹۳۰۷۷۸۰۸۱۷</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">ایمیل:</div>
-                        <div class="info-value" id="profileEmailValue">ehsanbehboudnia@gmail.com</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">تاریخ عضویت:</div>
-                        <div class="info-value">۱۴۰۳/۰۱/۱۵</div>
-                    </div>
-                </div>
-                
-                <button class="btn btn-primary" id="editProfile">ویرایش پروفایل</button>
-            </div>
-        </div>
-    </section>
-    
-    <!-- بخش سفارشات کاربر -->
-    <section class="section" id="orders" style="display: none;">
-        <div class="orders-container">
-            <div class="orders-header">
-                <h2>سفارشات من</h2>
-            </div>
-            <div class="orders-content">
-                <div class="order-card">
-                    <div class="order-header">
-                        <div class="order-number">سفارش #۱۲۳۴۵۶</div>
-                        <div class="order-date">۱۴۰۳/۰۲/۰۵</div>
-                        <div class="order-status status-delivered">تحویل شده</div>
-                    </div>
-                    <div class="order-details">
-                        <div class="info-item">
-                            <div class="info-label">مبلغ کل:</div>
-                            <div class="info-value">۱,۲۵۰,۰۰۰ تومان</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">روش ارسال:</div>
-                            <div class="info-value">پست پیشتاز</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">وضعیت:</div>
-                            <div class="info-value">تحویل شده</div>
-                        </div>
-                    </div>
-                    <div class="order-products">
-                        <div class="order-product">
-                            <img src="https://via.placeholder.com/100" alt="محصول" class="order-product-image">
-                            <div>
-                                <div class="product-name">شنل پلاتینیوم</div>
-                                <div class="product-price">۵۵۰,۰۰۰ تومان</div>
-                            </div>
-                        </div>
-                        <div class="order-product">
-                            <img src="https://via.placeholder.com/100" alt="محصول" class="order-product-image">
-                            <div>
-                                <div class="product-name">تایگار</div>
-                                <div class="product-price">۷۰۰,۰۰۰ تومان</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="order-card">
-                    <div class="order-header">
-                        <div class="order-number">سفارش #۱۲۳۴۵۷</div>
-                        <div class="order-date">۱۴۰۳/۰۲/۰۱</div>
-                        <div class="order-status status-shipped">در حال ارسال</div>
-                    </div>
-                    <div class="order-details">
-                        <div class="info-item">
-                            <div class="info-label">مبلغ کل:</div>
-                            <div class="info-value">۹۵۰,۰۰۰ تومان</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">روش ارسال:</div>
-                            <div class="info-value">ماهکس</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">وضعیت:</div>
-                            <div class="info-value">در حال ارسال</div>
-                        </div>
-                    </div>
-                    <div class="order-products">
-                        <div class="order-product">
-                            <img src="https://via.placeholder.com/100" alt="محصول" class="order-product-image">
-                            <div>
-                                <div class="product-name">مارلی هالتان</div>
-                                <div class="product-price">۹۵۰,۰۰۰ تومان</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- محصولات ویژه -->
+    <!-- Featured Products -->
     <section class="section" id="men">
         <div class="section-title">
             <h2>عطرهای مردانه</h2>
@@ -2640,12 +2363,12 @@
         
         <div class="products-container">
             <div class="products-grid" id="menPerfumes">
-                <!-- محصولات توسط جاوااسکریپت اضافه می‌شوند -->
+                <!-- Products will be populated by JavaScript -->
             </div>
         </div>
     </section>
     
-    <!-- عطرهای زنانه -->
+    <!-- Women Perfumes -->
     <section class="section" style="background: #f8f9fa;" id="women">
         <div class="section-title">
             <h2>عطرهای زنانه</h2>
@@ -2653,12 +2376,12 @@
         
         <div class="products-container">
             <div class="products-grid" id="womenPerfumes">
-                <!-- محصولات توسط جاوااسکریپت اضافه می‌شوند -->
+                <!-- Products will be populated by JavaScript -->
             </div>
         </div>
     </section>
     
-    <!-- عطرهای یونی‌سکس -->
+    <!-- Unisex Perfumes -->
     <section class="section" id="unisex">
         <div class="section-title">
             <h2>عطرهای یونی‌سکس</h2>
@@ -2666,12 +2389,12 @@
         
         <div class="products-container">
             <div class="products-grid" id="unisexPerfumes">
-                <!-- محصولات توسط جاوااسکریپت اضافه می‌شوند -->
+                <!-- Products will be populated by JavaScript -->
             </div>
         </div>
     </section>
     
-    <!-- بخش تماس با ما -->
+    <!-- Contact Section -->
     <section class="section" id="contact">
         <div class="section-title">
             <h2>تماس با ما</h2>
@@ -2723,7 +2446,7 @@
         </div>
     </section>
     
-    <!-- فوتر -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -2781,14 +2504,14 @@
         </div>
     </footer>
     
-    <!-- مودال سبد خرید -->
+    <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-header">
             <h3 class="cart-title">سبد خرید شما</h3>
             <button class="close-cart" id="closeCart">&times;</button>
         </div>
         <div class="cart-items" id="cartItems">
-            <!-- آیتم‌های سبد خرید به صورت پویا اضافه می‌شوند -->
+            <!-- Cart items will be added here dynamically -->
         </div>
         <div class="cart-summary">
             <div class="cart-total">
@@ -2801,7 +2524,7 @@
         </div>
     </div>
     
-    <!-- مودال تکمیل سفارش -->
+    <!-- Checkout Modal -->
     <div class="cart-modal" id="checkoutModal">
         <div class="cart-header">
             <h3 class="cart-title">تکمیل سفارش</h3>
@@ -2824,37 +2547,35 @@
             <div class="checkout-progress" id="checkoutProgress" style="width: 0%"></div>
         </div>
         
-        <!-- مرحله 1: اطلاعات ارسال -->
+        <!-- Step 1: Shipping Information -->
         <div class="checkout-form-container active" id="shippingInfoForm">
             <div class="checkout-form">
                 <div class="form-group">
                     <label for="fullName" class="form-label">نام و نام خانوادگی گیرنده</label>
                     <input type="text" id="fullName" class="form-control" placeholder="نام کامل گیرنده">
-                    <span class="input-hint">(فارسی یا انگلیسی)</span>
                 </div>
                 
                 <div class="form-group">
                     <label for="phoneNumber" class="form-label">شماره تماس گیرنده</label>
                     <input type="tel" id="phoneNumber" class="form-control" placeholder="09xxxxxxxxx">
-                    <span class="input-hint">(فقط اعداد انگلیسی)</span>
+                    <small style="display: block; margin-top: 5px; color: #777;">(فقط اعداد انگلیسی)</small>
                 </div>
                 
                 <div class="form-row">
                     <div class="form-col">
                         <div class="form-group">
                             <label for="province" class="form-label">استان</label>
-                            <select id="province" class="form-control">
+                            <select id="province" class="province-select">
                                 <option value="">انتخاب استان</option>
-                                <!-- استان‌ها توسط جاوااسکریپت اضافه می‌شوند -->
+                                <!-- Provinces will be populated by JavaScript -->
                             </select>
                         </div>
                     </div>
                     <div class="form-col">
                         <div class="form-group">
                             <label for="city" class="form-label">شهر</label>
-                            <select id="city" class="form-control" disabled>
+                            <select id="city" class="city-select" disabled>
                                 <option value="">ابتدا استان را انتخاب کنید</option>
-                                <!-- شهرها توسط جاوااسکریپت اضافه می‌شوند -->
                             </select>
                         </div>
                     </div>
@@ -2868,7 +2589,7 @@
                 <div class="form-group">
                     <label for="postalCode" class="form-label">کد پستی</label>
                     <input type="text" id="postalCode" class="form-control" placeholder="کد پستی ۱۰ رقمی">
-                    <span class="input-hint">(فقط اعداد انگلیسی)</span>
+                    <small style="display: block; margin-top: 5px; color: #777;">(فقط اعداد انگلیسی)</small>
                 </div>
                 
                 <div class="form-group">
@@ -2883,7 +2604,7 @@
             </div>
         </div>
         
-        <!-- مرحله 2: روش ارسال -->
+        <!-- Step 2: Shipping Method -->
         <div class="checkout-form-container" id="shippingMethodForm">
             <div class="checkout-form">
                 <h3 style="margin-bottom: 20px; color: var(--dark);">روش ارسال را انتخاب کنید</h3>
@@ -2931,7 +2652,7 @@
             </div>
         </div>
         
-        <!-- مرحله 3: پرداخت -->
+        <!-- Step 3: Payment -->
         <div class="checkout-form-container" id="paymentForm">
             <div class="checkout-form">
                 <h3 style="margin-bottom: 20px; color: var(--dark);">پرداخت سفارش</h3>
@@ -2973,12 +2694,9 @@
                         <div class="order-review-label">روش ارسال:</div>
                         <div class="order-review-value" id="reviewShippingMethod">-</div>
                     </div>
-                    
                     <div class="order-review-item">
                         <div class="order-review-label">محصولات:</div>
-                        <div class="order-review-value" id="reviewProducts">
-                            <!-- محصولات توسط جاوااسکریپت اضافه می‌شوند -->
-                        </div>
+                        <div class="order-review-value" id="reviewProducts">-</div>
                     </div>
                 </div>
             </div>
@@ -2989,7 +2707,7 @@
             </div>
         </div>
         
-        <!-- تایید سفارش -->
+        <!-- Order Confirmation -->
         <div class="checkout-form-container" id="orderConfirmation">
             <div class="order-confirmation">
                 <div class="order-confirmation-icon">
@@ -3005,138 +2723,156 @@
         </div>
     </div>
     
-    <!-- مودال لیست علاقه‌مندی‌ها -->
+    <!-- Wishlist Modal -->
     <div class="cart-modal" id="wishlistModal">
         <div class="cart-header">
             <h3 class="cart-title">لیست علاقه‌مندی‌ها</h3>
             <button class="close-cart" id="closeWishlist">&times;</button>
         </div>
         <div class="cart-items" id="wishlistItems">
-            <!-- آیتم‌های لیست علاقه‌مندی‌ها به صورت پویا اضافه می‌شوند -->
+            <!-- Wishlist items will be added here dynamically -->
         </div>
     </div>
     
-    <!-- مودال جزئیات محصول -->
+    <!-- Product Detail Modal -->
     <div class="product-modal" id="productModal">
         <div class="product-modal-content">
             <button class="close-product-modal" id="closeProductModal">&times;</button>
             <div class="product-detail-container" id="productDetailContent">
-                <!-- جزئیات محصول توسط جاوااسکریپت اضافه می‌شوند -->
+                <!-- Product detail will be populated by JavaScript -->
             </div>
         </div>
     </div>
     
-    <!-- مودال انتخاب حجم -->
+    <!-- Size Selection Modal -->
     <div class="size-modal" id="sizeModal">
         <div class="size-modal-content">
             <button class="close-size-modal" id="closeSizeModal">&times;</button>
             <h3 class="size-modal-title" id="sizeModalTitle">انتخاب حجم</h3>
             <div class="size-options-modal" id="sizeOptions">
-                <!-- گزینه‌های حجم توسط جاوااسکریپت اضافه می‌شوند -->
+                <!-- Size options will be added here dynamically -->
             </div>
             <button class="add-to-cart-size" id="addToCartSize">افزودن به سبد خرید</button>
         </div>
     </div>
     
-    <!-- اوورلی برای مودال‌ها -->
-    <div class="overlay" id="overlay"></div>
-    
-    <!-- اعلان توست -->
-    <div class="toast" id="toast"></div>
-    
-    <!-- پنل مدیریت -->
-    <div class="admin-panel" id="adminPanel" style="display: none;">
-        <div class="admin-header">
-            <h2>پنل مدیریت سفارشات</h2>
-            <button class="btn btn-secondary" id="logoutAdmin">خروج</button>
-        </div>
-        
-        <div class="admin-nav">
-            <a href="#orders" class="admin-nav-link active">مدیریت سفارشات</a>
-            <a href="#products" class="admin-nav-link">مدیریت محصولات</a>
-            <a href="#users" class="admin-nav-link">مدیریت کاربران</a>
-        </div>
-        
-        <div class="admin-content">
-            <table style="width: 100%; border-collapse: collapse;">
-                <thead>
-                    <tr style="background: #f8f9fa;">
-                        <th style="padding: 12px; text-align: right;">شماره سفارش</th>
-                        <th style="padding: 12px; text-align: right;">مشتری</th>
-                        <th style="padding: 12px; text-align: right;">تاریخ</th>
-                        <th style="padding: 12px; text-align: right;">مبلغ</th>
-                        <th style="padding: 12px; text-align: right;">وضعیت</th>
-                        <th style="padding: 12px; text-align: right;">عملیات</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">ORD-789456</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">احسان بهبودنیا</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">۱۴۰۳/۰۲/۱۰</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">۱,۲۵۰,۰۰۰ تومان</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">
-                            <select class="status-select">
-                                <option value="pending" selected>در انتظار پرداخت</option>
-                                <option value="processing">در حال پردازش</option>
-                                <option value="shipped">ارسال شده</option>
-                                <option value="delivered">تحویل داده شده</option>
-                                <option value="cancelled">لغو شده</option>
-                            </select>
-                        </td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">
-                            <button class="btn btn-primary">ذخیره</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">ORD-789457</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">محمد رضایی</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">۱۴۰۳/۰۲/۰۸</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">۸۵۰,۰۰۰ تومان</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">
-                            <select class="status-select">
-                                <option value="pending">در انتظار پرداخت</option>
-                                <option value="processing">در حال پردازش</option>
-                                <option value="shipped" selected>ارسال شده</option>
-                                <option value="delivered">تحویل داده شده</option>
-                                <option value="cancelled">لغو شده</option>
-                            </select>
-                        </td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">
-                            <button class="btn btn-primary">ذخیره</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">ORD-789458</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">فاطمه احمدی</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">۱۴۰۳/۰۲/۰۵</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">۱,۵۰۰,۰۰۰ تومان</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">
-                            <select class="status-select">
-                                <option value="pending">در انتظار پرداخت</option>
-                                <option value="processing" selected>در حال پردازش</option>
-                                <option value="shipped">ارسال شده</option>
-                                <option value="delivered">تحویل داده شده</option>
-                                <option value="cancelled">لغو شده</option>
-                            </select>
-                        </td>
-                        <td style="padding: 12px; border-bottom: 1px solid #eee;">
-                            <button class="btn btn-primary">ذخیره</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Profile Modal -->
+    <div class="profile-modal" id="profileModal">
+        <div class="profile-modal-content">
+            <button class="close-profile-modal" id="closeProfileModal">&times;</button>
+            <h2 style="text-align: center; margin-bottom: 25px; color: var(--dark);">پروفایل کاربری</h2>
+            
+            <div class="profile-section">
+                <div class="user-profile">
+                    <img src="https://via.placeholder.com/150" alt="پروفایل کاربر" class="user-profile-avatar" id="profileAvatar">
+                    <div class="user-profile-info">
+                        <h3 id="profileName">نام کاربر</h3>
+                        <p id="profileEmail">email@example.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <h3>اطلاعات شخصی</h3>
+                <div class="form-group">
+                    <label for="profileFullName" class="form-label">نام کامل</label>
+                    <input type="text" id="profileFullName" class="form-control" value="نام کاربر">
+                </div>
+                
+                <div class="form-group">
+                    <label for="profilePhone" class="form-label">شماره تماس</label>
+                    <input type="tel" id="profilePhone" class="form-control" value="09123456789">
+                </div>
+                
+                <button class="btn btn-primary" id="saveProfile">ذخیره تغییرات</button>
+            </div>
         </div>
     </div>
+    
+    <!-- Orders Modal -->
+    <div class="orders-modal" id="ordersModal">
+        <div class="orders-modal-content">
+            <button class="close-orders-modal" id="closeOrdersModal">&times;</button>
+            <h2 style="text-align: center; margin-bottom: 25px; color: var(--dark);">سفارشات من</h2>
+            
+            <div class="orders-section">
+                <h3>تاریخچه سفارشات</h3>
+                
+                <div class="order-item">
+                    <div class="order-header">
+                        <div>
+                            <div>شماره سفارش: <strong>ORD-123456</strong></div>
+                            <div>تاریخ: ۱۴۰۳/۰۵/۲۰</div>
+                        </div>
+                        <div class="order-status status-shipped">ارسال شده</div>
+                    </div>
+                    
+                    <div class="order-products">
+                        <div class="order-product">
+                            <img src="https://via.placeholder.com/150" alt="محصول" class="order-product-image">
+                            <div class="order-product-info">
+                                <div class="order-product-name">عطر مردانه شنل پلاتینیوم</div>
+                                <div class="order-product-size">حجم: ۵۰ میل</div>
+                                <div class="order-product-price">۶۵۰,۰۰۰ تومان</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-total">
+                        <strong>جمع کل: ۷۰۵,۰۰۰ تومان</strong>
+                    </div>
+                </div>
+                
+                <div class="order-item">
+                    <div class="order-header">
+                        <div>
+                            <div>شماره سفارش: <strong>ORD-123457</strong></div>
+                            <div>تاریخ: ۱۴۰۳/۰۵/۱۵</div>
+                        </div>
+                        <div class="order-status status-pending">در انتظار پرداخت</div>
+                    </div>
+                    
+                    <div class="order-products">
+                        <div class="order-product">
+                            <img src="https://via.placeholder.com/150" alt="محصول" class="order-product-image">
+                            <div class="order-product-info">
+                                <div class="order-product-name">عطر زنانه بای کیلیان بلومون</div>
+                                <div class="order-product-size">حجم: ۳۰ میل</div>
+                                <div class="order-product-price">۳۹۰,۰۰۰ تومان</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-total">
+                        <strong>جمع کل: ۴۴۵,۰۰۰ تومان</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Overlay for modals -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
 
-    <!-- اسکریپت‌ها -->
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
-        // پیکربندی Firebase
+        (function() {
+            emailjs.init("xluvNfOZ9_o0SFRVi");
+        })();
+    </script>
+
+    <script>
+        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyA-5z_1keyBEMxW-iA2WQK4fAznG10uQ78",
             authDomain: "hamsarperfume-83cb6.firebaseapp.com",
@@ -3147,12 +2883,12 @@
             measurementId: "G-G7QCTQXB8C"
         };
         
-        // مقداردهی اولیه Firebase
+        // Initialize Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
         
-        // پیکربندی Firebase UI
+        // Firebase UI config
         const uiConfig = {
             signInSuccessUrl: '#',
             signInOptions: [
@@ -3165,77 +2901,73 @@
             credentialHelper: firebaseui.auth.CredentialHelper.NONE,
             callbacks: {
                 signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-                    // کاربر با موفقیت وارد شد
+                    // User successfully signed in
                     handleAuthStateChanged(authResult.user);
-                    return false; // عدم ریدایرکت
+                    return false; // Don't redirect
                 }
             }
         };
         
-        // مقداردهی اولیه Firebase UI
+        // Initialize Firebase UI
         const ui = new firebaseui.auth.AuthUI(auth);
         
-        // داده‌های کامل عطرها
+        // Complete perfume data
         const perfumes = [
-            // عطرهای مردانه
-            {id: 1, name: "شنل پلاتینیوم", category: "men", image: "assets/image/platinum.jpg", badge: "جدید", price: 170, sizes: [{ size: "ده میل", price: 170 }, { size: "بیست میل", price: 290 }, { size: "سی میل", price: 390 }, { size: "پنجاه میل", price: 650 }], description: "عطری کلاسیک و لوکس با ترکیبی از نت‌های مرکباتی در ابتدا و پایه‌ای از چوب صندل و مشک.", specs: {"برند": "شنل", "نوع رایحه": "مرکباتی – چوبی", "پخش بو": "زیاد"}},
-            {id: 2, name: "تایگار", category: "men", image: "assets/image/تایگار.JPG", badge: "پرفروش", price: 190, sizes: [{ size: "ده میل", price: 190 }, { size: "بیست میل", price: 320 }, { size: "سی میل", price: 430 }, { size: "پنجاه میل", price: 700 }], description: "رایحه‌ای دریایی و تازه با تُن‌های مرکباتی و کمی مشک در پس‌زمینه.", specs: {"برند": "بولگاری", "نوع رایحه": "آبی – مرکباتی", "پخش بو": "زیاد"}},
-            {id: 3, name: "مارلی آلتیر", category: "men", image: "assets/image/التیر.jpg", badge: "پرفروش", price: 190, sizes: [{ size: "ده میل", price: 190 }, { size: "بیست میل", price: 320 }, { size: "سی میل", price: 430 }, { size: "پنجاه میل", price: 700 }], description: "عطری گل‌دار و میوه‌ای با نت‌های یاسمنی در قلب و پایه‌ای خنک از مرکبات.", specs: {"برند": "مارلی", "نوع رایحه": "فلورال – میوه‌ای", "پخش بو": "زیاد"}},
-            {id: 4, name: "ایسی میاکی ماجور", category: "men", image: "https://via.placeholder.com/300", badge: "جدید", price: 170, sizes: [{ size: "ده میل", price: 170 }, { size: "بیست میل", price: 290 }, { size: "سی میل", price: 390 }, { size: "پنجاه میل", price: 650 }], description: "الهام‌گرفته از فضای کوهستانی با ترکیبی از نت‌های چوبی و ادویه‌ای.", specs: {"برند": "ایسی میاکی", "نوع رایحه": "چوبی – ادویه‌ای", "پخش بو": "متوسط"}},
-            {id: 5, name: "کرید سیلور مانتین", category: "men", image: "assets/image/سیلور.jpg", badge: "ویژه", price: 190, sizes: [{ size: "ده میل", price: 190 }, { size: "بیست میل", price: 320 }, { size: "سی میل", price: 430 }, { size: "پنجاه میل", price: 700 }], description: "حسی کوهستانی و خنک با غالب‌بودن نت‌های چوبی و کهربایی.", specs: {"برند": "کرید", "نوع رایحه": "چوبی – کهربایی", "پخش بو": "زیاد"}},
-            {id: 6, name: "گانیمد", category: "men", image: "assets/image/گانیمد.jpg", badge: "جدید", price: 190, sizes: [{ size: "ده میل", price: 190 }, { size: "بیست میل", price: 320 }, { size: "سی میل", price: 430 }, { size: "پنجاه میل", price: 700 }], description: "عطری مدرن با نت‌های فلورال در ترکیب با چوب صندل و مشک.", specs: {"برند": "زارجوف", "نوع رایحه": "فلورال – چوبی", "پخش بو": "متوسط"}},
-            
-            // عطرهای زنانه
-            {id: 20, name: "بای کیلیان بلومون", category: "women", image: "assets/image/بلومون2.jpg", price: 170, sizes: [{ size: "ده میل", price: 170 }, { size: "بیست میل", price: 290 }, { size: "سی میل", price: 390 }, { size: "پنجاه میل", price: 650 }], description: "رایحه‌ای گلی-شرقی با تمرکز بر رز و وانیل.", specs: {"برند": "بای کیلیان", "نوع رایحه": "گل‌دار – شرقی", "پخش بو": "متوسط"}},
-            {id: 21, name: "بولگاری اکوا امارا", category: "women", image: "https://via.placeholder.com/300", price: 170, sizes: [{ size: "ده میل", price: 170 }, { size: "بیست میل", price: 290 }, { size: "سی میل", price: 390 }, { size: "پنجاه میل", price: 650 }], description: "نت‌های دریایی و مرکباتی با پس‌زمینه چوب صندل.", specs: {"برند": "بولگاری", "نوع رایحه": "آبی – مرکباتی", "پخش بو": "متوسط"}},
-            {id: 22, name: "زرجوف اکسنتو", category: "women", image: "https://via.placeholder.com/300", price: 170, sizes: [{ size: "ده میل", price: 170 }, { size: "بیست میل", price: 290 }, { size: "سی میل", price: 390 }, { size: "پنجاه میل", price: 650 }], description: "رایحه‌ای گرم و شرقی با تاکید بر وانیل و چوب صندل.", specs: {"برند": "زارجوف", "نوع رایحه": "شرقی – وانیلی", "پخش بو": "متوسط"}},
-            {id: 23, name: "ویکتوریا نایت", category: "women", image: "assets/image/وری-سکسی-نایت.jpg", badge: "جدید", price: 190, sizes: [{ size: "ده میل", price: 190 }, { size: "بیست میل", price: 320 }, { size: "سی میل", price: 430 }, { size: "پنجاه میل", price: 700 }], description: "حس رمانتیک با ترکیب گل‌های سیاه و وانیل.", specs: {"برند": "ویکتوریا سیکرت", "نوع رایحه": "گل‌دار – شرقی", "پخش بو": "زیاد"}},
-            {id: 24, name: "یارا", category: "women", image: "https://via.placeholder.com/300", price: 190, sizes: [{ size: "ده میل", price: 190 }, { size: "بیست میل", price: 320 }, { size: "سی میل", price: 430 }, { size: "پنجاه میل", price: 700 }], description: "عطری ملایم و گلی با نت‌های یاس و مرکبات.", specs: {"برند": "نامشخص", "نوع رایحه": "گلی – مرکباتی", "پخش بو": "متوسط"}},
-            {id: 25, name: "بیلی آیلیش", category: "women", image: "assets/image/بیلی.jpg", badge: "ویژه", price: 250, sizes: [{ size: "ده میل", price: 250 }, { size: "بیست میل", price: 450 }, { size: "سی میل", price: 590 }, { size: "پنجاه میل", price: 950 }], description: "رایحه‌ای مدرن و جوان‌پسند با نت‌های توت و وانیل.", specs: {"برند": "بیلی آیلیش", "نوع رایحه": "میوه‌ای – شرقی", "پخش بو": "متوسط"}},
-            
-            // عطرهای یونی‌سکس
-            {id: 35, name: "آمواج گایدنس", category: "unisex", image: "https://via.placeholder.com/300", price: 190, sizes: [{ size: "ده میل", price: 190 }, { size: "بیست میل", price: 320 }, { size: "سی میل", price: 430 }, { size: "پنجاه میل", price: 700 }], description: "حس شرقی-ادویه‌ای با تأکید بر عنبر و مشک.", specs: {"برند": "آمواج", "نوع رایحه": "شرقی – ادویه‌ای", "پخش بو": "متوسط"}},
-            {id: 36, name: "لویی ویتون پسفیک چیل", category: "unisex", image: "assets/image/پسفیک.JPG", price: 250, sizes: [{ size: "ده میل", price: 250 }, { size: "بیست میل", price: 450 }, { size: "سی میل", price: 590 }, { size: "پنجاه میل", price: 950 }], description: "حسی گیاهی-مرکباتی با تمرکز بر رزماری و پرتقال.", specs: {"برند": "لویی ویتون", "نوع رایحه": "گیاهی – مرکباتی", "پخش بو": "متوسط"}},
-            {id: 37, name: "لویی ویتون لیمنسیت", category: "unisex", image: "https://via.placeholder.com/300", price: 250, sizes: [{ size: "ده میل", price: 250 }, { size: "بیست میل", price: 450 }, { size: "سی میل", price: 590 }, { size: "پنجاه میل", price: 950 }], description: "رایحه‌ای مرکباتی-سبز با نت غالب لیمو.", specs: {"برند": "لویی ویتون", "نوع رایحه": "مرکباتی – سبز", "پخش بو": "متوسط"}},
-            {id: 38, name: "فلورنارکوتیک", category: "unisex", image: "https://via.placeholder.com/300", price: 590, sizes: [{ size: "سی میل", price: 590 }, { size: "پنجاه میل", price: 950 }], description: "عطری گل‌دار و میوه‌ای با نت‌های توت و گل‌های بهاری.", specs: {"برند": "فلورنارکوتیک", "نوع رایحه": "گل‌دار – میوه‌ای", "پخش بو": "متوسط"}},
-            {id: 39, name: "تیزیانا ترنزی کیرکه", category: "unisex", image: "https://via.placeholder.com/300", price: 430, sizes: [{ size: "سی میل", price: 430 }, { size: "پنجاه میل", price: 700 }], description: "نت‌های شرقی-گلی با تاکید بر رز و عنبر.", specs: {"برند": "تیزیانا ترنزی", "نوع رایحه": "شرقی – گلی", "پخش بو": "زیاد"}},
-            {id: 40, name: "کازاموراتی بوکت ایدل", category: "unisex", image: "https://via.placeholder.com/300", price: 590, sizes: [{ size: "سی میل", price: 590 }, { size: "پنجاه میل", price: 950 }], description: "حسی گلی-چوبی با نت‌های مشک و کهربا.", specs: {"برند": "کازاموراتی", "نوع رایحه": "گلی – چوبی", "پخش بو": "زیاد"}}
+            // Men's perfumes
+            {
+                id: 1,
+                name: "شنل پلاتینیوم",
+                category: "men",
+                image: "assets/image/platinum.jpg",
+                badge: "جدید",
+                price: 170,
+                sizes: [
+                    { size: "ده میل",   price: 170 },
+                    { size: "بیست میل",  price: 290 },
+                    { size: "سی میل",    price: 390 },
+                    { size: "پنجاه میل", price: 650 },
+                ],
+                description: "عطری کلاسیک و لوکس با ترکیبی از نت‌های مرکباتی در ابتدا و پایه‌ای از چوب صندل و مشک.",
+                specs: {
+                    "برند": "شنل",
+                    "نوع رایحه": "مرکباتی – چوبی",
+                    "پخش بو": "زیاد"
+                }
+            },
+            {
+                id: 2,
+                name: "تایگار",
+                category: "men",
+                image: "assets/image/تایگار.JPG",
+                badge: "پرفروش",
+                price: 190,
+                sizes: [
+                    { size: "ده میل",   price: 190 },
+                    { size: "بیست میل",  price: 320 },
+                    { size: "سی میل",    price: 430 },
+                    { size: "پنجاه میل", price: 700 },
+                ],
+                description: "رایحه‌ای دریایی و تازه با تُن‌های مرکباتی و کمی مشک در پس‌زمینه.",
+                specs: {
+                    "برند": "بولگاری",
+                    "نوع رایحه": "آبی – مرکباتی",
+                    "پخش بو": "زیاد"
+                }
+            },
+            // ... (other products)
         ];
   
-        // سبد خرید و لیست علاقه‌مندی‌ها
+        // Shopping cart and wishlist
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
         let selectedPerfume = null;
         let selectedSize = null;
         let currentUser = null;
         let currentCheckoutStep = 1;
-        let shippingMethod = 'post';
-        let shippingCost = 55000;
+        let shippingCost = 55000; // 55,000 Tomans
         let receiptFile = null;
         
-        const IMGBB_API_KEY = 'de55bc5b6525015fc1ef403f5adbb2f9';
-const EMAILJS_PUBLIC_KEY = 'xluvNfOZ9_o0SFRVi';
-const EMAILJS_SERVICE_ID = 'service_93422fg';
-const EMAILJS_TEMPLATE_ID = 'template_d6wdpb4';
-
-emailjs.init(EMAILJS_PUBLIC_KEY);
-
-function uploadToImgbb(file) {
-  return new Promise((resolve, reject) => {
-    if (!file) return resolve(null);
-    const reader = new FileReader();
-    reader.onload = () => {
-      const base64 = reader.result.split(',')[1];
-      const form = new FormData();
-      form.append('image', base64);
-      fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: 'POST', body: form })
-        .then(r => r.json()).then(d => resolve(d.data.url)).catch(reject);
-    };
-    reader.readAsDataURL(file);
-  });
-}
-        
-        // عناصر DOM
+        // DOM Elements
         const menPerfumes = document.getElementById('menPerfumes');
         const womenPerfumes = document.getElementById('womenPerfumes');
         const unisexPerfumes = document.getElementById('unisexPerfumes');
@@ -3272,7 +3004,7 @@ function uploadToImgbb(file) {
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
         
-        // عناصر تکمیل سفارش
+        // Checkout elements
         const checkoutModal = document.getElementById('checkoutModal');
         const closeCheckout = document.getElementById('closeCheckout');
         const checkoutButton = document.getElementById('checkoutButton');
@@ -3293,8 +3025,8 @@ function uploadToImgbb(file) {
         const closeCheckoutAfterConfirm = document.getElementById('closeCheckoutAfterConfirm');
         const fullName = document.getElementById('fullName');
         const phoneNumber = document.getElementById('phoneNumber');
-        const provinceSelect = document.getElementById('province');
-        const citySelect = document.getElementById('city');
+        const province = document.getElementById('province');
+        const city = document.getElementById('city');
         const address = document.getElementById('address');
         const postalCode = document.getElementById('postalCode');
         const orderNotes = document.getElementById('orderNotes');
@@ -3313,7 +3045,7 @@ function uploadToImgbb(file) {
         const reviewProducts = document.getElementById('reviewProducts');
         const orderNumber = document.getElementById('orderNumber');
         
-        // عناصر احراز هویت
+        // Auth elements
         const authModal = document.getElementById('authModal');
         const closeAuthModal = document.getElementById('closeAuthModal');
         const loginBtn = document.getElementById('loginBtn');
@@ -3332,49 +3064,22 @@ function uploadToImgbb(file) {
         const googleLogin = document.getElementById('googleLogin');
         const googleRegister = document.getElementById('googleRegister');
         const mobileProfile = document.getElementById('mobileProfile');
-        const mobileOrders = document.getElementById('mobileOrders');
         const mobileLogout = document.getElementById('mobileLogout');
         const mobileLogin = document.getElementById('mobileLogin');
         
-        // لیست استان‌ها و شهرهای ایران
-        const iranProvinces = {
-            'تهران': ['تهران', 'شهریار', 'اسلامشهر', 'ورامین', 'پاکدشت'],
-            'اصفهان': ['اصفهان', 'کاشان', 'خمینی‌شهر', 'نجف‌آباد', 'شاهین‌شهر'],
-            'فارس': ['شیراز', 'مرودشت', 'کازرون', 'جهرم', 'فسا'],
-            'خراسان رضوی': ['مشهد', 'نیشابور', 'سبزوار', 'تربت حیدریه', 'قوچان'],
-            'آذربایجان شرقی': ['تبریز', 'مراغه', 'مرند', 'اهر', 'میانه'],
-            'مازندران': ['ساری', 'بابل', 'آمل', 'قائم‌شهر', 'نور'],
-            'البرز': ['کرج', 'هشتگرد', 'نظرآباد', 'طالقان', 'اشتهارد'],
-            'گیلان': ['رشت', 'انزلی', 'لاهیجان', 'آستارا', 'تالش'],
-            'خوزستان': ['اهواز', 'دزفول', 'آبادان', 'خرمشهر', 'شوشتر'],
-            'کرمان': ['کرمان', 'رفسنجان', 'سیرجان', 'بم', 'جیرفت'],
-            'آذربایجان غربی': ['ارومیه', 'خوی', 'مهاباد', 'میاندوآب', 'سلماس'],
-            'مرکزی': ['اراک', 'ساوه', 'خمین', 'محلات', 'شازند'],
-            'همدان': ['همدان', 'ملایر', 'نهاوند', 'تویسرکان', 'کبودرآهنگ'],
-            'قم': ['قم'],
-            'کردستان': ['سنندج', 'سقز', 'مریوان', 'بانه', 'قروه'],
-            'لرستان': ['خرم‌آباد', 'بروجرد', 'دورود', 'کوهدشت', 'الیگودرز'],
-            'زنجان': ['زنجان', 'ابهر', 'خرمدره', 'قیدار', 'خدابنده'],
-            'سیستان و بلوچستان': ['زاهدان', 'ایرانشهر', 'چابهار', 'زابل', 'سراوان'],
-            'کرمانشاه': ['کرمانشاه', 'اسلام‌آباد غرب', 'پاوه', 'هرسین', 'کنگاور'],
-            'کهگیلویه و بویراحمد': ['یاسوج', 'گچساران', 'دنا', 'سی سخت', 'لنده'],
-            'گلستان': ['گرگان', 'گنبد کاووس', 'علی‌آباد', 'مینودشت', 'آزادشهر'],
-            'ایلام': ['ایلام', 'ایوان', 'دهلران', 'مهران', 'دره‌شهر'],
-            'چهارمحال و بختیاری': ['شهرکرد', 'بروجن', 'فرخشهر', 'لردگان', 'اردل'],
-            'خراسان شمالی': ['بجنورد', 'شیروان', 'اسفراین', 'فاروج', 'جاجرم'],
-            'خراسان جنوبی': ['بیرجند', 'قاین', 'فردوس', 'نهبندان', 'سرایان'],
-            'اردبیل': ['اردبیل', 'مشگین‌شهر', 'پارس‌آباد', 'خلخال', 'گرمی'],
-            'بوشهر': ['بوشهر', 'برازجان', 'خارک', 'کنگان', 'جم'],
-            'سمنان': ['سمنان', 'شاهرود', 'دامغان', 'گرمسار', 'مهدی‌شهر'],
-            'هرمزگان': ['بندرعباس', 'قشم', 'میناب', 'بندرلنگه', 'کیش'],
-            'یزد': ['یزد', 'میبد', 'اردکان', 'بافق', 'تفت'],
-            'هرمزگان': ['بندرعباس', 'قشم', 'میناب', 'بندرلنگه', 'کیش'],
-            'یزد': ['یزد', 'میبد', 'اردکان', 'بافق', 'تفت'],
-            'هرمزگان': ['بندرعباس', 'قشم', 'میناب', 'بندرلنگه', 'کیش'],
-            'یزد': ['یزد', 'میبد', 'اردکان', 'بافق', 'تفت']
-        };
+        // Profile and Orders modals
+        const profileModal = document.getElementById('profileModal');
+        const closeProfileModal = document.getElementById('closeProfileModal');
+        const ordersModal = document.getElementById('ordersModal');
+        const closeOrdersModal = document.getElementById('closeOrdersModal');
+        const saveProfile = document.getElementById('saveProfile');
+        const profileAvatar = document.getElementById('profileAvatar');
+        const profileName = document.getElementById('profileName');
+        const profileEmail = document.getElementById('profileEmail');
+        const profileFullName = document.getElementById('profileFullName');
+        const profilePhone = document.getElementById('profilePhone');
         
-        // تولید کارت‌های محصولات
+        // Generate product cards
         function generateProductCards() {
             menPerfumes.innerHTML = '';
             womenPerfumes.innerHTML = '';
@@ -3384,7 +3089,7 @@ function uploadToImgbb(file) {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 
-                // یافتن قیمت پایه (10ml)
+                // Find the base price (10ml)
                 const basePrice = perfume.sizes[0].price;
                 
                 productCard.innerHTML = `
@@ -3409,13 +3114,13 @@ function uploadToImgbb(file) {
                     </div>
                 `;
                 
-                // افزودن به سبد خرید بدون نیاز به ورود
+                // Add to cart functionality
                 const addToCartBtn = productCard.querySelector('.add-to-cart-btn');
                 addToCartBtn.addEventListener('click', () => {
                     openSizeModal(perfume);
                 });
                 
-                // لیست علاقه‌مندی‌ها
+                // Wishlist functionality
                 const wishlistBtn = productCard.querySelector('.wishlist-btn');
                 const isInWishlist = wishlist.some(item => item.id === perfume.id);
                 if (isInWishlist) {
@@ -3427,7 +3132,7 @@ function uploadToImgbb(file) {
                     toggleWishlist(perfume, wishlistBtn);
                 });
                 
-                // عنوان و تصویر محصول برای جزئیات
+                // Product title and image click for details
                 const productTitle = productCard.querySelector('.product-title');
                 const productImage = productCard.querySelector('.product-image');
                 
@@ -3439,7 +3144,7 @@ function uploadToImgbb(file) {
                     showProductDetails(perfume);
                 });
                 
-                // افزودن به دسته‌بندی مناسب
+                // Add to appropriate category
                 if (perfume.category === 'men') {
                     menPerfumes.appendChild(productCard);
                 } else if (perfume.category === 'women') {
@@ -3450,7 +3155,7 @@ function uploadToImgbb(file) {
             });
         }
         
-        // باز کردن مودال انتخاب حجم
+        // Open size selection modal
         function openSizeModal(perfume) {
             selectedPerfume = perfume;
             selectedSize = null;
@@ -3484,7 +3189,7 @@ function uploadToImgbb(file) {
             document.body.style.overflow = 'hidden';
         }
         
-        // افزودن به سبد خرید از مودال اندازه
+        // Add to cart from size modal
         addToCartSize.addEventListener('click', () => {
             if (!selectedPerfume || !selectedSize) {
                 showToast('لطفاً حجم مورد نظر را انتخاب کنید');
@@ -3495,14 +3200,14 @@ function uploadToImgbb(file) {
             sizeModal.classList.remove('active');
         });
         
-        // بستن مودال اندازه
+        // Close size modal
         closeSizeModal.addEventListener('click', () => {
             sizeModal.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         });
         
-        // افزودن به سبد خرید
+        // Add to cart function
         function addToCart(perfume, size, price) {
             const existingItem = cart.find(item => 
                 item.id === perfume.id && item.size === size
@@ -3526,7 +3231,7 @@ function uploadToImgbb(file) {
             showToast('محصول به سبد خرید اضافه شد!');
         }
         
-        // تغییر لیست علاقه‌مندی‌ها
+        // Toggle wishlist
         function toggleWishlist(perfume, button) {
             const index = wishlist.findIndex(item => item.id === perfume.id);
             
@@ -3551,30 +3256,30 @@ function uploadToImgbb(file) {
             updateWishlistCount();
         }
         
-        // ذخیره سبد خرید در localStorage
+        // Save cart to localStorage
         function saveCart() {
             localStorage.setItem('cart', JSON.stringify(cart));
         }
         
-        // ذخیره لیست علاقه‌مندی‌ها در localStorage
+        // Save wishlist to localStorage
         function saveWishlist() {
             localStorage.setItem('wishlist', JSON.stringify(wishlist));
         }
         
-        // به‌روزرسانی تعداد سبد خرید
+        // Update cart count
         function updateCartCount() {
             const count = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = count;
             mobileCartCount.textContent = count;
         }
         
-        // به‌روزرسانی تعداد لیست علاقه‌مندی‌ها
+        // Update wishlist count
         function updateWishlistCount() {
             wishlistCount.textContent = wishlist.length;
             mobileWishlistCount.textContent = wishlist.length;
         }
         
-        // نمایش اعلان توست
+        // Show toast notification
         function showToast(message) {
             toast.textContent = message;
             toast.classList.add('show');
@@ -3584,7 +3289,7 @@ function uploadToImgbb(file) {
             }, 3000);
         }
         
-        // به‌روزرسانی رابط کاربری سبد خرید
+        // Update cart UI
         function updateCartUI() {
             cartItems.innerHTML = '';
             
@@ -3619,10 +3324,10 @@ function uploadToImgbb(file) {
                 cartItems.appendChild(cartItem);
             });
             
-            // به‌روزرسانی مجموع
+            // Update totals
             cartTotal.textContent = total.toLocaleString('fa') + ',۰۰۰ تومان';
             
-            // افزودن رویداد به دکمه‌های حذف
+            // Add event listeners to remove buttons
             document.querySelectorAll('.cart-item-remove').forEach(button => {
                 button.addEventListener('click', () => {
                     const index = parseInt(button.dataset.index);
@@ -3635,7 +3340,7 @@ function uploadToImgbb(file) {
             });
         }
         
-        // به‌روزرسانی رابط کاربری لیست علاقه‌مندی‌ها
+        // Update wishlist UI
         function updateWishlistUI() {
             wishlistItems.innerHTML = '';
             
@@ -3663,7 +3368,7 @@ function uploadToImgbb(file) {
                 wishlistItems.appendChild(wishlistItem);
             });
             
-            // افزودن رویداد به دکمه‌های حذف
+            // Add event listeners to remove buttons
             document.querySelectorAll('.cart-item-remove').forEach(button => {
                 button.addEventListener('click', () => {
                     const index = parseInt(button.dataset.index);
@@ -3672,14 +3377,14 @@ function uploadToImgbb(file) {
                     updateWishlistCount();
                     updateWishlistUI();
                     showToast('محصول از لیست علاقه‌مندی‌ها حذف شد');
-                    generateProductCards(); // به‌روزرسانی آیکون‌های قلب
+                    generateProductCards(); // Update heart icons
                 });
             });
         }
         
-        // نمایش جزئیات محصول
+        // Product details functionality
         function showProductDetails(perfume) {
-            // تولید گزینه‌های اندازه برای مودال جزئیات
+            // Generate size options HTML for detail modal
             let sizeOptionsHTML = '';
             perfume.sizes.forEach(size => {
                 sizeOptionsHTML += `
@@ -3690,7 +3395,7 @@ function uploadToImgbb(file) {
                 `;
             });
             
-            // تولید مشخصات
+            // Generate specs HTML
             let specsHTML = '';
             for (const [key, value] of Object.entries(perfume.specs)) {
                 specsHTML += `
@@ -3735,24 +3440,24 @@ function uploadToImgbb(file) {
                 </div>
             `;
             
-            // افزودن رویداد به گزینه‌های اندازه در مودال
+            // Add event listeners to size options in modal
             const sizeOptions = productDetailContent.querySelectorAll('.size-option-detail');
             const priceElement = productDetailContent.querySelector('.product-detail-price');
             
             sizeOptions.forEach(option => {
                 option.addEventListener('click', () => {
-                    // حذف کلاس انتخاب شده از همه گزینه‌ها
+                    // Remove selected class from all options
                     sizeOptions.forEach(opt => opt.classList.remove('active'));
                     
-                    // افزودن کلاس انتخاب شده به گزینه کلیک شده
+                    // Add selected class to clicked option
                     option.classList.add('active');
                     
-                    // به‌روزرسانی قیمت
+                    // Update the price
                     priceElement.textContent = `${parseInt(option.dataset.price).toLocaleString('fa')},۰۰۰ تومان`;
                 });
             });
             
-            // دکمه افزودن به سبد خرید در مودال جزئیات
+            // Add to cart button in detail modal
             const addToCartBtn = productDetailContent.querySelector('.add-to-cart-detail');
             addToCartBtn.addEventListener('click', () => {
                 const selectedSize = productDetailContent.querySelector('.size-option-detail.active');
@@ -3766,7 +3471,7 @@ function uploadToImgbb(file) {
                 }
             });
             
-            // دکمه لیست علاقه‌مندی‌ها در مودال جزئیات
+            // Wishlist button in detail modal
             const wishlistBtn = productDetailContent.querySelector('.wishlist-btn-detail');
             const isInWishlist = wishlist.some(item => item.id === perfume.id);
             if (isInWishlist) {
@@ -3783,13 +3488,13 @@ function uploadToImgbb(file) {
                 }
             });
             
-            // نمایش مودال
+            // Show the modal
             productModal.classList.add('active');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
         
-        // راه‌اندازی جستجو
+        // Search functionality
         function setupSearch() {
             searchIcon.addEventListener('click', () => {
                 searchHeader.classList.add('active');
@@ -3845,45 +3550,51 @@ function uploadToImgbb(file) {
             });
         }
         
-        // مدیریت تغییر وضعیت احراز هویت
+        // Handle auth state changes
         function handleAuthStateChanged(user) {
             currentUser = user;
             
             if (user) {
-                // کاربر وارد شده است
+                // User is signed in
                 loginBtn.style.display = 'none';
                 userDropdown.style.display = 'block';
                 mobileLogin.style.display = 'none';
                 mobileProfile.style.display = 'flex';
-                mobileOrders.style.display = 'flex';
                 mobileLogout.style.display = 'flex';
                 
-                // به‌روزرسانی آواتار کاربر
+                // Update user avatar
                 if (user.photoURL) {
                     userAvatar.src = user.photoURL;
+                    profileAvatar.src = user.photoURL;
                 } else {
-                    // آواتار پیش‌فرض با حرف اول نام نمایشی
+                    // Default avatar with first letter of display name
                     const name = user.displayName || 'کاربر';
                     userAvatar.src = `https://ui-avatars.com/api/?name=${name}&background=random&color=fff`;
+                    profileAvatar.src = `https://ui-avatars.com/api/?name=${name}&background=random&color=fff`;
                 }
                 
-                // بستن مودال احراز هویت
+                // Update profile info
+                profileName.textContent = user.displayName || 'کاربر';
+                profileEmail.textContent = user.email || '';
+                profileFullName.value = user.displayName || '';
+                profilePhone.value = user.phoneNumber || '';
+                
+                // Close auth modal if open
                 authModal.classList.remove('active');
                 overlay.classList.remove('active');
                 
                 showToast(`خوش آمدید ${user.displayName || 'کاربر'}!`);
             } else {
-                // کاربر خارج شده است
+                // User is signed out
                 loginBtn.style.display = 'block';
                 userDropdown.style.display = 'none';
                 mobileLogin.style.display = 'flex';
                 mobileProfile.style.display = 'none';
-                mobileOrders.style.display = 'none';
                 mobileLogout.style.display = 'none';
             }
         }
         
-        // خروج کاربر
+        // Sign out user
         function signOut() {
             auth.signOut().then(() => {
                 showToast('با موفقیت خارج شدید');
@@ -3893,38 +3604,7 @@ function uploadToImgbb(file) {
             });
         }
         
-        // راه‌اندازی استان‌ها و شهرها
-        function setupProvinceCity() {
-            // پاک کردن گزینه‌های موجود
-            provinceSelect.innerHTML = '<option value="">انتخاب استان</option>';
-            citySelect.innerHTML = '<option value="">ابتدا استان را انتخاب کنید</option>';
-            
-            // افزودن استان‌ها
-            Object.keys(iranProvinces).forEach(province => {
-                const option = document.createElement('option');
-                option.value = province;
-                option.textContent = province;
-                provinceSelect.appendChild(option);
-            });
-            
-            // افزودن رویداد تغییر استان
-            provinceSelect.addEventListener('change', () => {
-                const selectedProvince = provinceSelect.value;
-                citySelect.innerHTML = '<option value="">انتخاب شهر</option>';
-                citySelect.disabled = !selectedProvince;
-                
-                if (selectedProvince) {
-                    iranProvinces[selectedProvince].forEach(city => {
-                        const option = document.createElement('option');
-                        option.value = city;
-                        option.textContent = city;
-                        citySelect.appendChild(option);
-                    });
-                }
-            });
-        }
-        
-        // مدیریت مراحل تکمیل سفارش
+        // Checkout functions
         function startCheckout() {
             if (cart.length === 0) {
                 showToast('سبد خرید شما خالی است');
@@ -3938,36 +3618,44 @@ function uploadToImgbb(file) {
                 return;
             }
             
-            // محاسبه مجموع
+            // Reset checkout form
+            fullName.value = currentUser.displayName || '';
+            phoneNumber.value = currentUser.phoneNumber || '';
+            province.value = '';
+            city.value = '';
+            address.value = '';
+            postalCode.value = '';
+            orderNotes.value = '';
+            
+            // Calculate totals
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             checkoutCartTotal.textContent = total.toLocaleString('fa') + ',۰۰۰ تومان';
-            checkoutShippingCost.textContent = '۰ تومان';
-            checkoutFinalTotal.textContent = total.toLocaleString('fa') + ',۰۰۰ تومان';
-            paymentAmount.textContent = total.toLocaleString('fa') + ',۰۰۰ تومان';
+            checkoutShippingCost.textContent = shippingCost.toLocaleString('fa') + ',۰۰۰ تومان';
+            checkoutFinalTotal.textContent = (total + shippingCost).toLocaleString('fa') + ',۰۰۰ تومان';
+            paymentAmount.textContent = (total + shippingCost).toLocaleString('fa') + ',۰۰۰ تومان';
             
-            // بازنشانی مراحل
+            // Reset steps
             currentCheckoutStep = 1;
             updateCheckoutSteps();
             
-            // نمایش مودال تکمیل سفارش
+            // Show checkout modal
             cartModal.classList.remove('open');
             checkoutModal.classList.add('open');
         }
         
-        // به‌روزرسانی مراحل تکمیل سفارش
         function updateCheckoutSteps() {
-            // بازنشانی همه مراحل
+            // Reset all steps
             step1.classList.remove('completed', 'active');
             step2.classList.remove('completed', 'active');
             step3.classList.remove('completed', 'active');
             
-            // مخفی کردن همه فرم‌ها
+            // Hide all forms
             shippingInfoForm.classList.remove('active');
             shippingMethodForm.classList.remove('active');
             paymentForm.classList.remove('active');
             orderConfirmation.classList.remove('active');
             
-            // به‌روزرسانی پیشرفت بر اساس مرحله فعلی
+            // Update progress based on current step
             if (currentCheckoutStep === 1) {
                 step1.classList.add('active');
                 checkoutProgress.style.width = '0%';
@@ -3984,23 +3672,20 @@ function uploadToImgbb(file) {
                 checkoutProgress.style.width = '100%';
                 paymentForm.classList.add('active');
                 
-                // به‌روزرسانی اطلاعات بررسی
+                // Update review information
                 reviewFullName.textContent = fullName.value;
                 reviewPhoneNumber.textContent = phoneNumber.value;
-                reviewAddress.textContent = `${provinceSelect.value}، ${citySelect.value}، ${address.value}`;
+                reviewAddress.textContent = `${province.value}، ${city.value}، ${address.value}`;
                 reviewShippingMethod.textContent = shippingMethod === 'post' ? 'پست پیشتاز' : 'ماهکس (پس کرایه)';
                 
-                // به‌روزرسانی محصولات
-                reviewProducts.innerHTML = '';
-                cart.forEach(item => {
-                    const productDiv = document.createElement('div');
-                    productDiv.textContent = `${item.name} (${item.size}) - ${item.quantity} عدد`;
-                    reviewProducts.appendChild(productDiv);
-                });
+                // Update products in review
+                const productsHTML = cart.map(item => 
+                    `${item.name} (${item.size}) - ${item.quantity} عدد - ${(item.price * item.quantity).toLocaleString('fa')},۰۰۰ تومان`
+                ).join('<br>');
+                reviewProducts.innerHTML = productsHTML;
             }
         }
         
-        // اعتبارسنجی اطلاعات ارسال
         function validateShippingInfo() {
             if (!fullName.value.trim()) {
                 showToast('لطفاً نام گیرنده را وارد کنید');
@@ -4012,13 +3697,13 @@ function uploadToImgbb(file) {
                 return false;
             }
             
-            if (!provinceSelect.value) {
-                showToast('لطفاً استان را انتخاب کنید');
+            if (!province.value.trim()) {
+                showToast('لطفاً استان را وارد کنید');
                 return false;
             }
             
-            if (!citySelect.value) {
-                showToast('لطفاً شهر را انتخاب کنید');
+            if (!city.value.trim()) {
+                showToast('لطفاً شهر را وارد کنید');
                 return false;
             }
             
@@ -4035,33 +3720,30 @@ function uploadToImgbb(file) {
             return true;
         }
         
-        // تکمیل فرآیند سفارش
         function completeOrderProcess() {
-            // تولید شماره سفارش
+            // Generate order number
             const orderNum = 'ORD-' + Date.now().toString().slice(-6);
             orderNumber.textContent = orderNum;
             
-            // محاسبه مجموع
+            // Calculate totals
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const total = subtotal + shippingCost;
             
-            // ایجاد شیء سفارش
+            // Create order object
             const order = {
                 orderNumber: orderNum,
                 userId: currentUser.uid,
                 userEmail: currentUser.email,
-                userName: currentUser.displayName || fullName.value,
+                userName: fullName.value,
                 userPhone: phoneNumber.value,
                 shippingInfo: {
-                    fullName: fullName.value,
-                    phone: phoneNumber.value,
-                    province: provinceSelect.value,
-                    city: citySelect.value,
+                    province: province.value,
+                    city: city.value,
                     address: address.value,
                     postalCode: postalCode.value,
                     notes: orderNotes.value,
                     method: shippingMethod,
-                    cost: shippingMethod === 'post' ? 55000 : 0
+                    cost: shippingMethod === 'post' ? shippingCost : 0
                 },
                 items: cart,
                 subtotal: subtotal,
@@ -4071,66 +3753,95 @@ function uploadToImgbb(file) {
                 receiptImage: receiptFile ? receiptFile.name : null
             };
             
-            // ذخیره سفارش در Firestore
+            // Save order to Firestore
             db.collection('orders').add(order)
                 .then(() => {
-                    // نمایش تاییدیه
+                    // Send email with order details
+                    sendOrderEmail(order);
+                    
+                    // Show confirmation
                     currentCheckoutStep = 4;
                     updateCheckoutSteps();
                     orderConfirmation.classList.add('active');
                     
-                    // پاک کردن سبد خرید
+                    // Clear cart
                     cart = [];
                     saveCart();
                     updateCartCount();
-                    
-                    // ارسال ایمیل
-                    sendOrderEmail(order);
                 })
                 .catch(error => {
-                    console.error('خطا در ثبت سفارش:', error);
+                    console.error('Error saving order:', error);
                     showToast('خطا در ثبت سفارش. لطفاً دوباره تلاش کنید');
                 });
         }
         
-        async function sendOrderEmail(order) {
-  try {
-    showToast('در حال ارسال اطلاعات سفارش...');
-
-    // آپلود فیش به imgbb
-    let receiptUrl = null;
-    if (receiptFile) {
-      try {
-        receiptUrl = await uploadToImgbb(receiptFile);
-      } catch (err) {
-        console.error('خطا در آپلود imgbb', err);
-      }
-    }
-
-    // پارامترها مطابق Template EmailJS شما
-    const templateParams = {
-      name: order.shippingInfo.fullName,
-      phone: order.shippingInfo.phone,
-      address: `${order.shippingInfo.province} - ${order.shippingInfo.city} - ${order.shippingInfo.address}`,
-      shipping: order.shippingInfo.shippingMethod || '',
-      note: order.shippingInfo.note || '',
-      receipt: receiptUrl || ''
-    };
-
-    // ارسال ایمیل
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-
-    showToast('ایمیل با موفقیت ارسال شد.');
-    console.log('EmailJS ارسال شد', templateParams);
-  } catch (err) {
-    console.error('خطا در sendOrderEmail:', err);
-    showToast('خطا در ارسال ایمیل سفارش.');
-  }
-}
-
-
+        // Send order email
+        function sendOrderEmail(order) {
+            // Prepare email parameters
+            const emailParams = {
+                name: order.userName,
+                phone: order.userPhone,
+                address: `${order.shippingInfo.province}، ${order.shippingInfo.city}، ${order.shippingInfo.address}`,
+                shipping: order.shippingInfo.method === 'post' ? 'پست پیشتاز' : 'ماهکس (پس کرایه)',
+                note: order.shippingInfo.notes || 'بدون توضیحات',
+                order_number: order.orderNumber,
+                total_amount: order.total.toLocaleString('fa') + ',۰۰۰ تومان',
+                receipt: 'https://example.com/receipt.jpg' // Placeholder for receipt image
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('service_93422fg', 'template_d6wdpb4', emailParams)
+                .then(() => {
+                    console.log('Email sent successfully');
+                })
+                .catch(error => {
+                    console.error('Error sending email:', error);
+                });
+        }
         
-        // رویدادها
+        // Initialize province and city dropdowns
+        function initProvinceCityDropdowns() {
+            // Sample provinces and cities (in a real app, you would use a complete list)
+            const provinces = ['تهران', 'اصفهان', 'فارس', 'خراسان رضوی', 'آذربایجان شرقی', 'مازندران'];
+            const cities = {
+                'تهران': ['تهران', 'شهریار', 'اسلامشهر', 'کرج'],
+                'اصفهان': ['اصفهان', 'کاشان', 'شیراز', 'نجف آباد'],
+                'فارس': ['شیراز', 'مرودشت', 'کازرون', 'فسا'],
+                'خراسان رضوی': ['مشهد', 'نیشابور', 'سبزوار', 'تربت حیدریه'],
+                'آذربایجان شرقی': ['تبریز', 'مراغه', 'مرند', 'اهر'],
+                'مازندران': ['ساری', 'بابل', 'آمل', 'قائمشهر']
+            };
+            
+            // Populate provinces dropdown
+            const provinceSelect = document.getElementById('province');
+            provinces.forEach(province => {
+                const option = document.createElement('option');
+                option.value = province;
+                option.textContent = province;
+                provinceSelect.appendChild(option);
+            });
+            
+            // Handle province change
+            provinceSelect.addEventListener('change', () => {
+                const selectedProvince = provinceSelect.value;
+                const citySelect = document.getElementById('city');
+                
+                // Clear and enable city dropdown
+                citySelect.innerHTML = '<option value="">انتخاب شهر</option>';
+                citySelect.disabled = false;
+                
+                if (selectedProvince && cities[selectedProvince]) {
+                    cities[selectedProvince].forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city;
+                        option.textContent = city;
+                        citySelect.appendChild(option);
+                    });
+                }
+            });
+        }
+        
+        // Event Listeners
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('active');
@@ -4186,19 +3897,21 @@ function uploadToImgbb(file) {
             productModal.classList.remove('active');
             sizeModal.classList.remove('active');
             checkoutModal.classList.remove('open');
+            profileModal.classList.remove('active');
+            ordersModal.classList.remove('active');
             searchHeader.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         });
         
-        // بستن مودال محصول
+        // Product modal close
         closeProductModal.addEventListener('click', () => {
             productModal.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         });
         
-        // بستن مودال محصول با کلیک خارج از آن
+        // Close product modal when clicking outside
         productModal.addEventListener('click', (e) => {
             if (e.target === productModal) {
                 productModal.classList.remove('active');
@@ -4207,17 +3920,17 @@ function uploadToImgbb(file) {
             }
         });
         
-        // دکمه تکمیل سفارش
+        // Checkout button
         checkoutButton.addEventListener('click', startCheckout);
         
-        // لغو تکمیل سفارش
+        // Cancel checkout
         cancelCheckout.addEventListener('click', () => {
             checkoutModal.classList.remove('open');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         });
         
-        // بعدی به روش ارسال
+        // Next to shipping method
         nextToShippingMethod.addEventListener('click', () => {
             if (validateShippingInfo()) {
                 currentCheckoutStep = 2;
@@ -4225,19 +3938,19 @@ function uploadToImgbb(file) {
             }
         });
         
-        // بازگشت به اطلاعات ارسال
+        // Back to shipping info
         backToShippingInfo.addEventListener('click', () => {
             currentCheckoutStep = 1;
             updateCheckoutSteps();
         });
         
-        // بعدی به پرداخت
+        // Next to payment
         nextToPayment.addEventListener('click', () => {
-            // به‌روزرسانی روش ارسال
+            // Update shipping method
             shippingMethod = shippingMethod1.checked ? 'post' : 'mahax';
             shippingCost = shippingMethod === 'post' ? 55000 : 0;
             
-            // به‌روزرسانی مجموع
+            // Update totals
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             checkoutShippingCost.textContent = shippingCost.toLocaleString('fa') + ',۰۰۰ تومان';
             checkoutFinalTotal.textContent = (subtotal + shippingCost).toLocaleString('fa') + ',۰۰۰ تومان';
@@ -4247,23 +3960,23 @@ function uploadToImgbb(file) {
             updateCheckoutSteps();
         });
         
-        // بازگشت به روش ارسال
+        // Back to shipping method
         backToShippingMethod.addEventListener('click', () => {
             currentCheckoutStep = 2;
             updateCheckoutSteps();
         });
         
-        // تکمیل سفارش
+        // Complete order
         completeOrder.addEventListener('click', completeOrderProcess);
         
-        // بستن پس از تایید سفارش
+        // Close checkout after confirmation
         closeCheckoutAfterConfirm.addEventListener('click', () => {
             checkoutModal.classList.remove('open');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         });
         
-        // آپلود فایل
+        // File upload
         receiptImage.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
                 receiptFile = e.target.files[0];
@@ -4271,13 +3984,13 @@ function uploadToImgbb(file) {
             }
         });
         
-        // انتخاب روش ارسال
+        // Shipping method selection
         shippingMethod1.addEventListener('change', () => {
             if (shippingMethod1.checked) {
                 shippingMethod = 'post';
                 shippingCost = 55000;
                 
-                // به‌روزرسانی مجموع
+                // Update totals
                 const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
                 checkoutShippingCost.textContent = shippingCost.toLocaleString('fa') + ',۰۰۰ تومان';
                 checkoutFinalTotal.textContent = (subtotal + shippingCost).toLocaleString('fa') + ',۰۰۰ تومان';
@@ -4289,14 +4002,14 @@ function uploadToImgbb(file) {
                 shippingMethod = 'mahax';
                 shippingCost = 0;
                 
-                // به‌روزرسانی مجموع
+                // Update totals
                 const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
                 checkoutShippingCost.textContent = 'پس کرایه';
                 checkoutFinalTotal.textContent = subtotal.toLocaleString('fa') + ',۰۰۰ تومان';
             }
         });
         
-        // نمایش مودال احراز هویت
+        // Auth modal toggle
         loginBtn.addEventListener('click', () => {
             authModal.classList.add('active');
             overlay.classList.add('active');
@@ -4309,7 +4022,7 @@ function uploadToImgbb(file) {
             document.body.style.overflow = '';
         });
         
-        // تغییر بین تب‌های ورود و ثبت‌نام
+        // Switch between login and register tabs
         authTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const tabId = tab.dataset.tab;
@@ -4328,19 +4041,19 @@ function uploadToImgbb(file) {
             });
         });
         
-        // نمایش فرم ثبت‌نام
+        // Show register form
         showRegister.addEventListener('click', (e) => {
             e.preventDefault();
             document.querySelector('.auth-tab[data-tab="register"]').click();
         });
         
-        // نمایش فرم ورود
+        // Show login form
         showLogin.addEventListener('click', (e) => {
             e.preventDefault();
             document.querySelector('.auth-tab[data-tab="login"]').click();
         });
         
-        // ورود با ایمیل/رمز عبور
+        // Login with email/password
         loginButton.addEventListener('click', () => {
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
@@ -4352,14 +4065,14 @@ function uploadToImgbb(file) {
             
             auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    // در تغییر وضعیت احراز هویت مدیریت می‌شود
+                    // Handled in auth state change
                 })
                 .catch((error) => {
                     showToast('خطا در ورود: ' + error.message);
                 });
         });
         
-        // ثبت‌نام با ایمیل/رمز عبور
+        // Register with email/password
         registerButton.addEventListener('click', () => {
             const name = document.getElementById('registerName').value;
             const phone = document.getElementById('registerPhone').value;
@@ -4389,9 +4102,10 @@ function uploadToImgbb(file) {
             
             auth.createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                    // به‌روزرسانی پروفایل کاربر
+                    // Update user profile
                     return userCredential.user.updateProfile({
-                        displayName: name
+                        displayName: name,
+                        phoneNumber: phone
                     });
                 })
                 .then(() => {
@@ -4403,31 +4117,31 @@ function uploadToImgbb(file) {
                 });
         });
         
-        // ورود با گوگل
+        // Login with Google
         googleLogin.addEventListener('click', () => {
             const provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithPopup(provider)
                 .then((result) => {
-                    // در تغییر وضعیت احراز هویت مدیریت می‌شود
+                    // Handled in auth state change
                 })
                 .catch((error) => {
                     showToast('خطا در ورود با گوگل: ' + error.message);
                 });
         });
         
-        // ثبت‌نام با گوگل
+        // Register with Google
         googleRegister.addEventListener('click', () => {
             const provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithPopup(provider)
                 .then((result) => {
-                    // در تغییر وضعیت احراز هویت مدیریت می‌شود
+                    // Handled in auth state change
                 })
                 .catch((error) => {
                     showToast('خطا در ثبت‌نام با گوگل: ' + error.message);
                 });
         });
         
-        // خروج
+        // Logout
         logoutLink.addEventListener('click', (e) => {
             e.preventDefault();
             signOut();
@@ -4438,37 +4152,58 @@ function uploadToImgbb(file) {
             signOut();
         });
         
-        // پروفایل کاربر
+        // Profile link
         profileLink.addEventListener('click', (e) => {
             e.preventDefault();
-            document.querySelector('#profile').style.display = 'block';
-            document.querySelector('#orders').style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            profileModal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
         
         mobileProfile.addEventListener('click', (e) => {
             e.preventDefault();
-            document.querySelector('#profile').style.display = 'block';
-            document.querySelector('#orders').style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            profileModal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
         
-        // سفارشات کاربر
+        // Orders link
         ordersLink.addEventListener('click', (e) => {
             e.preventDefault();
-            document.querySelector('#orders').style.display = 'block';
-            document.querySelector('#profile').style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            ordersModal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
         
-        mobileOrders.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('#orders').style.display = 'block';
-            document.querySelector('#profile').style.display = 'none';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Close profile modal
+        closeProfileModal.addEventListener('click', () => {
+            profileModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
         
-        // کپی شماره کارت
+        // Close orders modal
+        closeOrdersModal.addEventListener('click', () => {
+            ordersModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Save profile
+        saveProfile.addEventListener('click', () => {
+            // Update user profile
+            currentUser.updateProfile({
+                displayName: profileFullName.value,
+                phoneNumber: profilePhone.value
+            }).then(() => {
+                showToast('پروفایل با موفقیت به‌روزرسانی شد');
+                handleAuthStateChanged(currentUser);
+            }).catch(error => {
+                showToast('خطا در به‌روزرسانی پروفایل: ' + error.message);
+            });
+        });
+        
+        // Copy card number
         function copyCardNumber() {
             const textarea = document.createElement('textarea');
             textarea.value = '6219861902731925';
@@ -4480,18 +4215,18 @@ function uploadToImgbb(file) {
             showToast('شماره کارت کپی شد!');
         }
         
-        // مقداردهی اولیه صفحه
+        // Initialize the page
         function init() {
             generateProductCards();
             updateCartCount();
             updateWishlistCount();
             setupSearch();
-            setupProvinceCity();
+            initProvinceCityDropdowns();
             
-            // تنظیم شنونده وضعیت احراز هویت
+            // Set up auth state listener
             auth.onAuthStateChanged(handleAuthStateChanged);
             
-            // اسکرول نرم برای لینک‌های لنگر
+            // Add smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -4507,7 +4242,7 @@ function uploadToImgbb(file) {
             });
         }
         
-        // مقداردهی اولیه هنگام بارگیری صفحه
+        // Initialize when page loads
         window.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
