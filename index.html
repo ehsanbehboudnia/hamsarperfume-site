@@ -1805,6 +1805,10 @@
             color: var(--success);
             display: none;
         }
+        
+        .file-upload-button.uploaded .fa-check-circle {
+            display: inline-block;
+        }
 
         .file-name {
             font-size: 14px;
@@ -2409,8 +2413,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
-
+    
     <script>
         // --- START: CONFIGURATION ---
         const firebaseConfig = {
@@ -2428,13 +2431,14 @@
             templateID: 'template_d6wdpb4',
             publicKey: 'xluvNfOZ9_o0SFRVi'
         };
+
+        const imgbbApiKey = 'de55bc5b6525015fc1ef403f5adbb2f9';
         // --- END: CONFIGURATION ---
 
         // Initialize Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
-        const storage = firebase.storage();
         
         // Initialize EmailJS
         emailjs.init(emailJsConfig.publicKey);
@@ -3843,12 +3847,12 @@
 
         const validateShippingInfo = () => {
             const { fullName, phoneNumber, province, city, address, postalCode } = DOMElements.shippingForm;
-            if (!fullName.value.trim()) return showToast('لطفاً نام گیرنده را وارد کنید'), false;
-            if (!/^[0-9]{11}$/.test(phoneNumber.value)) return showToast('لطفاً شماره تماس ۱۱ رقمی معتبر (انگلیسی) وارد کنید'), false;
-            if (!province.value.trim()) return showToast('لطفاً استان را انتخاب کنید'), false;
-            if (!city.value.trim()) return showToast('لطفاً شهر را انتخاب کنید'), false;
-            if (!address.value.trim()) return showToast('لطفاً آدرس کامل را وارد کنید'), false;
-            if (!/^[0-9]{10}$/.test(postalCode.value)) return showToast('لطفاً کد پستی ۱۰ رقمی معتبر (انگلیسی) وارد کنید'), false;
+            if (!fullName.value.trim()) { showToast('لطفاً نام گیرنده را وارد کنید'); return false; }
+            if (!/^[0-9]{11}$/.test(phoneNumber.value)) { showToast('لطفاً شماره تماس ۱۱ رقمی معتبر (انگلیسی) وارد کنید'); return false; }
+            if (!province.value.trim()) { showToast('لطفاً استان را انتخاب کنید'); return false; }
+            if (!city.value.trim()) { showToast('لطفاً شهر را انتخاب کنید'); return false; }
+            if (!address.value.trim()) { showToast('لطفاً آدرس کامل را وارد کنید'); return false; }
+            if (!/^[0-9]{10}$/.test(postalCode.value)) { showToast('لطفاً کد پستی ۱۰ رقمی معتبر (انگلیسی) وارد کنید'); return false; }
             return true;
         };
 
@@ -3881,13 +3885,32 @@
             const itemsHTML = cart.map(item => `<p>${item.name} (${item.size}) - ${formatPrice(item.price)}</p>`).join('');
             DOMElements.reviewInfo.itemsContainer.innerHTML = `<div class="order-review-item"><div class="order-review-label">محصولات:</div><div class="order-review-value">${itemsHTML}</div></div>`;
         };
-
+        
         const uploadReceiptImage = async (file) => {
             if (!file) return null;
-            const storageRef = storage.ref();
-            const fileRef = storageRef.child(`receipts/${Date.now()}_${file.name}`);
-            const snapshot = await fileRef.put(file);
-            return await snapshot.ref.getDownloadURL();
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+            try {
+                const response = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbApiKey}`, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    console.log('ImgBB Upload Success:', result.data.url);
+                    return result.data.url;
+                } else {
+                    console.error('ImgBB Upload Error:', result.error.message);
+                    throw new Error(`ImgBB upload failed: ${result.error.message}`);
+                }
+            } catch (error) {
+                console.error('Fetch error during ImgBB upload:', error);
+                throw error;
+            }
         };
 
         const completeOrder = async () => {
@@ -3949,6 +3972,7 @@
                 cart = [];
                 saveToLocalStorage('cart', cart);
                 updateCartCount();
+                updateCartUI();
                 
             } catch (error) {
                 console.error("Order completion error: ", error);
@@ -4014,8 +4038,8 @@
             });
 
             document.addEventListener('click', (e) => {
-                if (!province.contains(e.target)) provinceList.style.display = 'none';
-                if (!city.contains(e.target)) cityList.style.display = 'none';
+                if (!province.parentElement.contains(e.target)) provinceList.style.display = 'none';
+                if (!city.parentElement.contains(e.target)) cityList.style.display = 'none';
             });
         };
         // --- END: Province/City Dropdown Logic ---
