@@ -1984,6 +1984,35 @@
         .order-status.delivered { background-color: var(--success); }
         .order-status.cancelled { background-color: #e74c3c; }
 
+        /* قرار دادن لوگو در وسط هدر */
+.header-container {
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* برای صفحه نمایش کوچک */
+@media (max-width: 992px) {
+    .logo {
+        position: static;
+        transform: none;
+    }
+    
+    .header-container {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        justify-content: space-between;
+    }
+    
+    .nav-desktop {
+        display: none;
+    }
+}
+
     </style>
 </head>
 <body>
